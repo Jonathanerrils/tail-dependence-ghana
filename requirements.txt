@@ -1,0 +1,11 @@
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+statsmodels>=0.14
+arch>=6.2
+matplotlib>=3.8
+networkx>=3.2
+plotly>=5.18
+# real-data fetch (local only):
+# yfinance>=0.2
+# wbgapi>=1.0

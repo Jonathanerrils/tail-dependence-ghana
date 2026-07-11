@@ -1,0 +1,11 @@
+pair,lambda_L_calm,lambda_L_stress,ratio
+Cocoa–Gold,0.076,0.287,3.794
+Cocoa–Brent,0.083,0.229,2.759
+Cocoa–WTI,0.076,0.287,3.794
+Cocoa–GHS/USD,0.098,0.172,1.751
+Gold–Brent,0.083,0.344,4.139
+Gold–WTI,0.091,0.344,3.794
+Gold–GHS/USD,0.106,0.229,2.168
+Brent–WTI,0.642,0.802,1.25
+Brent–GHS/USD,0.151,0.344,2.276
+WTI–GHS/USD,0.128,0.344,2.678

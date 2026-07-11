@@ -1,0 +1,29 @@
+{
+  "data": "synthetic",
+  "n_obs": 2997,
+  "period": [
+    "2015-01-05",
+    "2026-06-30"
+  ],
+  "evt_xi": {
+    "Cocoa": -0.010647604677992232,
+    "Gold": 0.02323682175186796,
+    "Brent": 0.11101438582706356,
+    "WTI": 0.10526939401426319,
+    "GHS/USD": 0.10809831123127261
+  },
+  "best_copula_by_pair": {
+    "Cocoa\u2013Gold": "t",
+    "Cocoa\u2013Brent": "t",
+    "Cocoa\u2013WTI": "t",
+    "Cocoa\u2013GHS/USD": "t",
+    "Gold\u2013Brent": "t",
+    "Gold\u2013WTI": "t",
+    "Gold\u2013GHS/USD": "t",
+    "Brent\u2013WTI": "t",
+    "Brent\u2013GHS/USD": "t",
+    "WTI\u2013GHS/USD": "t"
+  },
+  "mean_lambda_L_calm": 0.15332326283987915,
+  "mean_lambda_L_stress": 0.33810888252149
+}
