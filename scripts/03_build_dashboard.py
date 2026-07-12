@@ -54,7 +54,7 @@ def rolling_panel() -> go.Figure:
     roll = pd.read_csv(TAB / "rolling_lambda_L.csv", index_col=0, parse_dates=True)
     # prefer pairs involving cocoa or the cedi; fall back to the first six
     keep = [c for c in roll.columns
-            if "cocoa" in c.lower() or "ghs" in c.lower()][:6] \
+            if "cocoa" in c.lower() or "ghs" in c.lower() or "cedi" in c.lower()][:6] \
         or list(roll.columns)[:6]
     fig = go.Figure()
     for c in keep:

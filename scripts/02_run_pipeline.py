@@ -45,7 +45,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from tailrisk import copulas, evt, marginals, networks  # noqa: E402
+from tailrisk import copulas, evt, inference, marginals, networks  # noqa: E402
 
 FIG = ROOT / "outputs" / "figures"
 TAB = ROOT / "outputs" / "tables"
@@ -66,15 +66,15 @@ INGEST_MAP = {
     "wti_futures": "wti_fut",                # optional robustness extra
     "ghana_usd_exchange_daily": "ghs_usd",
 }
-CORE = ["cocoa", "gold", "brent", "wti", "ghs_usd"]      # required
+CORE = ["cocoa", "gold", "brent", "wti", "ghs_usd"]  # pre-orientation names      # required
 OPTIONAL_MIN_COVERAGE = 0.70                              # for extras
 
 LABELS = {"cocoa": "Cocoa", "gold": "Gold", "gold_spot": "Gold spot",
           "brent": "Brent", "wti": "WTI", "wti_fut": "WTI fut",
-          "ghs_usd": "GHS/USD"}
+          "ghs_usd": "GHS/USD", "cedi": "Cedi"}
 NODE_COLORS = {"Cocoa": "#8B4513", "Gold": "#B8860B", "Gold spot": "#DAA520",
                "Brent": "#2F4F4F", "WTI": "#556B2F", "WTI fut": "#6B8E23",
-               "GHS/USD": "#8B0000"}
+               "GHS/USD": "#8B0000", "Cedi": "#8B0000"}
 
 
 def label(c: str) -> str:
@@ -162,6 +162,15 @@ def load_real_data(ingest_dir: str | None) -> tuple[pd.DataFrame, pd.DataFrame]:
         px = px.where(px > 0).dropna()
 
     rets = 100 * np.log(px).diff().dropna()
+
+    # ORIENTATION: ghs_usd (GHS per USD) has depreciation = positive return.
+    # Flip its return sign and rename to 'cedi' so the LOWER tail means
+    # bad-for-Ghana for every series (commodity crash / cedi depreciation).
+    if "ghs_usd" in rets:
+        rets["ghs_usd"] = -rets["ghs_usd"]
+        rets = rets.rename(columns={"ghs_usd": "cedi"})
+        px = px.rename(columns={"ghs_usd": "cedi"})
+        print("  Oriented cedi: returns sign-flipped (lower tail = depreciation).")
     px = px.loc[rets.index.min():]
 
     px.to_csv(PROC / "prices_real.csv")
@@ -212,6 +221,7 @@ def main(data: str = "synthetic", ingest_dir: str | None = None) -> None:
             "series": label(name), "mu": p.get("Const", np.nan),
             "alpha": p.get("alpha[1]", np.nan), "gamma": p.get("gamma[1]", np.nan),
             "beta": p.get("beta[1]", np.nan), "nu": f.nu, "AIC": f.aic,
+            **inference.marginal_diagnostics(f.std_resid, f.pit),
         })
     pd.DataFrame(marg_rows).round(3).to_csv(TAB / "marginal_garch.csv", index=False)
 
@@ -284,17 +294,26 @@ def main(data: str = "synthetic", ingest_dir: str | None = None) -> None:
     # ----------------------------------------------- 4. calm vs stress split
     flag = stress_flag(pit.index)
     pit_calm, pit_stress = pit[~flag], pit[flag]
+    # Small stress windows make lambda(q=0.05) very noisy; use q=0.10 for
+    # the inferential comparison and report block-bootstrap 95% CIs plus a
+    # CI for the stress-calm difference (significance = CI excludes 0).
+    q_inf = 0.10
     rows = []
     for a, b in pairs:
-        rows.append({
-            "pair": f"{label(a)}–{label(b)}",
-            "lambda_L_calm": copulas.empirical_lambda_lower(
-                copulas.pseudo_obs(pit_calm[[a]])[:, 0],
-                copulas.pseudo_obs(pit_calm[[b]])[:, 0], 0.05),
-            "lambda_L_stress": copulas.empirical_lambda_lower(
-                copulas.pseudo_obs(pit_stress[[a]])[:, 0],
-                copulas.pseudo_obs(pit_stress[[b]])[:, 0], 0.05),
-        })
+        res = inference.calm_stress_difference(
+            copulas.pseudo_obs(pit_calm[[a]])[:, 0],
+            copulas.pseudo_obs(pit_calm[[b]])[:, 0],
+            copulas.pseudo_obs(pit_stress[[a]])[:, 0],
+            copulas.pseudo_obs(pit_stress[[b]])[:, 0],
+            q=q_inf, n_boot=500)
+        rows.append({"pair": f"{label(a)}–{label(b)}",
+                     "lambda_L_calm": res["lambda_calm"],
+                     "calm_95CI": f"[{res['calm_lo']:.2f}, {res['calm_hi']:.2f}]",
+                     "lambda_L_stress": res["lambda_stress"],
+                     "stress_95CI": f"[{res['stress_lo']:.2f}, {res['stress_hi']:.2f}]",
+                     "difference": res["difference"],
+                     "diff_95CI": f"[{res['diff_lo']:.2f}, {res['diff_hi']:.2f}]",
+                     "significant_5pct": res["significant_5pct"]})
     split = pd.DataFrame(rows)
     split["ratio"] = (split["lambda_L_stress"]
                       / split["lambda_L_calm"].replace(0, np.nan))
@@ -307,7 +326,7 @@ def main(data: str = "synthetic", ingest_dir: str | None = None) -> None:
     ax.bar(x + 0.2, split["lambda_L_stress"], width=0.38, label="Stress",
            color="#CC3311")
     ax.set_xticks(x, split["pair"], rotation=30, ha="right", fontsize=8)
-    ax.set_ylabel(r"Empirical $\hat\lambda_L(q=0.05)$")
+    ax.set_ylabel(r"Empirical $\hat\lambda_L(q=0.10)$ with 95% CIs in table")
     ax.set_title("Lower-tail dependence: calm vs stress periods")
     ax.legend(frameon=False)
     fig.tight_layout()
@@ -341,7 +360,8 @@ def main(data: str = "synthetic", ingest_dir: str | None = None) -> None:
     # ---------------------------------------------------- 6. rolling dynamics
     roll = networks.rolling_lower_tail(pit, window=250, q=0.10)
     wanted = [("cocoa", "gold"), ("cocoa", "brent"), ("brent", "wti"),
-              ("cocoa", "ghs_usd"), ("brent", "ghs_usd"), ("gold", "ghs_usd")]
+              ("cocoa", "cedi"), ("brent", "cedi"), ("gold", "cedi"),
+              ("cocoa", "ghs_usd"), ("brent", "ghs_usd")]
     key_pairs = [p for p in wanted
                  if p in roll or (p[1], p[0]) in roll][:6] or list(roll)[:6]
     fig, ax = plt.subplots(figsize=(11, 4.5))
@@ -380,6 +400,9 @@ def main(data: str = "synthetic", ingest_dir: str | None = None) -> None:
         "best_copula_by_pair": dict(zip(lam_df["pair"], lam_df["best_family"])),
         "mean_lambda_L_calm": float(split["lambda_L_calm"].mean()),
         "mean_lambda_L_stress": float(split["lambda_L_stress"].mean()),
+        "n_pairs_significant_increase": int(
+            ((split["difference"] > 0) & split["significant_5pct"]).sum()),
+        "n_pairs_total": int(len(split)),
     }
     (TAB / "summary.json").write_text(json.dumps(summary, indent=2))
     print(json.dumps(summary, indent=2))

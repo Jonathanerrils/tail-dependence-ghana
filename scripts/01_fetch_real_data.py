@@ -83,6 +83,21 @@ def clean_panel(prices: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     px = px.asfreq("B").ffill(limit=3).dropna()
 
     rets = 100 * np.log(px).diff().dropna()
+
+    # 4. ORIENTATION: GHS=X quotes cedis per USD, so a *positive* return is
+    # cedi depreciation (bad for Ghana), while for the commodities a
+    # *negative* return is the bad day. Tail-dependence analysis needs all
+    # series oriented the same way: flip the cedi's return sign and rename
+    # the series 'cedi', so that the LOWER tail = bad-for-Ghana day for
+    # every column. (Equivalent to using USD-per-GHS returns.)
+    if "ghs_usd" in rets:
+        rets["ghs_usd"] = -rets["ghs_usd"]
+        rets = rets.rename(columns={"ghs_usd": "cedi"})
+        px = px.rename(columns={"ghs_usd": "cedi"})  # price stays GHS/USD level
+        print("Oriented cedi series: returns sign-flipped so lower tail = "
+              "depreciation; column renamed ghs_usd -> cedi "
+              "(price column still holds the GHS-per-USD level).")
+
     px = px.loc[rets.index.min():]
     return px, rets
 

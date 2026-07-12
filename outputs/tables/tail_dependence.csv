@@ -2,10 +2,10 @@ pair,lambda_L_t,lambda_L_clayton,lambda_U_gumbel,lambda_L_empirical(q=5%),lambda
 Cocoa–Gold,0.003,0.002,0.093,0.093,0.147,t
 Cocoa–Brent,0.014,0.007,0.108,0.1,0.167,t
 Cocoa–WTI,0.018,0.004,0.111,0.1,0.194,t
-Cocoa–GHS/USD,0.043,0.006,0.117,0.1,0.187,t
+Cocoa–Cedi,0.014,0.0,0.0,0.093,0.053,t
 Gold–Brent,0.006,0.057,0.168,0.1,0.16,t
 Gold–WTI,0.007,0.037,0.163,0.1,0.2,t
-Gold–GHS/USD,0.01,0.008,0.112,0.107,0.153,t
+Gold–Cedi,0.002,0.0,0.0,0.033,0.02,t
 Brent–WTI,0.55,0.823,0.782,0.634,0.761,t
-Brent–GHS/USD,0.033,0.052,0.142,0.167,0.12,t
-WTI–GHS/USD,0.043,0.056,0.144,0.147,0.14,t
+Brent–Cedi,0.005,0.0,0.0,0.08,0.027,t
+WTI–Cedi,0.007,0.0,0.0,0.1,0.027,t

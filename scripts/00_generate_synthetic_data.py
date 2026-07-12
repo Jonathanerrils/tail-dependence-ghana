@@ -107,6 +107,11 @@ def main() -> None:
     )
     rets.loc[co_crash, "ghs_usd"] += RNG.normal(1.2, 0.4, co_crash.sum())
 
+    # Orient the cedi like the real-data pipeline: flip GHS-per-USD return
+    # sign and rename to 'cedi', so lower tail = depreciation for all series.
+    rets["ghs_usd"] = -rets["ghs_usd"]
+    rets = rets.rename(columns={"ghs_usd": "cedi"})
+
     prices = 100 * np.exp(rets.div(100).cumsum())
     prices.to_csv(OUT / "prices_synthetic.csv")
     rets.to_csv(OUT / "returns_synthetic.csv")
