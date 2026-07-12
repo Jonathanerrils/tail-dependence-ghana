@@ -1,5 +1,12 @@
 {
   "data": "synthetic",
+  "series": [
+    "cocoa",
+    "gold",
+    "brent",
+    "wti",
+    "ghs_usd"
+  ],
   "n_obs": 2997,
   "period": [
     "2015-01-05",
