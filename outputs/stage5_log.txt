@@ -1,0 +1,45 @@
+  marginal cocoa: AR1-GJR-GARCH-t (LBr=0.788, LBsq=0.957, KS=0.163)
+  marginal gold: AR1-GJR-GARCH-t (LBr=0.594, LBsq=0.119, KS=0.186)
+  marginal brent: AR2-GJR-GARCH-t (INADEQUATE — best AIC) (LBr=0.551, LBsq=0.677, KS=0.023)
+  marginal wti: AR1-EGARCH-t (LBr=0.559, LBsq=0.348, KS=0.068)
+  marginal cedi: AR1-GJR-GARCH-t (INADEQUATE — best AIC) (LBr=0.872, LBsq=1.000, KS=0.000)
+== S2: EVT extensions ==
+series    xi  xi_lo95  xi_hi95  VaR99   ES99
+ Cocoa 0.047   -0.077    0.150  2.685  3.406
+  Gold 0.036   -0.104    0.129  2.801  3.582
+ Brent 0.083   -0.050    0.184  2.948  3.839
+   WTI 0.183    0.045    0.293  2.907  3.972
+  Cedi 0.720    0.524    0.909  7.755 27.264
+== S3: copula goodness-of-fit (Rosenblatt-CvM, 500 boots) ==
+  Cocoa–Gold: not rejected -> NONE
+  Cocoa–Brent: not rejected -> NONE
+  Cocoa–WTI: not rejected -> NONE
+  Cocoa–Cedi: not rejected -> ['clayton', 'gumbel']
+  Gold–Brent: not rejected -> NONE
+  Gold–WTI: not rejected -> NONE
+  Gold–Cedi: not rejected -> ['gaussian', 't', 'clayton', 'gumbel']
+  Brent–WTI: not rejected -> NONE
+  Brent–Cedi: not rejected -> ['gaussian', 't', 'clayton', 'gumbel']
+  WTI–Cedi: not rejected -> ['gaussian', 't', 'clayton', 'gumbel']
+== S4: dynamics, q-sensitivity, Bonferroni, upper tail ==
+  lower tail q=0.025: mean calm 0.107 -> stress 0.115 | sig 5%: 0/10 | Bonferroni: 0/10
+  lower tail q=0.05: mean calm 0.145 -> stress 0.149 | sig 5%: 3/10 | Bonferroni: 1/10
+  lower tail q=0.1: mean calm 0.197 -> stress 0.183 | sig 5%: 0/10 | Bonferroni: 0/10
+  upper tail q=0.025: mean calm 0.106 -> stress 0.069 | sig 5%: 2/10 | Bonferroni: 0/10
+  upper tail q=0.05: mean calm 0.132 -> stress 0.103 | sig 5%: 0/10 | Bonferroni: 0/10
+  upper tail q=0.1: mean calm 0.191 -> stress 0.166 | sig 5%: 1/10 | Bonferroni: 0/10
+  upper tail, 2024 window only: sig 5%: 0 /10 | Bonferroni: 0 /10
+== S5: robustness ==
+  marginal cocoa: AR1-GJR-GARCH-t (LBr=0.805, LBsq=0.881, KS=0.936)
+  marginal gold: AR2-GJR-GARCH-t (INADEQUATE — best AIC) (LBr=0.730, LBsq=0.007, KS=0.872)
+  marginal brent: AR1-GJR-GARCH-t (LBr=0.340, LBsq=0.772, KS=0.820)
+  marginal wti: AR1-GJR-GARCH-t (LBr=0.098, LBsq=0.842, KS=0.418)
+  marginal cedi: AR1-EGARCH-t (INADEQUATE — best AIC) (LBr=0.886, LBsq=1.000, KS=0.000)
+  weekly (n=598): mean calm 0.193 -> stress 0.232 | sig 5%: 1/10
+  excl-COVID lower: sig 5%: 0/10
+  (d) Pink-Sheet roll-effect comparison SKIPPED: CMO monthly file not available in this environment.
+== S6: transmission regressions (HAC) ==
+  cedi_depreciation: n=127, R2=0.005, sig regressors: none
+  d_cpi_yoy: n=96, R2=0.001, sig regressors: none
+  exports_growth: n=89, R2=nan, sig regressors: none
+Stages 2-6 complete.

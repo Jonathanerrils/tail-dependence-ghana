@@ -1,0 +1,539 @@
+Year,Variables,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec,source_page,source_url,datatable_index,First Quarter,Second Quarter,Third Quarter,Fourth Quarter,col_3
+2023,Bank of Ghana Composite Index of Economic Activity (Real),696.60,687.73,737.17,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2023,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),-7.57,-7.22,-6.37,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2023,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),16.15,15.02,12.78,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2023,Bank of Ghana Composite Index of Economic Activity (Nominal),"3,058.46","3,032.01","3,194.28",0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2023,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,52.80,52.00,44.60,41.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2023,Inflation Headline (%) Year-on-Year,53.60,52.80,45.00,41.20,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2023,Inflation_Food (%) Year-on-Year,61.00,59.10,50.80,48.70,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2023,Inflation_Non-Food (%) Year-on-Year,47.90,47.90,40.60,35.40,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2022,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),4.15,4.39,4.63,2.55,1.72,1.64,0.46,-1.12,-1.21,-0.96,-6.16,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2022,Bank of Ghana Composite Index of Economic Activity (Nominal),"2,633.30","2,636.15","2,832.38","2,836.46","2,851.62","2,911.72","2,977.69","2,922.91","2,975.85","3,077.77","3,167.23",0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2022,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),11.13,12.57,15.76,15.37,16.32,17.79,17.21,16.97,18.40,22.22,20.10,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2022,Inflation_Food (%) Year-on-Year,13.70,17.40,22.40,26.60,30.10,30.70,32.30,34.40,37.80,43.70,55.30,59.70,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2022,Bank of Ghana Composite Index of Economic Activity (Real),753.64,741.29,787.35,767.12,754.67,759.31,767.57,737.77,735.16,731.99,729.09,0.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2022,Inflation_Non-Food (%) Year-on-Year,14.10,14.50,17.00,21.30,25.70,29.10,31.30,33.60,36.80,37.80,46.50,49.90,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2022,Inflation Headline (%) Year-on-Year,13.90,15.70,19.40,23.40,27.60,29.80,31.70,33.90,37.20,40.40,50.30,54.10,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2022,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,13.30,15.40,18.60,22.50,26.60,28.60,30.50,32.80,36.20,39.70,49.70,53.20,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2021,Bank of Ghana Composite Index of Economic Activity (Real),723.61,710.13,752.50,748.07,741.88,747.06,764.05,746.12,744.17,739.09,776.95,791.02,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2021,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),13.90,12.36,26.76,39.42,33.14,20.21,20.00,15.01,11.15,4.95,10.23,4.97,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2021,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),15.91,14.67,26.10,35.50,30.29,20.38,21.56,17.46,15.10,9.92,14.81,10.71,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2021,Bank of Ghana Composite Index of Economic Activity (Nominal),"2,369.53","2,341.82","2,446.73","2,458.68","2,451.64","2,472.04","2,540.37","2,498.84","2,513.31","2,518.31","2,637.07","2,708.62",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2021,Inflation_Non-Food (%) Year-on-Year,7.70,8.80,10.00,10.20,9.20,8.20,8.60,8.70,9.90,11.00,11.60,12.50,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2021,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,10.08,10.44,10.87,8.63,7.34,7.54,8.85,9.47,9.98,10.35,11.41,11.84,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2021,Inflation_Food (%) Year-on-Year,12.80,12.30,10.80,6.50,5.40,7.30,9.50,10.60,11.50,11.00,13.10,12.80,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2021,Inflation Headline (%) Year-on-Year,9.90,10.30,10.30,8.50,7.50,7.80,9.00,9.70,10.60,11.00,12.20,12.60,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2020,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),3.36,7.15,-1.87,-10.47,-10.23,4.13,3.93,6.54,10.75,10.89,11.88,8.33,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2020,Bank of Ghana Composite Index of Economic Activity (Real),635.26,631.95,593.56,536.51,557.16,621.48,636.70,648.77,669.54,704.20,704.85,753.58,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2020,Bank of Ghana Composite Index of Economic Activity (Nominal),"2,041.38","2,039.50","1,937.52","1,811.78","1,879.00","2,053.50","2,089.86","2,127.40","2,183.56","2,291.07","2,296.84","2,446.56",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2020,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),10.78,13.32,4.82,-1.71,-1.52,10.01,9.77,11.90,14.75,14.95,14.90,12.25,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2020,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,7.76,7.77,7.81,11.06,11.96,11.89,12.06,11.09,10.95,10.73,10.21,10.94,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2020,Inflation_Non-Food (%) Year-on-Year,7.90,7.70,7.40,7.70,8.40,9.20,9.70,9.90,9.80,8.30,8.30,7.70,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2020,Inflation_Food (%) Year-on-Year,7.80,7.90,8.40,14.40,15.10,13.80,13.70,11.40,11.20,12.60,11.70,14.10,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2020,Inflation Headline (%) Year-on-Year,7.80,7.80,7.80,10.60,11.30,11.20,11.40,10.50,10.40,10.10,9.80,10.40,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2019,Bank of Ghana Composite Index of Economic Activity (Real),614.60,589.78,604.90,599.28,620.64,596.78,612.59,608.86,604.51,634.99,629.95,695.57,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2019,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),3.27,2.80,2.35,1.46,2.48,1.00,2.11,3.40,4.21,7.92,3.38,13.95,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2019,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),3.74,5.47,5.56,4.45,5.42,3.95,4.32,7.91,8.47,11.94,9.39,18.18,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2019,Bank of Ghana Composite Index of Economic Activity (Nominal),"1,842.79","1,799.70","1,848.47","1,843.23","1,907.98","1,864.15","1,901.28","1,898.70","1,900.26","1,990.54","1,996.34","2,176.69",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2019,Inflation_Non-Food (%) Year-on-Year,9.45,9.65,9.69,10.44,10.62,10.34,10.72,7.40,7.00,8.20,8.00,8.50,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2019,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,5.53,5.73,6.16,6.12,6.74,7.23,7.08,7.35,7.30,7.49,8.03,7.77,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2019,Inflation_Food (%) Year-on-Year,8.03,8.10,8.36,7.33,6.75,6.46,6.60,8.20,8.50,7.00,8.40,7.20,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2019,Inflation Headline (%) Year-on-Year,9.01,9.17,9.28,9.47,9.41,9.12,9.44,7.80,7.60,7.70,8.20,7.90,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2018,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),3.11,5.68,4.34,3.65,3.55,4.20,3.99,-1.21,2.83,3.47,2.06,0.55,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2018,Bank of Ghana Composite Index of Economic Activity (Real),595.12,573.72,591.00,590.65,605.59,590.89,599.92,588.87,580.10,588.39,609.38,610.40,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2018,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),9.19,9.36,7.82,7.63,7.39,8.03,8.19,2.64,6.56,5.73,4.51,2.75,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2018,Bank of Ghana Composite Index of Economic Activity (Nominal),"1,776.34","1,706.34","1,751.11","1,764.66","1,809.96","1,793.27","1,822.53","1,759.53","1,751.81","1,778.18","1,825.00","1,841.87",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2018,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,11.10,11.30,11.10,10.40,10.70,10.97,10.56,10.80,10.80,10.50,10.30,10.40,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2018,Inflation_Non-Food (%) Year-on-Year,12.02,12.21,11.80,10.58,10.85,11.24,10.66,10.75,10.30,9.78,9.65,9.75,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2018,Inflation_Food (%) Year-on-Year,6.82,7.15,7.31,7.37,7.58,7.28,7.42,7.94,8.67,8.94,8.63,8.69,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2018,Inflation Headline (%) Year-on-Year,10.35,10.58,10.36,9.55,9.81,9.97,9.63,9.86,9.79,9.52,9.34,9.43,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2017,Bank of Ghana Composite Index of Economic Activity (Real),577.16,542.88,566.41,569.85,584.85,567.08,576.89,596.06,564.11,568.68,597.08,607.07,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2017,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),7.08,0.80,5.71,9.38,3.96,3.06,4.62,6.22,4.28,8.32,10.75,7.32,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2017,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),13.66,8.78,13.21,15.58,11.02,9.73,11.02,11.14,9.84,14.04,15.54,13.09,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2017,Bank of Ghana Composite Index of Economic Activity (Nominal),"1,626.90","1,560.25","1,624.14","1,639.56","1,685.44","1,660.00","1,684.60","1,714.19","1,644.03","1,681.76","1,746.23","1,792.60",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2017,Inflation_Non-Food (%) Year-on-Year,16.63,16.38,15.59,16.29,15.78,15.10,14.20,14.70,14.10,13.20,13.60,13.60,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2017,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,14.50,14.00,13.40,13.70,13.30,12.80,12.64,13.13,12.80,12.30,12.50,12.60,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2017,Inflation_Food (%) Year-on-Year,7.00,7.08,7.25,6.67,6.32,6.20,7.20,7.40,8.10,8.20,7.90,8.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2017,Inflation Headline (%) Year-on-Year,13.30,13.20,12.80,13.00,12.60,12.10,11.90,12.30,12.20,11.60,11.70,11.80,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2016,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),5.58,12.39,4.24,-1.23,7.47,6.28,8.36,6.14,3.98,-4.52,-0.93,2.98,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2016,Bank of Ghana Composite Index of Economic Activity (Real),539.01,538.57,535.83,521.01,562.58,550.23,551.40,561.15,540.98,525.02,539.10,565.65,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2016,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),16.48,20.98,12.65,7.85,15.16,13.41,16.25,13.55,11.84,4.10,7.31,10.80,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2016,Bank of Ghana Composite Index of Economic Activity (Nominal),"1,431.36","1,434.29","1,434.58","1,418.58","1,518.12","1,512.81","1,517.32","1,542.35","1,496.74","1,474.70","1,511.31","1,585.10",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2016,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,17.60,17.20,18.11,17.72,17.87,17.90,17.83,16.60,16.90,15.20,14.70,14.60,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2016,Inflation_Non-Food (%) Year-on-Year,25.48,24.50,25.66,24.79,25.01,24.12,21.23,21.50,21.59,19.39,18.69,18.24,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2016,Inflation_Food (%) Year-on-Year,8.17,8.31,8.32,8.36,8.49,8.56,8.64,8.48,8.97,8.66,9.30,9.69,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2016,Inflation Headline (%) Year-on-Year,19.00,18.50,19.20,18.70,18.90,18.40,16.70,16.90,17.20,15.80,15.50,15.40,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2015,Bank of Ghana Composite Index of Economic Activity (Real),510.53,479.21,514.03,527.47,523.46,517.71,508.88,528.66,520.28,549.88,544.15,549.26,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2015,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),1.33,0.86,2.10,7.64,-1.35,1.24,-3.08,3.77,3.35,8.09,5.89,4.86,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2015,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),13.66,13.53,14.55,18.81,10.36,13.58,8.04,14.46,13.26,17.66,15.27,15.30,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2015,Bank of Ghana Composite Index of Economic Activity (Nominal),"1,228.80","1,185.51","1,273.45","1,315.38","1,318.30","1,333.90","1,305.19","1,358.28","1,338.35","1,416.69","1,408.39","1,430.58",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2015,Inflation_Non-Food (%) Year-on-Year,23.03,22.97,23.07,23.23,23.40,23.61,24.62,23.42,23.15,22.95,23.19,23.30,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2015,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,14.69,14.75,15.58,16.00,16.16,16.03,16.67,17.05,17.90,18.10,18.30,18.60,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2015,Inflation_Food (%) Year-on-Year,6.90,7.02,7.16,7.18,7.33,7.40,7.60,7.67,7.82,7.81,7.92,8.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2015,Inflation Headline (%) Year-on-Year,16.44,16.50,16.64,16.76,16.91,17.08,17.94,17.30,17.36,17.38,17.58,17.70,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2014,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),3.66,10.61,9.94,2.39,8.24,9.08,11.14,3.06,2.80,0.40,4.32,7.37,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2014,Bank of Ghana Composite Index of Economic Activity (Real),503.82,475.14,503.48,490.05,530.64,511.39,525.03,509.43,503.43,508.73,513.89,523.79,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2014,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),14.28,21.25,21.86,16.08,21.44,21.81,23.95,17.42,17.31,15.11,18.92,20.56,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2014,Bank of Ghana Composite Index of Economic Activity (Nominal),"1,081.14","1,044.26","1,111.69","1,107.09","1,194.60","1,174.43","1,208.08","1,186.72","1,181.70","1,204.10","1,221.81","1,240.74",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2014,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,10.67,11.24,11.10,11.00,11.12,10.92,10.09,10.85,10.55,13.26,13.42,13.78,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2014,Inflation_Food (%) Year-on-Year,7.10,7.52,8.21,6.96,8.01,7.93,5.02,5.10,5.79,6.50,6.64,6.76,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2014,Inflation_Non-Food (%) Year-on-Year,18.93,18.95,19.24,20.57,19.98,20.30,23.13,24.00,24.06,24.00,24.09,23.87,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2014,Inflation Headline (%) Year-on-Year,13.80,14.03,14.52,14.69,14.84,14.99,15.32,15.90,16.47,16.90,17.05,16.99,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2013,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),9.16,-4.26,-1.49,7.92,4.04,1.39,2.14,6.21,7.67,4.67,1.47,2.97,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2013,Bank of Ghana Composite Index of Economic Activity (Real),486.03,429.56,457.98,478.60,490.26,468.83,472.42,494.33,489.70,506.72,492.62,487.83,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2013,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),17.08,5.37,7.80,16.50,13.26,11.53,11.27,14.25,15.69,13.24,10.70,12.65,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2013,Inflation_Core (Adjusted for Energy & Utility) (%) Year-on-Year,9.68,9.75,10.21,10.36,10.68,11.43,11.49,11.32,12.25,11.49,11.44,11.21,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2013,Bank of Ghana Composite Index of Economic Activity (Nominal),946.08,861.27,912.30,953.73,983.69,964.16,974.62,"1,010.70","1,007.37","1,046.05","1,027.42","1,029.14",real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2013,Inflation_Food (%) Year-on-Year,7.98,6.72,6.72,6.57,6.57,7.33,7.33,7.93,8.89,6.89,7.28,7.24,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2013,Inflation_Non-Food (%) Year-on-Year,11.77,13.34,14.02,14.38,14.62,15.09,15.43,14.24,14.23,17.71,17.63,18.13,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2013,Inflation Headline (%) Year-on-Year,10.09,10.40,10.78,10.87,11.02,11.63,11.79,11.45,11.95,13.09,13.22,13.50,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2012,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),59.05,73.36,55.13,49.25,61.40,50.45,53.32,47.73,41.21,53.73,53.52,46.75,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2012,Bank of Ghana Composite Index of Economic Activity (Real),445.26,448.68,464.89,443.47,471.20,462.39,462.54,465.43,454.80,484.11,485.47,473.76,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2012,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),21.69,32.19,21.17,16.13,24.37,17.45,19.89,16.84,12.56,20.51,19.51,14.33,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2012,Bank of Ghana Composite Index of Economic Activity (Nominal),808.03,817.35,846.32,818.63,868.55,864.46,875.87,884.67,870.76,923.77,928.08,913.54,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2012,Inflation_Food (%) Year-on-Year,6.24,5.74,5.72,6.07,7.13,6.60,6.15,3.08,0.87,2.11,4.79,4.85,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2012,Inflation_Non-Food (%) Year-on-Year,13.85,13.16,12.56,13.24,13.75,13.41,12.71,12.10,11.89,12.01,12.68,13.11,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2012,Inflation Headline (%) Year-on-Year,8.73,8.64,8.78,9.11,9.34,9.44,9.54,9.46,9.43,9.24,9.31,8.84,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2011,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),15.30,15.13,25.00,22.65,18.04,20.35,22.65,18.83,22.34,17.94,17.11,14.62,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2011,Bank of Ghana Composite Index of Economic Activity (Real),279.95,258.82,299.69,297.13,291.95,307.35,301.67,315.05,322.07,314.90,316.23,322.84,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2011,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),19.60,17.91,26.22,26.12,22.12,23.68,26.73,23.07,26.75,23.31,22.35,20.46,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2011,Bank of Ghana Composite Index of Economic Activity (Nominal),663.99,618.33,698.47,704.90,698.37,736.00,730.56,757.18,773.57,766.58,776.60,799.05,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2011,Inflation_Non-Food (%) Year-on-Year,11.82,12.12,12.00,12.16,12.15,12.44,11.76,11.38,11.30,11.32,11.08,11.21,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2011,Inflation Headline (%) Year-on-Year,9.08,9.16,9.13,9.02,8.90,8.59,8.39,8.41,8.40,8.56,8.55,8.58,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2011,Inflation_Food (%) Year-on-Year,4.84,4.59,4.70,4.18,3.93,2.78,3.25,3.79,3.74,4.03,4.41,4.27,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2010,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),6.86,7.04,7.42,8.68,10.82,14.86,7.24,19.93,17.91,12.40,17.70,10.54,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2010,Bank of Ghana Composite Index of Economic Activity (Real),242.80,224.79,239.76,242.25,247.34,255.37,245.97,265.13,263.25,266.99,270.04,281.66,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2010,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),14.10,13.46,12.34,12.16,14.09,17.24,10.33,21.42,19.74,15.69,20.68,15.48,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2010,Bank of Ghana Composite Index of Economic Activity (Nominal),555.19,524.42,553.36,558.93,571.86,595.08,576.48,615.24,610.30,621.65,634.74,663.34,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2010,Inflation_Non-Food (%) Year-on-Year,20.16,20.52,19.91,18.97,17.69,16.25,13.27,11.97,11.85,11.66,12.35,12.84,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2010,Inflation_Food (%) Year-on-Year,19.42,10.83,9.37,9.20,8.20,7.07,6.34,3.93,1.85,3.32,6.10,6.39,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2010,Inflation Headline (%) Year-on-Year,14.80,14.20,13.30,11.70,10.70,9.50,9.50,9.40,9.40,9.40,9.10,8.60,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2009,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),10.18,3.17,7.34,4.56,1.54,2.53,-2.14,-0.98,3.63,2.92,-0.68,14.79,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2009,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),24.69,18.67,23.05,19.91,16.10,17.36,11.70,11.81,14.59,12.90,9.42,21.42,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2009,Bank of Ghana Composite Index of Economic Activity (Real),227.21,210.00,223.19,222.90,223.19,222.32,229.36,221.07,223.26,237.54,229.43,254.80,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2009,Bank of Ghana Composite Index of Economic Activity (Nominal),486.56,462.20,492.57,498.35,501.25,507.58,522.51,506.72,509.68,537.34,525.96,574.40,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2009,Inflation_Non-Food (%) Year-on-Year,20.16,21.34,22.00,21.46,22.22,24.66,24.48,23.25,22.38,21.15,20.05,18.82,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2009,Inflation_Food (%) Year-on-Year,19.42,18.95,18.50,19.32,17.17,15.54,15.17,14.74,12.78,13.53,12.38,11.85,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2009,Inflation Headline (%) Year-on-Year,19.86,20.34,20.53,20.56,20.06,20.74,20.50,19.65,18.37,18.04,16.92,15.98,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2008,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),25.89,21.48,20.37,23.59,20.06,21.89,30.75,11.35,13.41,20.32,13.40,8.38,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2008,Bank of Ghana Composite Index of Economic Activity (Real),206.22,203.54,207.93,213.19,219.81,216.84,234.37,223.24,215.44,230.80,231.00,221.96,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2008,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),37.94,33.78,33.22,36.77,34.41,35.79,44.07,26.88,28.38,33.89,27.19,22.63,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2008,Bank of Ghana Composite Index of Economic Activity (Nominal),390.23,389.48,400.31,415.61,431.75,432.49,467.79,453.20,444.77,475.96,480.68,473.07,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2008,Inflation_Non-Food (%) Year-on-Year,14.40,14.68,14.41,16.90,17.67,18.91,18.97,18.50,18.53,18.93,18.57,19.12,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2008,Inflation Headline (%) Year-on-Year,12.81,13.21,13.79,15.29,16.88,18.41,18.31,18.10,17.89,17.30,17.44,18.13,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2008,Inflation_Food (%) Year-on-Year,10.64,11.23,12.95,13.15,15.84,17.74,17.45,17.56,17.00,15.00,15.84,16.73,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2007,Bank of Ghana Composite Index of Economic Activity (Real),163.81,167.55,172.74,172.49,183.08,177.90,179.26,200.48,189.96,191.82,203.70,204.80,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2007,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),9.52,14.34,11.18,19.63,16.06,9.73,13.33,17.73,24.00,19.81,17.18,16.74,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2007,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),20.76,25.86,23.47,30.53,26.51,21.84,25.69,29.71,34.55,31.38,29.22,30.03,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2007,Bank of Ghana Composite Index of Economic Activity (Nominal),282.91,291.14,300.49,303.88,321.22,318.50,324.69,357.18,346.45,355.50,377.93,385.78,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2007,Inflation_Non-Food (%) Year-on-Year,13.06,11.12,11.57,11.54,11.67,11.28,10.11,10.69,10.85,11.11,12.78,14.38,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2007,Inflation_Food (%) Year-on-Year,8.06,9.49,8.38,9.13,10.18,9.91,10.18,10.03,9.29,8.81,9.50,10.51,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2007,Inflation Headline (%) Year-on-Year,10.89,10.42,10.19,10.50,11.02,10.69,10.14,10.41,10.19,10.14,11.40,12.75,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2006,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),14.53,12.51,9.55,5.33,14.61,17.54,10.96,14.12,5.25,16.01,18.73,15.57,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2006,Bank of Ghana Composite Index of Economic Activity (Real),149.57,146.54,155.37,144.19,157.74,162.12,158.18,170.29,153.19,160.10,173.83,175.43,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2006,Bank of Ghana Composite Index of Economic Activity (Nominal),234.26,231.31,243.37,232.80,253.92,261.41,258.32,275.38,257.50,270.59,292.47,296.69,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2006,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),23.09,21.14,18.40,14.33,23.21,26.45,20.09,23.00,15.97,24.89,27.71,25.19,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2006,Inflation_Non-Food (%) Year-on-Year,13.60,13.46,11.76,11.72,11.99,11.95,13.73,13.93,13.94,13.37,13.50,13.53,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2006,Inflation_Food (%) Year-on-Year,11.69,10.73,10.66,10.55,11.43,10.67,11.84,10.77,8.73,7.62,7.08,7.53,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2006,Inflation Headline (%) Year-on-Year,12.76,12.27,11.28,11.21,11.75,11.39,12.91,12.56,11.67,10.87,10.70,10.92,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2005,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),6.23,8.05,6.46,6.05,7.45,3.93,-0.25,10.48,6.27,2.90,8.83,8.45,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2005,Bank of Ghana Composite Index of Economic Activity (Real),130.60,130.25,141.83,136.89,137.63,137.92,142.56,149.22,145.55,138.01,146.41,151.79,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2005,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),18.45,18.41,17.96,17.80,18.20,14.51,12.12,20.50,17.11,13.59,19.76,19.64,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2005,Bank of Ghana Composite Index of Economic Activity (Nominal),190.33,190.94,205.54,203.62,206.08,206.73,215.12,223.88,222.04,216.66,229.01,236.99,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2005,Inflation Headline (%) Year-on-Year,16.83,16.96,17.79,17.14,14.51,14.05,17.34,13.33,14.34,14.92,14.65,13.91,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2004,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),8.54,15.09,18.96,21.47,15.30,18.17,20.97,11.01,11.65,12.00,17.85,6.84,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2004,Bank of Ghana Composite Index of Economic Activity (Real),122.95,120.54,133.23,129.08,128.09,132.71,142.92,135.06,136.97,134.11,134.52,139.97,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2004,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),22.78,28.75,29.83,33.42,27.49,29.44,31.30,22.06,23.35,23.74,26.43,16.49,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2004,Bank of Ghana Composite Index of Economic Activity (Nominal),160.68,161.26,174.24,172.85,174.35,180.54,191.86,185.79,189.59,190.75,191.22,198.08,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2004,Inflation Headline (%) Year-on-Year,28.95,18.60,15.62,17.26,17.62,18.00,15.03,17.53,19.64,16.90,16.51,16.44,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2003,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),14.69,13.22,7.01,3.67,5.09,6.76,9.87,11.69,9.21,12.47,-0.64,6.76,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2003,Bank of Ghana Composite Index of Economic Activity (Real),113.27,104.74,111.99,106.27,111.09,112.30,118.14,121.66,122.68,119.75,114.15,131.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2003,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),23.92,24.45,20.56,17.27,19.92,22.05,24.77,27.88,24.19,28.13,17.11,24.13,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2003,Bank of Ghana Composite Index of Economic Activity (Nominal),130.87,125.25,134.21,129.55,136.75,139.47,146.12,152.21,153.70,154.16,151.24,170.04,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2003,Inflation Headline (%) Year-on-Year,13.48,25.48,29.84,29.34,31.61,32.94,33.03,33.58,29.79,33.17,33.63,31.27,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2002,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),-1.38,-1.05,-1.50,7.89,2.52,6.18,12.24,2.59,13.68,8.85,17.91,14.80,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2002,Bank of Ghana Composite Index of Economic Activity (Real),98.76,92.51,104.66,102.50,105.72,105.19,107.53,108.92,112.33,106.47,114.89,122.70,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2002,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),11.60,9.87,8.73,16.83,12.33,15.74,20.60,12.21,23.01,18.37,26.97,25.17,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2002,Bank of Ghana Composite Index of Economic Activity (Nominal),105.61,100.64,111.32,110.48,114.03,114.28,117.11,119.03,123.77,120.31,129.14,136.98,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2002,Inflation Headline (%) Year-on-Year,19.90,18.30,16.00,14.90,14.30,13.70,13.50,13.10,12.90,13.20,14.00,15.20,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2001,Bank of Ghana Composite Index of Economic Activity (Real Growth) (%),0.00,4.31,10.60,3.09,5.20,0.40,-0.85,3.40,0.46,5.40,3.32,4.47,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2001,Bank of Ghana Composite Index of Economic Activity (Real),100.14,93.49,106.26,95.01,103.12,99.06,95.80,106.17,98.82,97.81,97.43,106.89,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2001,Bank of Ghana Composite Index of Economic Activity (Nominal Growth) (%),0.00,30.37,36.40,26.77,26.70,19.65,16.88,17.98,14.02,18.54,15.21,14.50,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2001,Bank of Ghana Composite Index of Economic Activity (Nominal),94.63,91.60,102.38,94.56,101.51,98.73,97.10,106.07,100.62,101.64,101.71,109.44,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2001,Inflation Headline (%) Year-on-Year,40.93,40.14,41.95,39.50,37.92,36.84,34.89,32.02,28.31,25.60,23.68,21.29,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2000,Bank of Ghana Composite Index of Economic Activity (Real),1.05,89.63,96.07,92.16,98.03,98.67,96.62,102.67,98.36,92.80,94.30,102.31,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2000,Bank of Ghana Composite Index of Economic Activity (Nominal),1.37,70.26,75.06,74.59,80.12,82.52,83.08,89.91,88.24,85.75,88.28,95.59,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2000,Inflation Headline (%) Year-on-Year,14.28,14.93,15.57,17.51,18.72,19.84,22.07,26.61,32.30,37.38,39.54,40.54,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1999,Inflation Headline (%) Year-on-Year,15.33,15.04,13.74,10.23,9.40,10.26,12.69,12.00,11.79,12.62,13.24,13.80,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1998,Inflation Headline (%) Year-on-Year,19.80,19.60,20.30,23.10,22.90,21.80,18.70,18.60,17.38,17.14,16.16,15.75,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1997,Inflation Headline (%) Year-on-Year,31.51,30.56,29.22,29.09,29.57,29.05,29.17,28.22,27.73,27.42,24.19,20.83,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1996,Inflation Headline (%) Year-on-Year,69.20,68.03,64.78,60.26,54.24,48.42,42.64,39.21,36.51,34.29,33.17,32.66,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1995,Inflation Headline (%) Year-on-Year,35.58,38.39,43.59,49.93,56.12,61.85,67.20,69.94,69.80,69.14,70.24,70.82,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1994,Inflation Headline (%) Year-on-Year,22.81,21.96,21.53,21.05,21.00,20.89,22.32,23.68,26.10,29.44,31.70,34.18,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1993,Inflation Headline (%) Year-on-Year,21.46,22.97,23.27,23.05,23.93,26.04,25.18,25.22,26.89,26.49,26.61,27.66,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1992,Inflation Headline (%) Year-on-Year,8.69,7.72,7.33,8.21,8.87,8.37,10.23,11.69,11.48,11.72,12.74,13.33,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1991,Inflation Headline (%) Year-on-Year,30.38,26.61,24.88,22.29,19.77,17.30,15.28,14.61,13.22,13.95,12.89,10.26,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1990,Inflation Headline (%) Year-on-Year,33.04,35.95,36.07,36.01,35.61,36.42,39.01,40.21,41.36,39.32,37.24,35.90,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1989,Inflation Headline (%) Year-on-Year,26.28,25.53,24.81,24.38,23.27,22.76,23.54,23.79,24.40,25.61,28.05,30.46,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1988,Inflation Headline (%) Year-on-Year,33.92,34.14,33.15,32.48,33.56,33.35,31.47,30.48,30.03,29.92,28.74,26.56,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1987,Inflation Headline (%) Year-on-Year,33.44,34.39,37.49,41.00,42.34,43.87,45.00,45.54,45.91,39.31,35.30,34.18,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1986,Inflation Headline (%) Year-on-Year,18.75,19.56,20.29,21.60,23.34,23.15,23.88,23.93,23.84,28.94,32.72,33.34,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1985,Inflation Headline (%) Year-on-Year,8.66,4.11,3.35,1.72,1.14,6.78,10.18,17.02,17.44,18.26,20.47,19.50,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1984,Inflation Headline (%) Year-on-Year,125.99,117.50,98.41,74.17,43.25,23.88,28.96,24.27,20.88,13.80,7.90,5.99,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1983,Inflation Headline (%) Year-on-Year,32.52,62.64,82.52,108.42,147.69,174.14,141.06,140.35,137.76,141.15,145.50,142.42,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1982,Inflation Headline (%) Year-on-Year,71.20,40.86,30.23,24.90,22.71,17.69,20.64,13.73,13.10,11.54,11.45,16.69,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1981,Inflation Headline (%) Year-on-Year,101.71,119.48,122.37,119.71,119.56,118.21,120.85,121.53,123.14,125.52,110.12,100.39,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1980,Inflation Headline (%) Year-on-Year,17.29,13.91,16.78,20.15,21.36,40.55,67.51,78.32,82.33,85.18,89.29,87.84,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1979,Inflation Headline (%) Year-on-Year,103.30,103.09,95.91,93.73,94.43,69.83,42.03,35.15,28.01,21.51,18.63,18.29,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1978,Inflation Headline (%) Year-on-Year,103.90,99.40,95.10,77.10,66.90,42.60,25.80,30.30,37.50,64.00,82.60,96.70,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1977,Inflation Headline (%) Year-on-Year,64.20,67.20,80.70,102.90,112.70,144.60,155.40,145.50,141.20,119.30,119.30,106.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1976,Inflation Headline (%) Year-on-Year,44.20,48.90,50.00,46.40,50.60,52.40,62.30,62.50,63.30,62.00,58.10,67.00,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1975,Inflation Headline (%) Year-on-Year,20.30,19.20,20.30,24.70,24.60,28.80,28.50,30.90,36.40,38.80,39.30,40.40,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1974,Inflation Headline (%) Year-on-Year,23.60,22.90,21.20,19.90,20.50,19.60,14.30,16.50,15.10,16.30,16.70,16.10,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+1973,Inflation Headline (%) Year-on-Year,6.00,10.90,11.17,10.72,12.46,5.95,27.30,27.13,25.71,23.78,24.42,25.35,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,0,,,,,
+2023,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"202,628.59",0.00,0.00,0.00,
+2023,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"193,535.80",0.00,0.00,0.00,
+2023,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"48,863.74",0.00,0.00,0.00,
+2023,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"46,548.17",0.00,0.00,0.00,
+2023,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,4.24,0.00,0.00,0.00,
+2023,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,5.52,0.00,0.00,0.00,
+2022,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"133,234.51","121,411.37","142,537.90","180,099.18",
+2022,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,3.14,4.82,3.30,4.30,
+2022,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"141,115.99","130,657.52","152,394.82","186,053.96",
+2022,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,2.44,3.52,2.67,3.70,
+2022,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"43,796.87","38,457.60","41,065.55","45,957.05",
+2022,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"46,560.13","40,800.59","43,870.92","48,733.41",
+2021,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,5.31,6.58,8.20,7.59,
+2021,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,3.63,4.18,6.48,7.03,
+2021,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"42,483.16","36,690.04","40,156.66","44,100.57",
+2021,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"45,330.24","39,304.57","43,025.32","47,397.22",
+2021,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"111,105.13","97,227.92","106,999.38","122,642.75",
+2021,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"115,691.57","102,326.49","112,489.45","128,623.41",
+2020,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,6.33,-6.18,-2.20,5.66,
+2020,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,6.42,-5.64,-3.26,4.30,
+2020,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"40,340.47","34,424.08","37,114.22","40,990.44",
+2020,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"43,742.77","37,726.30","40,406.02","44,282.09",
+2020,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"96,590.19","85,869.62","92,699.63","102,988.48",
+2020,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"100,590.73","88,474.65","96,339.11","106,536.24",
+2019,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,5.41,7.54,4.35,6.13,
+2019,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,5.88,9.08,5.28,5.98,
+2019,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"37,938.65","36,692.29","37,948.38","38,795.83",
+2019,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"41,103.53","39,982.22","41,766.50","42,455.34",
+2019,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"82,086.73","80,556.78","85,495.59","87,070.48",
+2019,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"88,101.54","85,908.96","90,956.43","91,577.34",
+2018,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,9.96,2.62,6.80,4.93,
+2018,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,10.88,3.32,6.58,4.22,
+2018,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"35,992.53","34,119.63","36,365.32","36,554.85",
+2018,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"38,822.39","36,654.03","39,670.80","40,059.84",
+2018,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"72,938.57","67,897.12","74,147.79","76,632.84",
+2018,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"77,443.00","71,758.29","78,761.65","80,624.44",
+2017,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,5.38,7.92,3.28,2.26,
+2017,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,7.63,12.47,7.02,5.86,
+2017,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"32,731.28","33,247.96","34,049.76","34,838.39",
+2017,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"35,011.55","35,475.50","37,221.88","38,436.98",
+2017,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"60,905.26","61,179.15","65,329.96","66,361.01",
+2017,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"62,269.03","63,255.46","68,238.33","69,035.14",
+2016,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,0.76,0.73,11.52,5.27,
+2016,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,-0.43,-2.48,11.13,5.43,
+2016,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"31,058.90","30,806.99","32,968.97","34,069.50",
+2016,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"32,528.34","31,541.84","34,779.33","36,309.47",
+2016,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"53,070.62","52,440.45","53,636.18","59,420.32",
+2016,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"53,165.03","52,484.50","53,848.20","60,096.86",
+2015,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,11.40,3.23,-4.67,-0.28,
+2015,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,10.82,3.27,-4.67,0.10,
+2015,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"30,825.46","30,582.89","29,563.94","32,363.53",
+2015,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"32,668.27","32,343.21","31,296.21","34,440.54",
+2015,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"42,016.20","44,003.48","43,680.66","49,133.43",
+2015,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"43,962.08","45,446.73","44,542.11","49,574.73",
+2014,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,-1.32,3.17,7.22,0.95,
+2014,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,-1.11,2.97,7.82,1.77,
+2014,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"27,670.02","29,627.06","31,013.79","32,455.80",
+2014,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"29,478.10","31,319.09","32,830.51","34,405.25",
+2014,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"32,301.40","35,475.43","40,426.81","40,924.56",
+2014,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"33,741.23","37,756.52","43,399.66","43,786.59",
+2013,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,7.15,12.79,3.27,4.37,
+2013,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,7.88,14.24,3.50,4.34,
+2013,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"28,038.91","28,715.70","28,924.77","32,149.44",
+2013,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"29,807.51","30,414.75","30,449.45","33,805.87",
+2013,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"28,038.91","28,715.70","28,924.77","32,149.44",
+2013,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"29,807.51","30,414.75","30,449.45","33,805.87",
+2012,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,10.03,9.38,5.23,7.14,
+2012,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,13.28,9.48,4.78,7.03,
+2012,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"26,169.05","25,459.42","28,008.45","30,802.06",
+2012,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"27,631.43","26,622.47","29,420.57","32,398.67",
+2012,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"23,865.22","22,667.53","22,982.67","27,186.03",
+2012,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"24,877.85","23,665.99","24,337.04","28,867.72",
+2011,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,11.20,14.73,4.81,7.84,
+2011,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,13.94,19.78,10.41,12.92,
+2011,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"23,783.32","23,275.27","26,615.69","28,749.43",
+2011,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"24,392.30","24,316.57","28,077.71","30,270.39",
+2011,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"20,931.12","18,885.15","18,077.99","20,284.20",
+2011,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"21,366.61","19,663.59","19,074.70","21,420.77",
+2010,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,6.48,7.45,12.55,3.98,
+2010,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,6.58,7.53,12.71,4.56,
+2010,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"21,388.80","20,286.76","25,393.77","26,659.22",
+2010,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"21,408.68","20,301.44","25,429.34","26,807.28",
+2010,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"17,367.17","14,087.21","16,383.07","16,986.50",
+2010,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"17,392.61","14,116.78","16,420.82","17,052.35",
+2009,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,3.48,5.48,1.94,11.29,
+2009,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,3.48,5.48,1.94,11.29,
+2009,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"20,086.83","18,879.37","22,562.03","25,638.40",
+2009,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"20,086.83","18,879.37","22,562.03","25,638.40",
+2009,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"12,716.50","11,354.24","12,879.38","15,267.91",
+2009,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"12,716.50","11,354.24","12,879.38","15,267.91",
+2008,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,8.03,7.52,13.12,7.22,
+2008,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,8.03,7.52,13.12,7.22,
+2008,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"19,410.59","17,899.27","22,132.74","23,038.44",
+2008,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"19,410.59","17,899.27","22,132.74","23,038.44",
+2008,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"11,129.81","9,105.91","11,520.46","11,709.18",
+2008,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"11,129.81","9,105.91","11,520.46","11,709.18",
+2007,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,7.50,6.75,2.21,1.09,
+2007,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,7.50,6.75,2.21,1.09,
+2007,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"17,967.28","16,647.84","19,566.56","21,486.90",
+2007,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"17,967.28","16,647.84","19,566.56","21,486.90",
+2007,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"8,244.62","7,378.73","8,579.63","9,884.85",
+2007,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"8,244.62","7,378.73","8,579.63","9,884.85",
+2006,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,0.00,0.00,0.00,0.00,
+2006,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,0.00,0.00,0.00,0.00,
+2006,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"16,714.21","15,594.59","19,143.10","21,254.51",
+2006,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"16,714.21","15,594.59","19,143.10","21,254.51",
+2006,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"7,051.40","6,409.71","7,242.83","7,630.36",
+2006,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,1,"7,051.40","6,409.71","7,242.83","7,630.36",
+2022,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"610,222.29"
+2022,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"577,282.96"
+2022,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"179,965.56"
+2022,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"172,889.28"
+2022,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.08
+2022,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.77
+2021,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"459,131.00"
+2021,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"437,975.17"
+2021,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"175,057.00"
+2021,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"163,430.44"
+2021,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.36
+2021,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,6.91
+2020,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"391,941.00"
+2020,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"378,147.92"
+2020,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"166,157.00"
+2020,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"152,869.21"
+2020,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,0.51
+2020,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,0.99
+2019,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"356,544.00"
+2019,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"335,209.58"
+2019,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"165,308.00"
+2019,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"151,375.15"
+2019,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,6.51
+2019,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.83
+2018,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"308,587.00"
+2018,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"291,616.31"
+2018,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"155,207.00"
+2018,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"143,032.33"
+2018,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,6.20
+2018,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,6.05
+2017,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"262,798.00"
+2017,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"253,775.38"
+2017,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"146,146.00"
+2017,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"134,867.40"
+2017,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,8.13
+2017,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.63
+2016,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"219,595.00"
+2016,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"218,567.56"
+2016,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"135,159.00"
+2016,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"128,904.36"
+2016,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.37
+2016,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.51
+2015,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"183,526.00"
+2015,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"178,833.77"
+2015,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"130,748.00"
+2015,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"123,335.82"
+2015,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,2.12
+2015,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,2.13
+2014,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"158,684.00"
+2014,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"149,128.19"
+2014,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"128,033.00"
+2014,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"120,766.68"
+2014,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,2.86
+2014,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,2.49
+2013,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"124,478.00"
+2013,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"117,828.82"
+2013,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"124,478.00"
+2013,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"117,828.82"
+2013,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,7.24
+2013,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,6.69
+2012,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"101,749.00"
+2012,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"96,701.45"
+2012,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"116,073.00"
+2012,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"110,438.99"
+2012,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,8.42
+2012,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,7.83
+2011,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"81,526.00"
+2011,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"78,178.46"
+2011,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"107,057.00"
+2011,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"102,423.72"
+2011,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,13.95
+2011,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,9.28
+2010,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"64,983.00"
+2010,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"64,823.96"
+2010,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"93,947.00"
+2010,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"93,728.54"
+2010,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,7.78
+2010,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,7.53
+2009,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"52,218.00"
+2009,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"52,218.03"
+2009,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"87,167.00"
+2009,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"87,166.63"
+2009,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.68
+2009,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.68
+2008,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"43,465.00"
+2008,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"43,465.36"
+2008,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"82,481.00"
+2008,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"82,481.04"
+2008,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,9.00
+2008,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,9.00
+2007,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"34,088.00"
+2007,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"34,087.83"
+2007,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"75,669.00"
+2007,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"75,668.57"
+2007,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.08
+2007,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.07
+2006,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"28,334.00"
+2006,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"28,334.30"
+2006,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"72,706.00"
+2006,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"72,706.40"
+2006,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,7.92
+2006,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,7.92
+2005,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"20,483.00"
+2005,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"20,483.00"
+2005,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"67,368.00"
+2005,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"67,368.00"
+2005,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.87
+2005,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.87
+2004,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"16,712.00"
+2004,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"16,712.00"
+2004,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"63,634.00"
+2004,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"63,634.00"
+2004,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.58
+2004,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.58
+2003,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"13,748.00"
+2003,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"13,748.00"
+2003,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"60,272.00"
+2003,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"60,272.00"
+2003,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.25
+2003,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.25
+2002,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"10,085.00"
+2002,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"10,085.00"
+2002,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"57,266.00"
+2002,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"57,266.00"
+2002,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.55
+2002,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.55
+2001,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"7,805.00"
+2001,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"7,805.00"
+2001,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"54,775.00"
+2001,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"54,775.00"
+2001,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.18
+2001,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.18
+2000,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"5,528.00"
+2000,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"5,528.00"
+2000,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"52,576.00"
+2000,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"52,576.00"
+2000,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.73
+2000,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.73
+1999,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"4,161.00"
+1999,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"4,161.00"
+1999,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"50,683.00"
+1999,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"50,683.00"
+1999,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.43
+1999,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.43
+1998,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"3,473.00"
+1998,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"3,473.00"
+1998,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"48,533.00"
+1998,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"48,533.00"
+1998,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.69
+1998,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.69
+1997,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"2,814.00"
+1997,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"2,814.00"
+1997,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"46,357.00"
+1997,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"46,357.00"
+1997,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.20
+1997,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.20
+1996,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"2,245.00"
+1996,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"2,245.00"
+1996,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"44,490.00"
+1996,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"44,490.00"
+1996,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.60
+1996,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.60
+1995,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"1,524.00"
+1995,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"1,524.00"
+1995,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"42,535.00"
+1995,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"42,535.00"
+1995,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.02
+1994,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"1,016.00"
+1994,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"1,016.00"
+1994,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"40,890.00"
+1994,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"40,890.00"
+1994,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.27
+1994,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.27
+1993,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,750.00
+1993,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,750.00
+1993,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"39,595.00"
+1993,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"39,595.00"
+1993,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.93
+1993,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.93
+1992,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,579.00
+1992,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,579.00
+1992,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"37,733.00"
+1992,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"37,733.00"
+1992,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.90
+1992,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.90
+1991,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,492.00
+1991,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,492.00
+1991,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"36,317.00"
+1991,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"36,317.00"
+1991,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.30
+1991,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.30
+1990,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,385.00
+1990,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,385.00
+1990,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"34,489.00"
+1990,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"34,489.00"
+1990,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.30
+1990,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,3.30
+1989,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,227.20
+1989,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,227.20
+1989,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"8,718.94"
+1989,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"8,718.94"
+1989,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.09
+1989,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.09
+1988,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,168.52
+1988,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,168.52
+1988,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"8,296.96"
+1988,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"8,296.96"
+1988,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.63
+1988,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.63
+1987,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,119.59
+1987,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"7,854.88"
+1987,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"7,854.88"
+1987,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.79
+1987,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,4.79
+1986,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,81.98
+1986,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,81.98
+1986,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"7,495.48"
+1986,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"7,495.48"
+1986,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.20
+1986,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.20
+1985,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,54.99
+1985,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,54.99
+1985,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"7,125.04"
+1985,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"7,125.04"
+1985,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.09
+1985,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,5.09
+1984,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,43.37
+1984,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,43.37
+1984,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"6,779.83"
+1984,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"6,779.83"
+1984,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,8.96
+1984,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,8.96
+1983,Gross Domestic Product at Current Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,29.50
+1983,Gross Domestic Product at Current Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,29.50
+1983,Gross Domestic Product at Constant Prices (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"6,222.20"
+1983,Gross Domestic Product at Constant Prices: Non-Oil (Millions of Ghana Cedis),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,"6,222.20"
+1983,Gross Domestic Product Growth Rate (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,-4.84
+1983,Gross Domestic Product Growth Rate: Non Oil (%),,,,,,,,,,,,,real_sector,https://www.bog.gov.gh/economic-data/real-sector/,2,,,,,-4.84

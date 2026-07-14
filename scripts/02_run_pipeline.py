@@ -211,19 +211,26 @@ def main(data: str = "synthetic", ingest_dir: str | None = None) -> None:
     print(f"Loaded {data} returns: {rets.shape[0]} obs x {rets.shape[1]} series")
 
     # ---------------------------------------------------------- 1. marginals
-    fits = marginals.fit_all(rets)
+    fits, spec_log = marginals.fit_all(rets, gate=True)
+    pd.DataFrame(spec_log).to_csv(TAB / "marginal_spec_search.csv", index=False)
     pit = marginals.pit_frame(fits)
     resid = marginals.std_resid_frame(fits)
     marg_rows = []
     for name, f in fits.items():
         p = f.params
         marg_rows.append({
-            "series": label(name), "mu": p.get("Const", np.nan),
-            "alpha": p.get("alpha[1]", np.nan), "gamma": p.get("gamma[1]", np.nan),
-            "beta": p.get("beta[1]", np.nan), "nu": f.nu, "AIC": f.aic,
+            "series": label(name), "spec": f.spec, "adequate": f.adequate,
+            "nu": f.nu, "AIC": f.aic,
             **inference.marginal_diagnostics(f.std_resid, f.pit),
         })
+        if not f.adequate:
+            print(f"  !! MARGINAL INADEQUATE for {label(name)}: no ladder spec "
+                  f"passed; kept best-AIC ({f.spec}). Univariate VaR/EVT for "
+                  f"this series is flagged; copula layer uses ranks and is "
+                  f"unaffected by the density misfit. See DECISIONS.md.")
     pd.DataFrame(marg_rows).round(3).to_csv(TAB / "marginal_garch.csv", index=False)
+    pit.to_csv(TAB / f"_pit_{data}.csv")      # persisted for stages 3-6
+    resid.to_csv(TAB / f"_resid_{data}.csv")
 
     vol_series = [c for c in ["cocoa", "gold", "brent"] if c in fits] or list(fits)[:3]
     fig, ax = plt.subplots(figsize=(11, 4))

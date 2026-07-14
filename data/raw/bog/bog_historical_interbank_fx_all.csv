@@ -1,0 +1,26 @@
+date,currency,currency_pair,buying,selling,mid_rate,source,source_url
+2026-07-09,Australian Dollar,AUDGHS,7.9481,7.9561,7.9521,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Australian Dollar,AUDGHS,7.9897,7.9998,7.9948,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-09,Canadian Dollar,CADGHS,8.0804,8.0877,8.0841,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Canadian Dollar,CADGHS,8.1261,8.134,8.1301,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-09,Swiss Franc,CHFGHS,14.1913,14.2042,14.1978,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Swiss Franc,CHFGHS,14.2304,14.2444,14.2374,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Yuan Renminbi,CNYGHS,1.6939,1.6949,1.6944,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-09,Danish Krone,DKKGHS,1.7517,1.7532,1.7525,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Danish Krone,DKKGHS,1.756,1.7576,1.7568,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Euro,EURGHS,13.1253,13.1383,13.1318,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-09,Pound Sterling,GBPGHS,15.3706,15.386,15.3783,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Pound Sterling,GBPGHS,15.3973,15.4139,15.4056,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Dalasi,GHSGMD,6.3142,6.3197,6.317,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Ouguiya,GHSMRO,31.0976,31.1847,31.1412,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Naira,GHSNGN,120.1141,120.2012,120.1577,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Leone,GHSSLL,2069.975,2124.5645,2097.2698,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,BCEAO,GHSXOF,49.9271,49.9765,49.9518,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Japanese yen,JPYGHS,0.0711,0.0712,0.0712,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Norwegian Krone,NOKGHS,1.1759,1.1767,1.1763,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,New Zealand Dollar,NZDGHS,6.627,6.6357,6.6314,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Swedish Krona,SEKGHS,1.1911,1.192,1.1916,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-09,US Dollar,USDGHS,11.4578,11.4692,11.4635,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,US Dollar,USDGHS,11.4743,11.4857,11.48,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,Ecowas,WAUGHS,0.0129,0.0129,0.0129,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/
+2026-07-10,South African Rand,ZARGHS,0.7044,0.7048,0.7046,Bank of Ghana,https://www.bog.gov.gh/treasury-and-the-markets/historical-interbank-fx-rates/

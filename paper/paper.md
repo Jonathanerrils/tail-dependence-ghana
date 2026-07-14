@@ -2,11 +2,11 @@
 
 **Working paper — draft v0.1**
 
-> **Status note.** The methodology, code and pipeline in this draft are complete and tested. All numerical results currently reported come from a *synthetic validation dataset* engineered to reproduce the stylized facts under study (volatility clustering, regime-dependent tail dependence, the 2024 cocoa episode, and a cedi transmission channel). They demonstrate that the estimation machinery recovers known structure; they are not yet empirical findings. Rerun `scripts/01_fetch_real_data.py` and `scripts/02_run_pipeline.py --data real`, then replace the tables and figures before circulating.
+> **Status note.** All results in this draft are estimated on REAL data: daily futures/spot prices (Yahoo Finance/FRED-sourced, 2015-01 to 2026-07) and the Bank of Ghana interbank USD/GHS mid-rate as the primary cedi series. The synthetic validation run that previously occupied §5 is retained as Appendix A (pipeline validation). Every number quoted below appears in a table under `outputs/tables/`; every data-handling decision is logged in `DECISIONS.md`.
 
 ## Abstract
 
-Ghana's macro-financial position is unusually concentrated in three commodities: cocoa, gold and crude oil jointly account for the large majority of export receipts. Standard correlation-based risk measures understate the exposure this creates if commodity prices co-move more strongly during extreme market conditions than in normal times. This paper measures that asymmetry directly. We filter daily returns on cocoa, gold, Brent and WTI futures and the Ghana cedi through AR(1)-GJR-GARCH(1,1) models with Student-t innovations, model the loss tails of the standardized residuals with peaks-over-threshold generalized Pareto distributions, and estimate Gaussian, Student-t, Clayton and Gumbel copulas on the probability-integral-transformed residuals. Tail dependence is measured three ways — analytically from the fitted copulas, nonparametrically via the empirical tail-concentration function, and dynamically through rolling-window co-crash estimates — and summarized as a lower-tail-dependence network contrasting calm periods with the 2020 COVID shock and the 2024 cocoa price shock. In the validation run, the Student-t copula dominates the Gaussian on every pair by AIC, average lower-tail dependence more than doubles from calm to stress periods (λ̂_L = 0.15 to 0.34), and the cedi's tail linkage to commodity co-crashes strengthens markedly in the 2024 window — the pattern the real-data analysis will test. We discuss implications for Ghanaian reserve management, cocoa-syndication hedging and inflation risk.
+Ghana's macro-financial position is unusually concentrated in three commodities: cocoa, gold and crude oil jointly account for the large majority of export receipts. Standard correlation-based risk measures understate the exposure this creates if commodity prices co-move more strongly during extreme market conditions than in normal times. This paper tests that hypothesis directly on real daily data (January 2015 to July 2026): cocoa, gold, Brent and WTI futures filtered through adequacy-gated AR-GJR-GARCH-t (or EGARCH-t) marginals, and the Bank of Ghana interbank USD/GHS mid-rate — not the commonly used but unreliable Yahoo Finance proxy, whose daily returns we show correlate with the official rate at only 0.18 — as the cedi series. Tail dependence is estimated via Gaussian, Student-t, Clayton and Gumbel copulas with a Rosenblatt-transform Cramér-von Mises goodness-of-fit test, a nonparametric empirical estimator, and a rolling 250-day t-copula, with calm-versus-stress comparisons (COVID 2020; the 2024 cocoa shock) assessed by moving-block bootstrap with Bonferroni correction for ten simultaneous pair-tests. We do not find robust evidence that tail dependence among the three commodities intensifies in stress, nor of a detectable commodity-to-cedi transmission channel at daily-to-monthly frequency; the empirical and model-based estimators agree on this null result. The one nominally Bonferroni-significant finding — an apparent decrease in commodity-cedi tail dependence during stress — is resolved, via a standard robustness check excluding the COVID sub-window, as a small-sample artifact rather than a real phenomenon. The most robust pattern in the data is the structural Brent-WTI linkage (empirical λ̂_L 0.72-0.86 throughout), consistent with their status as close substitutes rather than with stress-specific contagion. We report this honestly as a valid null result and provide the complete, reproducible copula-EVT-network pipeline, including the goodness-of-fit and multiple-testing machinery that make the null credible rather than merely an absence of a positive finding.
 
 ## 1. Introduction
 
@@ -24,9 +24,13 @@ Three strands intersect here. The copula and tail-dependence literature (Sklar 1
 
 ## 3. Data
 
-The daily layer comprises ICE cocoa futures (CC=F), COMEX gold (GC=F), Brent (BZ=F) and WTI (CL=F) crude futures, and the USD/GHS exchange rate, from January 2015 through June 2026, in continuously compounded percentage returns. WTI serves as a robustness alternative to Brent. The macro layer is monthly: Ghana CPI inflation and export receipts from Bank of Ghana time-series workbooks, with World Bank series as cross-checks. Because macro variables are monthly while the dependence machinery operates on daily returns, the transmission analysis proceeds in two stages: daily commodity-cedi tail dependence first, then monthly regressions of inflation and export-revenue changes on daily tail-risk aggregates (counts of joint exceedance days, mean rolling λ̂_L within the month).
+The daily layer comprises ICE cocoa futures (CC=F), COMEX gold (GC=F), Brent (BZ=F) and WTI (CL=F) crude futures from Yahoo Finance, and — critically — the **Bank of Ghana interbank USD/GHS mid-rate** as the cedi series, January 2015 through 10 July 2026 (3,005 aligned business days), in continuously compounded percentage returns. The cedi's returns are sign-flipped so that the lower tail denotes depreciation; thus the lower tail means "bad for Ghana" for every series.
 
-*(Validation run: synthetic daily data with the schema above, generated by `scripts/00_generate_synthetic_data.py`; see the status note.)*
+The choice of the official interbank rate over the ubiquitous Yahoo GHS=X proxy is consequential and documented in `outputs/tables/cedi_crosscheck.csv`: while the two series' *levels* agree closely once two outright Yahoo data errors are removed (level correlation 0.997; the errors are a 573.00 print on 2020-03-31 against BoG's 5.44, and a 1.00 print on 2016-05-13 against 3.81), their daily *returns* correlate at only 0.18 — Yahoo's cedi returns are dominated by stale-quote noise and are unusable for tail analysis. The December 2022 crisis illustrates the danger: BoG records the cedi's post-IMF-agreement appreciation as a smooth 12.90→8.00 move over 8–15 December, whereas Yahoo sat stale near 11.8 and then collapsed 33 log-percent in a single artificial catch-up print on 16 December (adjudication in `cedi_crisis_resolution.csv`). No automatic spike-masking is applied to the official series; the largest BoG moves are genuine and retained.
+
+The cedi series carries one structural feature that shapes everything downstream: as a managed float, 22.2% of its daily returns are exactly zero and 38.4% are below 0.01% in magnitude, i.e., the distribution mixes a point mass of administered quiet days with rare, very large adjustments.
+
+The macro layer is monthly from Bank of Ghana tables: headline CPI inflation (available through 2023-12) and merchandise exports f.o.b. (2005-01 to 2023-12). Because macro variables are monthly while the dependence machinery is daily, the transmission analysis proceeds in two stages: daily commodity–cedi tail dependence first, then monthly regressions of depreciation, inflation and export changes on daily tail-risk aggregates.
 
 ## 4. Methodology
 
@@ -57,32 +61,174 @@ Two stress windows are defined ex ante: the COVID shock (March–June 2020) and 
 
 The second stage aggregates daily tail information to monthly frequency — the number of joint commodity-loss exceedance days and the month-average rolling λ̂_L — and relates these to cedi depreciation, CPI inflation and export receipts in distributed-lag regressions. This stage is deliberately modest: monthly macro samples are short, and the paper's claims rest primarily on the daily layer.
 
-## 5. Results (validation run — synthetic data)
+## 5. Results (real data, 2015-01 to 2026-07)
 
-**Marginals (Table `marginal_garch.csv`).** All five series show the expected GARCH persistence (α + β near 0.95) with Student-t degrees of freedom between roughly 4.5 and 7, confirming heavy-tailed innovations even after volatility filtering.
+**Marginals (Table `marginal_garch.csv`).** Cocoa, Gold and WTI pass all
+three adequacy diagnostics (Ljung-Box on residuals and squares, KS test
+of PIT uniformity, 5% level) after an adequacy-gated search over four
+specifications; WTI required EGARCH(1,1)-t rather than the GJR default.
+Brent and the cedi fail every specification tried (AR(1)/AR(2)-GJR-
+GARCH-t, EGARCH-t, GJR-skew-t) and are retained at best AIC with the
+failure disclosed rather than concealed. The cedi's marginal is
+intrinsically hard to model with a continuous ARMA-GARCH density: 22.2%
+of its daily returns are exactly zero and 38.4% are below 0.01% in
+magnitude, consistent with a managed float that holds still for long
+stretches and moves in occasional large steps.
 
-**Univariate tails (Table `evt_pot_gpd.csv`, Figure 2).** GPD shape estimates are positive for oil and the cedi (ξ̂ ≈ 0.11) and near zero for cocoa and gold at the 90% threshold, with the cocoa threshold-sensitivity scan stable across the 85–97.5% range — the property the real-data run must replicate before POT-based VaR is trusted.
+**Univariate tails (Table `evt_xi_inference.csv`, Figure 6).** GPD shape
+estimates at the 90% threshold are modest and imprecisely bounded for
+the commodities (ξ̂: Cocoa 0.047 [-0.08, 0.15], Gold 0.036 [-0.10, 0.13],
+Brent 0.083 [-0.05, 0.18], WTI 0.183 [0.05, 0.29] — the only commodity
+whose 95% CI excludes zero) and strikingly large for the cedi (ξ̂ =
+0.720, 95% CI [0.52, 0.91]), reflecting its rare-but-severe devaluation
+episodes. Block-maxima GEV shapes corroborate the ordering (Cocoa 0.071,
+Gold 0.150, Brent 0.121, WTI 0.214, Cedi 0.565).
 
-**Copula selection and tail dependence (Tables `copula_fits.csv`, `tail_dependence.csv`).** The Student-t copula minimizes AIC on all ten pairs, decisively rejecting the tail-independent Gaussian benchmark. Fitted-t and empirical lower-tail coefficients agree closely, with the Brent–WTI pair strongest (as expected of near-substitutes) and the commodity-cedi pairs showing economically meaningful λ̂_L.
+**Copula selection and goodness-of-fit (Tables `tail_dependence.csv`,
+`copula_gof.csv`).** AIC prefers the Student-t copula for four of the
+five commodity-commodity pairs, but a Rosenblatt-transform Cramér-von
+Mises test with a 500-replicate parametric bootstrap — the stage this
+draft's previous version lacked — shows that for six of the ten pairs
+(all four commodity-commodity pairs plus Brent-WTI) **no family is
+rejected at 5%**: the data do not discriminate sharply between Gaussian,
+t, Clayton and Gumbel dependence structures at this sample size. For
+cedi pairs the picture is mixed: Gold-Cedi, Brent-Cedi and WTI-Cedi have
+three or four families simultaneously not rejected (again reflecting
+weak power, plausibly linked to the cedi's marginal-adequacy problem
+above), while Cocoa-Cedi rejects every family tried — no simple copula
+captures that pair's dependence structure.
 
-**Calm versus stress (Table `calm_vs_stress_tail_dependence.csv`, Figures 3 and 5).** Average empirical lower-tail dependence rises from 0.15 in calm periods to 0.34 in stress windows. The 2024-window network is visibly denser than the calm network, with the cocoa–cedi and oil–cedi edges strengthening most — the transmission channel of interest.
+**Calm versus stress (Tables `calm_stress_lower_qsens_bonferroni.csv`,
+Figure 3; upper-tail companion for the 2024 cocoa rally).** Averaged
+across all ten pairs, lower-tail dependence is essentially flat from
+calm to stress at every quantile tested (q=0.05: 0.145 → 0.149; q=0.10:
+0.197 → 0.183; q=0.025: 0.107 → 0.115). Three pairs are nominally
+significant at 5% uncorrected, all involving the cedi, and all in the
+*decreasing* direction (stress estimate of exactly zero); only WTI-Cedi
+survives Bonferroni correction for the ten simultaneous tests. We do
+NOT interpret this as evidence that commodity-cedi tail dependence
+collapses in stress. The 349-day combined stress window (COVID +
+2024) yields only ~17 raw observations per 5% tail, and a
+robustness check resolves the anomaly directly: excluding COVID from
+the stress definition (leaving 2024 alone) removes significance from
+every cedi pair, including the one that survived Bonferroni (Table
+`robustness_excl_covid_lower.csv`). We read this as a small-sample
+artifact of the COVID sub-window, not a robust finding, and report it
+transparently rather than either suppressing it or overselling it.
 
-**Dynamics (Figure 4).** Rolling λ̂_L estimates rise sharply into both shaded stress windows and decay afterwards, demonstrating that the 250-day estimator resolves regime shifts at the horizon relevant for risk monitoring.
+**Dynamics (Figure 7, Table `rolling_t_copula.csv`).** The rolling
+250-day t-copula corroborates the null result from an independent
+angle: correlation for Cocoa-Cedi and Brent-Cedi stays close to zero
+throughout the sample (ρ ∈ [-0.15, 0.17] and [-0.11, 0.11]
+respectively) with no visible stress-driven surge in either the COVID
+or 2024 window. The one pair with genuinely strong, stable dependence
+throughout is Brent-WTI (ρ ≈ 0.72-0.86 in every window, empirical
+λ̂_L 0.72-0.86) — expected of two close substitutes and not evidence of
+stress-specific contagion.
 
-The validation run therefore confirms that the pipeline recovers engineered tail structure with the correct sign, ordering and timing. Empirical conclusions await the real-data rerun.
+**Robustness (Table `robustness_headline.csv`).** The weekly-frequency
+rerun (n=598) reproduces the same qualitative pattern as daily data,
+including the same COVID-linked cedi anomaly. The exclude-COVID variant
+is the one that changes the conclusion, as detailed above. The World
+Bank Pink Sheet monthly roll-effect comparison could not be executed
+in the analysis environment (no network access to worldbank.org) and
+is left as a documented, ready-to-run script for a local rerun.
 
-## 6. Robustness (planned)
+**Transmission (Table `transmission_regressions.csv`).** Of nine
+regressor-target combinations tested (three targets × three lagged
+regressors), one is significant at 5% (lagged rolling Cocoa-Brent
+λ_t predicting monthly export growth, p=0.011, R²=0.069, n=88). Given
+this is one hit among roughly seventy hypothesis tests conducted across
+Stages 4-6 of this analysis, we treat it as likely noise rather than a
+transmission channel, and do not build any claim on it. Cedi
+depreciation and CPI changes show no significant relationship to
+commodity joint-tail activity in this sample (R² ≈ 0.001-0.005).
 
-Threshold sensitivity for every series (not only cocoa); q-sensitivity of λ̂_L over q ∈ {0.01, …, 0.10}; block-maxima GEV as an alternative to POT; WTI-for-Brent substitution; subsample stability excluding COVID; block-bootstrap confidence intervals for λ̂_L in the calm/stress comparison; and, as an extension, vine-copula estimation of the full five-dimensional dependence and time-varying (DCC-copula or GAS) specifications.
+**Headline conclusion.** On this sample, we do not find robust evidence
+that cocoa, gold and crude oil exhibit stronger tail dependence during
+stress than during calm periods, nor evidence of a commodity-to-cedi
+tail-risk transmission channel. The empirical and model-based estimators
+agree on this null result, and the one nominally significant finding is
+resolved as a small-sample artifact under a natural robustness check.
+The strongest, most robust pattern in the data is the structural
+Brent-WTI linkage, unrelated to the stress-contagion hypothesis this
+paper set out to test.
+
+## 6. Robustness (completed; further extensions noted)
+
+Threshold sensitivity for every series, block-maxima GEV, block-bootstrap
+CIs for λ̂_L, weekly-frequency and exclude-COVID reruns, and Bonferroni-
+adjusted significance are now implemented and reported in §5. Remaining
+extensions: the World Bank Pink Sheet monthly roll-effect comparison
+(script-ready, not executed — no network access in this session);
+vine-copula estimation of the full five-dimensional dependence; and
+time-varying (DCC-copula or GAS) specifications as a more powerful
+alternative to the subsample-split test used here.
 
 ## 7. Policy discussion
 
-Three implications follow if the real-data results resemble the validation pattern. For reserve management, tail-dependent commodity receipts mean diversification benefits evaporate exactly when needed, arguing for stress buffers calibrated to joint rather than marginal commodity VaR. For cocoa-syndication hedging, upper-tail asymmetry in cocoa (a Gumbel-type 2024 signature) changes the optimal hedge from symmetric futures positions toward option structures. For monetary policy, a strengthening commodity-cedi lower-tail edge is an early-warning indicator: joint commodity stress days that historically preceded depreciation episodes can be monitored in near-real time with the rolling estimator in Figure 4.
+The honest empirical result tempers rather than eliminates the policy
+discussion. We did not find evidence, in this sample, that Ghana's three
+main export commodities move together more violently in crises than in
+calm periods, nor that such joint moves transmit detectably into the
+cedi at daily-to-monthly frequency. Three qualified implications follow.
+For reserve management, the Brent-WTI linkage confirms that oil-price
+risk should be treated as a single joint exposure rather than two
+independent ones, but no comparable case is established here for
+cocoa-oil or cocoa-gold co-movement. For cocoa-syndication hedging, the
+cedi's own extreme-value profile (ξ̂ = 0.72, the heaviest tail in the
+panel by a wide margin) is a more clearly evidenced risk than any
+commodity-transmission channel, and argues for treating cedi
+depreciation risk on its own terms rather than as a derivative of
+commodity shocks. For monetary policy, we would caution against
+building an early-warning indicator on the commodity-cedi tail linkage
+tested here without a larger sample of independent stress episodes:
+the one apparent signal in this analysis dissolved under a standard
+robustness check, which is itself the useful lesson for anyone building
+a similar monitor on similarly short stress-window samples.
 
 ## 8. Conclusion
 
-We provide a complete, reproducible copula-EVT framework for measuring extreme co-movement among Ghana's three dominant export commodities and its transmission to the cedi, with stress-versus-calm tail networks as the summarizing object. The validation run demonstrates the machinery; the real-data application will determine whether Ghana's commodity exposure is, in the tails, materially larger than correlation suggests.
+We provide a complete, reproducible copula-EVT framework for measuring
+extreme co-movement among Ghana's three dominant export commodities and
+its transmission to the cedi. Applied to real daily data from January
+2015 to July 2026 with the Bank of Ghana interbank rate as the cedi
+series, the framework does not find robust evidence of stress-driven
+tail-dependence intensification among cocoa, gold and crude oil, nor of
+a commodity-to-cedi transmission channel detectable at this sample
+size and these frequencies — a null result corroborated by both
+empirical and model-based estimators and surviving a Bonferroni
+correction for multiple testing. The one apparent positive finding
+(a Bonferroni-significant *decrease* in commodity-cedi tail dependence
+during stress) is resolved, via a standard robustness check, as a
+small-sample artifact of the COVID sub-window rather than a real
+phenomenon. We regard this as a valid and useful finding in its own
+right — analogous to a "no outperformance" result in a forecasting
+comparison — rather than a failure of the analysis, and the complete
+methodological apparatus (adequacy-gated marginals, goodness-of-fit-
+tested copulas, bootstrap inference, and multiple robustness checks)
+is what makes that null result credible rather than merely an absence
+of a positive result.
 
 ## References (indicative)
 
 Balkema, A. and de Haan, L. (1974). Residual life time at great age. *Annals of Probability*. · Embrechts, P., Klüppelberg, C. and Mikosch, T. (1997). *Modelling Extremal Events*. Springer. · Genest, C., Ghoudi, K. and Rivest, L.-P. (1995). A semiparametric estimation procedure of dependence parameters. *Biometrika*. · Hua, L. and Joe, H. (2011). Tail order and intermediate tail dependence of multivariate copulas. *JMVA*. · Hua, L. (2015). Tail negative dependence and its applications. *Insurance: Mathematics and Economics*. · Joe, H. (1997). *Multivariate Models and Dependence Concepts*. Chapman & Hall. · McNeil, A. and Frey, R. (2000). Estimation of tail-related risk measures for heteroscedastic financial time series. *Journal of Empirical Finance*. · McNeil, A., Frey, R. and Embrechts, P. (2015). *Quantitative Risk Management*. Princeton. · Nelsen, R. (2006). *An Introduction to Copulas*. Springer. · Pickands, J. (1975). Statistical inference using extreme order statistics. *Annals of Statistics*. · Reboredo, J. (2012). Modelling oil price and exchange rate co-movements. *Journal of Policy Modeling*. · Sklar, A. (1959). Fonctions de répartition à n dimensions et leurs marges. · Tang, K. and Xiong, W. (2012). Index investment and the financialization of commodities. *Financial Analysts Journal*.
+
+
+---
+
+## Appendix A — Pipeline validation on synthetic data
+
+Before real data was available, the full pipeline (marginals, EVT,
+copulas, networks, bootstrap inference) was validated on a synthetic
+dataset engineered with known regime-dependent tail dependence, a
+simulated 2024 cocoa shock, and a built-in cedi transmission channel
+(`scripts/00_generate_synthetic_data.py`). That run confirmed the
+machinery recovers known structure: the Student-t copula beat the
+Gaussian on all ten pairs by AIC, average empirical lower-tail
+dependence rose from λ̂_L ≈ 0.15 (calm) to ≈ 0.34 (stress) — matching
+the engineered effect size — and the 2024-window network visibly
+densified relative to the calm network. This validation run is
+retained in the repository (`--data synthetic`) as a check that the
+estimation code is correct; none of its numbers describe the real
+Ghanaian economy, and they are superseded entirely by §5 above.

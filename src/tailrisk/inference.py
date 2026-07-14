@@ -53,23 +53,35 @@ def bootstrap_lambda_ci(
 def calm_stress_difference(
     u_calm: np.ndarray, v_calm: np.ndarray,
     u_stress: np.ndarray, v_stress: np.ndarray,
-    q: float = 0.05, n_boot: int = 500, level: float = 0.95,
-    seed: int = 0,
+    q: float = 0.10, n_boot: int = 500, level: float = 0.95,
+    seed: int = 0, bonf_m: int | None = None, upper: bool = False,
 ) -> dict:
-    """Bootstrap CI for lambda_L(stress) - lambda_L(calm). Subsamples are
-    resampled independently (they are disjoint time windows)."""
+    """Bootstrap CI for lambda(stress) - lambda(calm). Subsamples are
+    resampled independently (disjoint time windows). upper=True measures
+    the upper tail via the survival transform (u,v) -> (1-u, 1-v).
+    bonf_m adds a Bonferroni-adjusted CI for m simultaneous pairs."""
+    if upper:
+        u_calm, v_calm = 1 - u_calm, 1 - v_calm
+        u_stress, v_stress = 1 - u_stress, 1 - v_stress
     rng = np.random.default_rng(seed)
     p_c, lo_c, hi_c, d_c = bootstrap_lambda_ci(u_calm, v_calm, q, n_boot, rng=rng)
     p_s, lo_s, hi_s, d_s = bootstrap_lambda_ci(u_stress, v_stress, q, n_boot, rng=rng)
     diff = d_s - d_c
     a = (1 - level) / 2
     dlo, dhi = np.quantile(diff, [a, 1 - a])
-    return {
+    out = {
         "lambda_calm": p_c, "calm_lo": lo_c, "calm_hi": hi_c,
         "lambda_stress": p_s, "stress_lo": lo_s, "stress_hi": hi_s,
         "difference": p_s - p_c, "diff_lo": float(dlo), "diff_hi": float(dhi),
         "significant_5pct": bool(dlo > 0 or dhi < 0),
     }
+    if bonf_m:
+        ab = (0.05 / bonf_m) / 2
+        blo, bhi = np.quantile(diff, [ab, 1 - ab])
+        out["diff_lo_bonf"] = float(blo)
+        out["diff_hi_bonf"] = float(bhi)
+        out["significant_bonferroni"] = bool(blo > 0 or bhi < 0)
+    return out
 
 
 def marginal_diagnostics(std_resid: pd.Series, pit: pd.Series,

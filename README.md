@@ -4,11 +4,11 @@
 
 Do cocoa, gold and crude oil co-move more strongly during extreme market conditions than in normal periods — and does that joint tail risk transmit into Ghanaian exchange-rate, inflation and export-revenue risk? This repository contains a complete, reproducible pipeline answering that question: GARCH-filtered margins, peaks-over-threshold extreme value theory, four copula families with analytic and nonparametric tail-dependence estimation, calm-versus-stress tail-risk networks, rolling co-crash dynamics, an interactive dashboard, and a working-paper draft.
 
-> ⚠️ **Data status.** The committed results are a *validation run on synthetic data* engineered to embed the stylized facts under study (volatility clustering, regime-dependent tail dependence, the 2024 cocoa shock, a cedi transmission channel). This proves the pipeline recovers known structure end-to-end. Run `scripts/01_fetch_real_data.py` locally, then rerun the pipeline with `--data real`, before treating any number as an empirical finding.
+> **Data status: REAL.** All results below use real daily data, January 2015 to July 2026: Yahoo Finance/FRED-sourced commodity futures and the **Bank of Ghana interbank USD/GHS mid-rate** as the cedi series (not the unreliable Yahoo GHS=X proxy — see `outputs/tables/cedi_crosscheck.csv`). The earlier synthetic validation run is retained (`--data synthetic`) as a pipeline-correctness check only; see Appendix A of the paper.
 
-## Headline of the validation run
+## Headline finding
 
-The Student-t copula beats the tail-independent Gaussian by AIC on **all ten pairs**; average empirical lower-tail dependence more than doubles from calm (λ̂_L ≈ 0.15) to stress periods (λ̂_L ≈ 0.34); and the 2024 cocoa-shock network is visibly denser than the calm network, with the commodity–cedi edges strengthening most.
+**We do not find robust evidence that cocoa, gold and crude oil exhibit stronger tail dependence during stress than during calm periods, nor a detectable commodity-to-cedi transmission channel.** Averaged empirical lower-tail dependence is essentially flat from calm to stress (λ̂_L: 0.145 → 0.149 at q=0.05), corroborated by a rolling 250-day t-copula. Of ten pairs tested with Bonferroni correction for multiple comparisons, only one is nominally significant — and it resolves, under a standard robustness check (excluding COVID from the stress definition), to a small-sample artifact rather than a real effect. The one robust, strong pattern in the data is the structural **Brent-WTI linkage** (λ̂_L 0.72-0.86 throughout both regimes) — expected of close substitutes, not evidence of stress contagion. We report this null result transparently: it is corroborated across independent estimators and survives multiple robustness checks, which is what makes it credible.
 
 | | |
 |---|---|
@@ -61,9 +61,11 @@ python scripts/03_build_dashboard.py --data real
 4. **Stress & networks.** Ex-ante stress windows (COVID Mar–Jun 2020; calendar-2024 cocoa shock) versus calm subsamples; λ̂_L matrices rendered as weighted networks; 250-day rolling co-crash dynamics.
 5. **Transmission.** Daily tail-risk aggregates (joint-exceedance counts, mean rolling λ̂_L) are related to monthly cedi, inflation and export-revenue movements (second-stage extension).
 
-## Data sources (real run)
+## Data sources and what's committed
 
-Futures and FX from Yahoo Finance (CC=F, GC=F, BZ=F, CL=F, GHS=X). Ghana macro: Bank of Ghana time-series workbooks (monthly CPI, cedi reference rate, export receipts) from bog.gov.gh → Statistics → Time Series Data; World Bank `FP.CPI.TOTL.ZG` as a cross-check. Save BoG workbooks under `data/raw/`.
+Commodity futures (CC=F, GC=F, BZ=F, CL=F) are from Yahoo Finance — fetch-only under Yahoo's terms, **not committed to this repo**; rerun `scripts/01_fetch_real_data.py` to regenerate `data/processed/prices_real.csv` / `returns_real.csv` locally (gitignored). The **cedi series is the Bank of Ghana interbank USD/GHS mid-rate**, sourced from bog.gov.gh time-series workbooks — official public data, **committed under `data/raw/bog/`** with attribution. Monthly CPI (headline YoY) and merchandise exports (f.o.b.) are from the same BoG tables. World Bank `FP.CPI.TOTL.ZG` served as an initial cross-check only.
+
+`scripts/04_integrate_bog.py` performs the integration: it replaces the unreliable Yahoo GHS=X proxy (return correlation with BoG: 0.18; two outright garbage prints identified and documented in `outputs/tables/cedi_crosscheck.csv`), resolves previously-masked crisis dates against BoG evidence, and re-verifies the cedi orientation convention (lower tail = depreciation) end-to-end.
 
 ## Publishing this repository to GitHub
 

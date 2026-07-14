@@ -1,0 +1,10 @@
+target,n,regressor,coef,hac_p,r2
+cedi_depreciation,127,joint_days_t,0.0152,0.9689,0.0046
+cedi_depreciation,127,joint_days_t1,0.0874,0.8936,0.0046
+cedi_depreciation,127,lambda_t1,43.4274,0.2205,0.0046
+d_cpi_yoy,96,joint_days_t,0.154,0.8529,0.001
+d_cpi_yoy,96,joint_days_t1,0.1302,0.8589,0.001
+d_cpi_yoy,96,lambda_t1,-15.7781,0.7976,0.001
+exports_growth,88,joint_days_t,-0.1569,0.9126,0.0685
+exports_growth,88,joint_days_t1,-2.0647,0.2202,0.0685
+exports_growth,88,lambda_t1,232.0401,0.0109,0.0685

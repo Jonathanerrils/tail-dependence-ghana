@@ -1,5 +1,5 @@
 {
-  "data": "synthetic",
+  "data": "real",
   "series": [
     "cocoa",
     "gold",
@@ -7,32 +7,32 @@
     "wti",
     "cedi"
   ],
-  "n_obs": 2997,
+  "n_obs": 3003,
   "period": [
-    "2015-01-05",
-    "2026-06-30"
+    "2015-01-07",
+    "2026-07-10"
   ],
   "evt_xi": {
-    "Cocoa": -0.010647604677992232,
-    "Gold": 0.02323682175186796,
-    "Brent": 0.11101438582706356,
-    "WTI": 0.10526939401426319,
-    "Cedi": 0.08946156435155818
+    "Cocoa": 0.04686041863519411,
+    "Gold": 0.035628788989035015,
+    "Brent": 0.08252351019681711,
+    "WTI": 0.18258065815071844,
+    "Cedi": 0.7203344000360624
   },
   "best_copula_by_pair": {
     "Cocoa\u2013Gold": "t",
-    "Cocoa\u2013Brent": "t",
-    "Cocoa\u2013WTI": "t",
-    "Cocoa\u2013Cedi": "t",
+    "Cocoa\u2013Brent": "gaussian",
+    "Cocoa\u2013WTI": "clayton",
+    "Cocoa\u2013Cedi": "gaussian",
     "Gold\u2013Brent": "t",
     "Gold\u2013WTI": "t",
-    "Gold\u2013Cedi": "t",
+    "Gold\u2013Cedi": "clayton",
     "Brent\u2013WTI": "t",
     "Brent\u2013Cedi": "t",
-    "WTI\u2013Cedi": "t"
+    "WTI\u2013Cedi": "clayton"
   },
-  "mean_lambda_L_calm": 0.18202416918429004,
-  "mean_lambda_L_stress": 0.3123209169054441,
-  "n_pairs_significant_increase": 5,
+  "mean_lambda_L_calm": 0.19706103993971363,
+  "mean_lambda_L_stress": 0.18338108882521492,
+  "n_pairs_significant_increase": 0,
   "n_pairs_total": 10
 }

@@ -1,0 +1,4 @@
+date,bog_log_ret_on_date,bog_max_abs_ret_pm3bd,yahoo_log_ret_on_date,bog_level,yahoo_level,resolution
+2020-03-31,0.0009007601921575681,0.0020163144948639466,4.616390468674665,5.4423,573.0,no comparable BoG move within +/-3bd -> Yahoo artifact; BoG governs
+2020-04-01,0.0,0.007243433697194712,-4.608666686366091,5.4423,5.710000038146973,no comparable BoG move within +/-3bd -> Yahoo artifact; BoG governs
+2022-12-16,-3.749367294725303e-05,0.15038537605530244,-0.3280333841393195,8.0012,8.5,"GENUINE move confirmed by BoG within +/-3bd (max daily 15.0%, cumulative -45.0% = appreciation); Yahoo mistimed it -> BoG series retains the move on its true dates"

@@ -2,6 +2,14 @@ __pycache__/
 *.pyc
 .venv/
 .ipynb_checkpoints/
+
+# Yahoo Finance ToS: fetch-only, do not redistribute raw/derived Yahoo data
 data/raw/*
-!data/raw/.gitkeep
 data/processed/*_real.csv
+data/processed/prices_yahoo_raw.csv
+
+# BoG official data: OK to commit with attribution (see README) —
+# explicitly un-ignore the directory and its contents
+!data/raw/.gitkeep
+!data/raw/bog/
+!data/raw/bog/**
