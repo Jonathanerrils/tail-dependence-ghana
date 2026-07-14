@@ -71,7 +71,7 @@ Commodity futures (CC=F, GC=F, BZ=F, CL=F) are from Yahoo Finance — fetch-only
 
 ```bash
 cd tail-dependence-ghana
-git remote add origin https://github.com/<your-username>/tail-dependence-ghana.git
+git remote add origin https://github.com/Jonathanerrils/tail-dependence-ghana.git
 git branch -M main
 git push -u origin main
 ```
