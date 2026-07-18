@@ -1,14 +1,41 @@
-# Tail Dependence and Extreme Commodity Risk in Ghana
+# Extreme Commodity Tail Risk and Exchange-Rate Exposure in Ghana
 
-**A copula-EVT analysis of cocoa, gold and crude oil, with transmission to the Ghana cedi and macro indicators.**
+**A copula–EVT analysis of cocoa, gold and crude oil, with the Bank of
+Ghana's official interbank rate as the exchange-rate reference series.**
 
-Do cocoa, gold and crude oil co-move more strongly during extreme market conditions than in normal periods — and does that joint tail risk transmit into Ghanaian exchange-rate, inflation and export-revenue risk? This repository contains a complete, reproducible pipeline answering that question: GARCH-filtered margins, peaks-over-threshold extreme value theory, four copula families with analytic and nonparametric tail-dependence estimation, calm-versus-stress tail-risk networks, rolling co-crash dynamics, an interactive dashboard, and a working-paper draft.
+Full manuscript: [`paper/latex/paper.tex`](paper/latex/paper.tex)
+([compiled PDF](paper/latex/paper.pdf)), target journal *Risks*.
+`paper/paper.md` is an earlier, superseded draft, retained for history
+only — do not cite it.
 
-> **Data status: REAL.** All results below use real daily data, January 2015 to July 2026: Yahoo Finance/FRED-sourced commodity futures and the **Bank of Ghana interbank USD/GHS mid-rate** as the cedi series (not the unreliable Yahoo GHS=X proxy — see `outputs/tables/cedi_crosscheck.csv`). The earlier synthetic validation run is retained (`--data synthetic`) as a pipeline-correctness check only; see Appendix A of the paper.
+## Headline findings
 
-## Headline finding
+**Economic exposure.** Across ten commodity/cedi pairs, three quantile
+levels, two tails, and three stress-window definitions (COVID-2020,
+the 2024 cocoa supply shock, and their combination) — ninety
+simultaneous hypothesis tests — **zero cells survive correction for
+multiple testing**, under both a full family-wise Bonferroni correction
+and an independent Benjamini–Hochberg FDR procedure. No robust evidence
+that tail dependence among cocoa, gold and crude oil intensifies during
+stress, and no detectable commodity-to-cedi transmission channel at
+daily-to-monthly frequency.
 
-**We do not find robust evidence that cocoa, gold and crude oil exhibit stronger tail dependence during stress than during calm periods, nor a detectable commodity-to-cedi transmission channel.** Averaged empirical lower-tail dependence is essentially flat from calm to stress (λ̂_L: 0.145 → 0.149 at q=0.05), corroborated by a rolling 250-day t-copula. Of ten pairs tested with Bonferroni correction for multiple comparisons, only one is nominally significant — and it resolves, under a standard robustness check (excluding COVID from the stress definition), to a small-sample artifact rather than a real effect. The one robust, strong pattern in the data is the structural **Brent-WTI linkage** (λ̂_L 0.72-0.86 throughout both regimes) — expected of close substitutes, not evidence of stress contagion. We report this null result transparently: it is corroborated across independent estimators and survives multiple robustness checks, which is what makes it credible.
+**Model risk.** Expanding the candidate copula set from the
+conventional four families (Gaussian, Student-$t$, Clayton, Gumbel) to
+eight (adding Frank, Joe, and the survival/rotated Clayton and Gumbel)
+does not rescue the six pairs — all four commodity-commodity pairs plus
+Brent–WTI — whose dependence structure the narrower set already could
+not fit. Every one of eight families is rejected by formal
+goodness-of-fit testing for all six. This is evidence of a genuine
+model-specification gap, not of absent dependence.
+
+**The cedi's own risk.** Independently of any commodity link, the
+cedi's extreme-value shape parameter ($\hat\xi = 0.67$) is roughly four
+times the heaviest commodity tail in the panel, and resists six
+independent attempts at adequate marginal modelling — including an
+explicit zero-inflated hurdle model and a two-state Markov-switching
+extension — though the paper's substantive tail-dependence conclusions
+are stable across all six.
 
 | | |
 |---|---|
@@ -17,22 +44,39 @@ Do cocoa, gold and crude oil co-move more strongly during extreme market conditi
 ## Repository structure
 
 ```
-src/tailrisk/          Library code
-  marginals.py         AR(1)-GJR-GARCH(1,1)-t filtering + PIT
-  evt.py               POT/GPD, VaR/ES, Hill, threshold sensitivity, mean excess
-  copulas.py           Gaussian / t / Clayton / Gumbel MLE + tail dependence
-  networks.py          Rolling co-crash estimation + tail-risk network plots
+paper/latex/            Full manuscript (paper.tex, paper.pdf, figures, bib)
+paper/paper.md           Superseded early draft — do not cite
+paper/VERIFICATION_LEDGER.csv   Every quantitative claim mapped to its source
+
+src/tailrisk/            Library code
+  marginals.py            Adequacy-gated AR-GJR-GARCH/EGARCH-t filtering + PIT
+  evt.py                  POT/GPD, VaR/ES, Hill, threshold sensitivity
+  copulas.py               8-family copula MLE (Gaussian/t/Clayton/Gumbel/
+                           Frank/Joe/survival Clayton/survival Gumbel)
+  gof.py                  Rosenblatt-CvM goodness-of-fit, parametric bootstrap
+  inference.py             Moving-block bootstrap, Bonferroni + FDR correction
+  networks.py              Rolling co-crash estimation + tail-risk networks
+
 scripts/
-  00_generate_synthetic_data.py   Synthetic demo dataset (seeded, documented)
-  01_fetch_real_data.py           Real data via yfinance + World Bank (run locally)
-  02_run_pipeline.py              Full analysis → outputs/figures, outputs/tables
-  03_build_dashboard.py           Interactive HTML dashboard
-data/processed/        Returns/prices (synthetic committed; real generated locally)
-outputs/figures        fig0–fig5 (prices, vol, EVT stability, calm-vs-stress,
-                       rolling tail dependence, tail networks)
-outputs/tables         GARCH, GPD, copula, tail-dependence and network matrices
-outputs/dashboard.html Interactive dashboard (heatmaps, rolling λ_L, event timeline)
-paper/paper.md         Working-paper draft (methodology complete)
+  00_generate_synthetic_data.py    Synthetic validation dataset (seeded)
+  01_fetch_real_data.py            Real data via yfinance (run locally)
+  02_run_pipeline.py                Core pipeline: marginals/EVT/copulas/networks
+  03_build_dashboard.py             Interactive HTML dashboard
+  04_integrate_bog.py               Bank of Ghana cedi integration (authoritative)
+  05_publication_analysis.py        EVT extensions, rolling t-copula, robustness
+  06_gof_8family.py                 Full 8-family goodness-of-fit sweep
+  07_full60_correction.py           Full 60-cell Bonferroni + FDR correction
+  08_disaggregated_stress.py        COVID-only / 2024-only stress windows
+  09_pinksheet_check.py             World Bank Pink Sheet roll-effect validation
+  10_cedi_alternatives.py           Cedi marginal robustness (raw/ARMA/weekly)
+  11_cedi_hurdle.py                 Cedi hurdle (zero-inflated) model
+  12_cedi_mixture.py                Cedi two-regime Gaussian mixture
+  13_cedi_markov.py                 Cedi 2-state Markov-switching model
+
+outputs/tables/          All result tables (80+ files); see paper for index
+outputs/figures/         All figures referenced in the paper
+data/raw/bog/             Bank of Ghana source tables (redistributed, attributed)
+data/processed/           Synthetic validation data (real data gitignored — see below)
 ```
 
 ## Quickstart
@@ -41,44 +85,45 @@ paper/paper.md         Working-paper draft (methodology complete)
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# Reproduce the committed validation run
-python scripts/00_generate_synthetic_data.py
-python scripts/02_run_pipeline.py
-python scripts/03_build_dashboard.py
-
-# Real data (requires internet)
-pip install yfinance wbgapi
+# Real data (requires internet; Yahoo Finance data is fetch-only, not redistributed)
 python scripts/01_fetch_real_data.py
+python scripts/04_integrate_bog.py          # builds the canonical cedi-integrated panel
 python scripts/02_run_pipeline.py --data real
-python scripts/03_build_dashboard.py --data real
+python scripts/05_publication_analysis.py
+python scripts/06_gof_8family.py
+python scripts/07_full60_correction.py
+python scripts/08_disaggregated_stress.py
+python scripts/09_pinksheet_check.py         # needs data/raw/CMO-Historical-Data-Monthly.xlsx
+python scripts/10_cedi_alternatives.py
+python scripts/11_cedi_hurdle.py
+python scripts/12_cedi_mixture.py
+python scripts/13_cedi_markov.py
+
+# Compile the paper
+cd paper/latex && pdflatex paper.tex && bibtex paper && pdflatex paper.tex && pdflatex paper.tex
 ```
 
-## Method summary
+## Data sources and licensing
 
-1. **Marginals.** Each daily return series is filtered by AR(1)-GJR-GARCH(1,1) with Student-t innovations; standardized residuals are mapped to pseudo-uniforms (PIT, then rank-based pseudo-observations) so the copula layer sees approximately i.i.d. uniform margins (IFM / pseudo-MLE).
-2. **EVT.** Loss tails of the standardized residuals are fitted with a generalized Pareto distribution above the 90% threshold; ξ̂ is scanned across the 85–97.5% thresholds as a stability check, with the Hill estimator as a semi-parametric cross-check.
-3. **Copulas.** Gaussian, Student-t, Clayton and Gumbel copulas are estimated per pair by pseudo-MLE and compared by AIC; tail dependence is reported analytically (from t/Clayton/Gumbel parameters) and nonparametrically (λ̂_L(q) = P(U≤q, V≤q)/q).
-4. **Stress & networks.** Ex-ante stress windows (COVID Mar–Jun 2020; calendar-2024 cocoa shock) versus calm subsamples; λ̂_L matrices rendered as weighted networks; 250-day rolling co-crash dynamics.
-5. **Transmission.** Daily tail-risk aggregates (joint-exceedance counts, mean rolling λ̂_L) are related to monthly cedi, inflation and export-revenue movements (second-stage extension).
+Commodity futures (CC=F, GC=F, BZ=F, CL=F) are from Yahoo Finance —
+fetch-only under Yahoo's terms, **not committed to this repo**. The
+cedi series is the **Bank of Ghana interbank USD/GHS mid-rate**,
+official public data, **committed under `data/raw/bog/`** with
+attribution — return correlation with the free Yahoo GHS=X proxy is
+only 0.18 even after excluding two outright Yahoo data errors (see the
+paper, Section 3.1). Monthly CPI and merchandise exports are from the
+same BoG tables. World Bank Pink Sheet monthly commodity prices are
+used for roll-effect validation only, not redistributed here.
 
-## Data sources and what's committed
+## What's open
 
-Commodity futures (CC=F, GC=F, BZ=F, CL=F) are from Yahoo Finance — fetch-only under Yahoo's terms, **not committed to this repo**; rerun `scripts/01_fetch_real_data.py` to regenerate `data/processed/prices_real.csv` / `returns_real.csv` locally (gitignored). The **cedi series is the Bank of Ghana interbank USD/GHS mid-rate**, sourced from bog.gov.gh time-series workbooks — official public data, **committed under `data/raw/bog/`** with attribution. Monthly CPI (headline YoY) and merchandise exports (f.o.b.) are from the same BoG tables. World Bank `FP.CPI.TOTL.ZG` served as an initial cross-check only.
-
-`scripts/04_integrate_bog.py` performs the integration: it replaces the unreliable Yahoo GHS=X proxy (return correlation with BoG: 0.18; two outright garbage prints identified and documented in `outputs/tables/cedi_crosscheck.csv`), resolves previously-masked crisis dates against BoG evidence, and re-verifies the cedi orientation convention (lower tail = depreciation) end-to-end.
-
-## Publishing this repository to GitHub
-
-```bash
-cd tail-dependence-ghana
-git remote add origin https://github.com/Jonathanerrils/tail-dependence-ghana.git
-git branch -M main
-git push -u origin main
-```
-
-## Citation
-
-> *Tail Dependence and Extreme Commodity Risk in Ghana: A Copula-EVT Analysis of Cocoa, Gold and Crude Oil.* Working paper, 2026. See `paper/paper.md`.
+See the paper's Limitations section: vine copulas or a nonparametric
+copula surface as the natural next step given six of ten pairs reject
+every one of eight tested families; a fully family-wise correction
+across all three stress-window definitions simultaneously (180 cells,
+versus 60 within each definition tested here); and extending the sample
+to include Ghana's 2014–2015 currency crisis as a third independent
+stress episode.
 
 ## License
 

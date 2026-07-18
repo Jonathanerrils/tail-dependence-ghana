@@ -13,3 +13,11 @@ data/processed/prices_yahoo_raw.csv
 !data/raw/.gitkeep
 !data/raw/bog/
 !data/raw/bog/**
+
+# LaTeX build artifacts
+paper/latex/*.aux
+paper/latex/*.bbl
+paper/latex/*.blg
+paper/latex/*.log
+paper/latex/*.out
+paper/latex/*.spl

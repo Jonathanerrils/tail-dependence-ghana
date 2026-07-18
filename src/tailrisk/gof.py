@@ -20,7 +20,7 @@ from __future__ import annotations
 import numpy as np
 from scipy import stats
 
-from .copulas import _t_loglik
+from .copulas import _t_loglik, fit_frank, fit_joe
 
 NU_GRID = np.array([3, 4, 5, 6, 8, 12, 20, 40], dtype=float)
 
@@ -38,6 +38,17 @@ def estimate(family: str, u: np.ndarray, v: np.ndarray) -> dict:
     if family == "clayton":
         return {"theta": max(2 * tau / (1 - tau), 1e-3)}
     if family == "gumbel":
+        return {"theta": max(1 / (1 - tau), 1.0 + 1e-6)}
+    if family == "frank":
+        # MLE estimator (Frank's tau-theta relation has no closed-form
+        # inverse; MLE is a standard, fully valid choice of consistent
+        # estimator for the Genest-Remillard-Beaudoin bootstrap procedure).
+        return fit_frank(u, v).params
+    if family == "joe":
+        return fit_joe(u, v).params
+    if family == "survival_clayton":
+        return {"theta": max(2 * tau / (1 - tau), 1e-3)}
+    if family == "survival_gumbel":
         return {"theta": max(1 / (1 - tau), 1.0 + 1e-6)}
     raise ValueError(family)
 
@@ -74,6 +85,53 @@ def sample(family: str, params: dict, n: int,
         e = rng.exponential(1.0, (n, 2))
         u = np.exp(-((e / s[:, None]) ** (1 / th)))
         return u[:, 0], u[:, 1]
+    if family == "frank":
+        th = params["theta"]
+        u1 = rng.uniform(0, 1, n)
+        w = rng.uniform(0, 1, n)
+        if abs(th) < 1e-6:
+            return u1, w
+        eu = np.exp(th * u1)
+        e_th = np.exp(th)
+        num = w * (eu - 1) + 1
+        den = e_th + w * (eu - e_th)
+        u2 = (th + np.log(num / den)) / th
+        return u1, np.clip(u2, 1e-9, 1 - 1e-9)
+    if family == "joe":
+        # Conditional (h-function inversion) sampler, vectorized across all
+        # n observations at once via array-valued bisection -- exact for
+        # any Archimedean copula with a tractable h-function, and fast
+        # enough for the 500-replicate bootstrap this feeds.
+        th = params["theta"]
+        u1 = rng.uniform(0, 1, n)
+        w = rng.uniform(0, 1, n)
+        lo = np.full(n, 1e-9)
+        hi = np.full(n, 1 - 1e-9)
+        flo = h_func("joe", {"theta": th}, u1, lo) - w
+        for _ in range(50):
+            mid = 0.5 * (lo + hi)
+            fmid = h_func("joe", {"theta": th}, u1, mid) - w
+            go_right = (fmid * flo) > 0
+            lo = np.where(go_right, mid, lo)
+            flo = np.where(go_right, fmid, flo)
+            hi = np.where(go_right, hi, mid)
+        return u1, 0.5 * (lo + hi)
+    if family == "survival_clayton":
+        th = params["theta"]
+        g = rng.gamma(1 / th, 1.0, n)
+        e = rng.exponential(1.0, (n, 2))
+        u = (1 + e / g[:, None]) ** (-1 / th)
+        return 1 - u[:, 0], 1 - u[:, 1]
+    if family == "survival_gumbel":
+        th = params["theta"]
+        alpha = 1 / th
+        t_ = rng.uniform(0, np.pi, n)
+        w_ = rng.exponential(1.0, n)
+        s = (np.sin(alpha * t_) / np.sin(t_) ** (1 / alpha)
+             * (np.sin((1 - alpha) * t_) / w_) ** ((1 - alpha) / alpha))
+        e = rng.exponential(1.0, (n, 2))
+        u = np.exp(-((e / s[:, None]) ** (1 / th)))
+        return 1 - u[:, 0], 1 - u[:, 1]
     raise ValueError(family)
 
 
@@ -103,6 +161,25 @@ def h_func(family: str, params: dict, u: np.ndarray, v: np.ndarray) -> np.ndarra
         x, y = -np.log(u), -np.log(v)
         a = x**th + y**th
         return np.exp(-a ** (1 / th)) * a ** (1 / th - 1) * x ** (th - 1) / u
+    if family == "frank":
+        th = params["theta"]
+        if abs(th) < 1e-6:
+            return v  # independence limit
+        eu = np.exp(-th * u)
+        num = np.expm1(-th * v) * eu
+        den = np.expm1(-th) + np.expm1(-th * u) * np.expm1(-th * v)
+        den = np.where(np.abs(den) < 1e-12, 1e-12, den)
+        return np.clip(num / den, 1e-12, 1 - 1e-12)
+    if family == "joe":
+        th = params["theta"]
+        ub, vb = 1 - u, 1 - v
+        t1, t2 = ub**th, vb**th
+        a = t1 + t2 - t1 * t2
+        return np.clip(a ** (1 / th - 1) * ub ** (th - 1) * (1 - t2), 1e-12, 1 - 1e-12)
+    if family == "survival_clayton":
+        return 1 - h_func("clayton", params, 1 - u, 1 - v)
+    if family == "survival_gumbel":
+        return 1 - h_func("gumbel", params, 1 - u, 1 - v)
     raise ValueError(family)
 
 

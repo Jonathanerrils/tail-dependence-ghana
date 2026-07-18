@@ -9,3 +9,5 @@ plotly>=5.18
 # real-data fetch (local only):
 # yfinance>=0.2
 # wbgapi>=1.0
+hmmlearn>=0.3
+scikit-learn>=1.3

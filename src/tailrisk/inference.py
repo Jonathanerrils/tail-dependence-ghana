@@ -69,10 +69,21 @@ def calm_stress_difference(
     diff = d_s - d_c
     a = (1 - level) / 2
     dlo, dhi = np.quantile(diff, [a, 1 - a])
+    # Two-sided bootstrap p-value for H0: difference = 0 (basic percentile
+    # approach with a +1 continuity correction, matching the convention
+    # already used in gof.py's parametric-bootstrap p-values, to avoid a
+    # literal p=0 with only n_boot replicates). Needed for Benjamini-
+    # Hochberg FDR, which requires actual p-values, not just CIs.
+    n_below = int(np.sum(diff <= 0))
+    n_above = int(np.sum(diff >= 0))
+    p_below = (n_below + 1) / (n_boot + 1)
+    p_above = (n_above + 1) / (n_boot + 1)
+    p_value = float(min(1.0, 2 * min(p_below, p_above)))
     out = {
         "lambda_calm": p_c, "calm_lo": lo_c, "calm_hi": hi_c,
         "lambda_stress": p_s, "stress_lo": lo_s, "stress_hi": hi_s,
         "difference": p_s - p_c, "diff_lo": float(dlo), "diff_hi": float(dhi),
+        "p_value": p_value,
         "significant_5pct": bool(dlo > 0 or dhi < 0),
     }
     if bonf_m:

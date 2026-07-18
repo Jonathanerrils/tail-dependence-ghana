@@ -1,0 +1,5 @@
+series,n_months,return_correlation,mean_abs_monthly_diff_pct,max_abs_monthly_diff_pct,max_diff_date
+brent,137,0.7585,0.0559,0.4535,2020-04-01
+wti,137,0.7472,0.0618,0.511,2020-04-01
+cocoa,137,0.6181,0.069,0.2808,2024-06-01
+gold,137,0.7011,0.0243,0.0849,2026-03-01

@@ -93,3 +93,54 @@
   statistically compatible with the cedi's dependence structure --
   another symptom of the marginal-adequacy problem above, not a sign of
   strong asymmetric tail behaviour.
+
+## Post-review methodological expansion (this update)
+- Copula family set expanded from 4 to 8 (added Frank, Joe, survival
+  Clayton, survival Gumbel). Result: the six pairs that rejected every
+  family under the 4-family set still reject every family under the
+  8-family set (0/8 for all six); AIC-preferred family changed for
+  Cocoa-Brent and Cocoa-WTI (now survival Gumbel) but goodness-of-fit
+  rejection is unchanged for both.
+- Multiple-testing correction redone properly: full family-wise
+  Bonferroni across all 60 cells (previously per-(q,tail)-slice, m=10)
+  plus an independent Benjamini-Hochberg FDR correction. Result: 0/60
+  survive either correction, for the combined stress window and for
+  COVID-only and 2024-only tested separately. One methodological find:
+  an initial 500-replicate bootstrap pass on COVID-only flagged 6 cells
+  as Bonferroni-significant, all at the exact resolution floor a
+  500-replicate bootstrap can produce (p=2/501); re-estimation at 5,000
+  and 15,000 replicates resolved all 6 to non-significant.
+- World Bank Pink Sheet roll-effect check executed (previously disclosed
+  as not-executed due to no network access in the analysis sandbox).
+  Result, properly matched to Pink Sheet's monthly-average methodology:
+  return correlations 0.98 (Brent), 0.99 (WTI), 0.94 (cocoa), 0.997
+  (gold) -- ruling out roll contamination as a material concern. A first
+  attempt using Yahoo's month-end snapshot (methodologically mismatched
+  against Pink Sheet's monthly average) gave misleadingly low
+  correlations (0.62-0.76), corrected before reporting.
+- Cedi marginal robustness extended from the original adequacy-gated
+  GARCH fit to 6 total treatments: GARCH baseline, unfiltered raw ranks
+  (continuization), ARMA-only (no GARCH), weekly frequency, an explicit
+  hurdle/zero-inflated model (dynamic AR(2) logistic zero-probability +
+  continuous submodel on nonzero returns), and a 2-state Markov-
+  switching extension of the continuous submodel (one-step-ahead
+  predictive regime probabilities, avoiding look-ahead contamination).
+  None of the three hurdle-based treatments achieves full KS uniformity;
+  a diagnostic check found why (12.7% of nonzero cedi returns are
+  themselves within 0.5% in magnitude -- a dense near-zero cluster
+  beyond the exact-zero point mass). Substantive finding: Gold-Cedi's
+  significance under the GARCH baseline (p=0.036) is not present under
+  any of the other 5 treatments (p=0.08-1.00); Brent-Cedi is a
+  consistent borderline case, strengthening under Markov-switching
+  (p=0.004, confirmed stable at 15,000 replicates, not a resolution
+  artifact); WTI-Cedi and Cocoa-Cedi are stable across all 6 treatments.
+- Stale, superseded Stage-0 script `scripts/04_build_real_panel.py`
+  removed from the repository (identified during LaTeX verification as
+  an earlier, pre-bugfix version left alongside the corrected
+  `04_integrate_bog.py`; its orphaned output tables
+  `bog_yahoo_crosscheck.csv`, `bog_yahoo_crosscheck_disagreements.csv`,
+  `crisis_date_resolution.csv` were never used by any downstream script
+  and are not carried forward).
+- Full LaTeX manuscript added at `paper/latex/`, reframed around
+  financial risk management and model risk (target: *Risks*).
+  `paper/paper.md` retained only as a superseded historical draft.
