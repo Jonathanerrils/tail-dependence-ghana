@@ -322,7 +322,7 @@ The Yahoo `GHS=X` series is used only as a diagnostic comparator and is not the 
 ```text
 paper/
   latex/                       Manuscript source and compiled paper artifacts
-  VERIFICATION_LEDGER.csv      Claim-to-output verification ledger
+  VERIFICATION_LEDGER.csv      Historical ledger from the earlier analysis; being rebuilt
 
 src/tailrisk/
   marginals.py                 Marginal-model code
@@ -458,7 +458,7 @@ The manuscript currently in `paper/latex/` contains historical material that is 
 Until the rewrite is complete:
 
 - do not treat every numerical claim in the current PDF as authoritative;
-- prefer the audited CSV/JSON outputs and verification ledger;
+- prefer the audited CSV/JSON outputs; the verification ledger is being rebuilt;
 - treat older manuscript drafts as historical artifacts.
 
 ---
