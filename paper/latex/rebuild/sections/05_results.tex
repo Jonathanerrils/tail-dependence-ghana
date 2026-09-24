@@ -1,0 +1,141 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Marginal-model adequacy across the two calendar panels}
+
+The marginal stage produces a mixed but internally consistent result across the two calendar constructions. The selected commodity margins are adequate under the stated three-test gate in both panels, although the selected specification is not always the same. The Cedi is the exception: no tested candidate passes the adequacy gate in either panel.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lXXXX}
+\toprule
+\textbf{Series} & \textbf{Panel A: business-day alignment} & \textbf{Status} & \textbf{Panel B: common-observation alignment} & \textbf{Status} \\
+\midrule
+Cocoa & AR(1)-GJR-GARCH-t & Adequate & AR(1)-GJR-GARCH-t & Adequate \\
+Gold & AR(1)-GJR-GARCH-t & Adequate & AR(1)-GJR-GARCH-t & Adequate \\
+Brent & AR(1)-GJR-GARCH-skew-t & Adequate & AR(1)-GJR-GARCH-t & Adequate \\
+WTI & AR(1)-EGARCH-t & Adequate & AR(1)-GJR-GARCH-t & Adequate \\
+Cedi & AR(1)-GJR-GARCH-t & Inadequate reference & AR(1)-EGARCH-t & Inadequate reference \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The Panel A hard-gate audit checked all 20 candidate fits. One candidate, the Cedi AR(1)-EGARCH-t specification, was invalid because the optimizer did not converge. Imposing convergence and finite-fit validity as hard requirements did not change any of the previously selected Panel A models. The Panel B selection differs for Brent, WTI and the Cedi, but the higher-level adequacy pattern is unchanged: the four commodity margins have an adequate selected model, while the Cedi does not.
+
+This result is important for the interpretation that follows. Commodity-only dependence results are supported by margins that pass the stated gate in both panels. Cedi-related copula and extreme-value quantities are conditional on an inadequate continuous marginal reference under both calendar constructions.
+
+\subsection{Static copula adequacy: robust failures, robust non-rejections and calendar sensitivity}
+
+The clearest cross-panel difference appears in the absolute copula goodness-of-fit results. Table 2 reports the number of rejected families, out of the eight tested, for each pair.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lXXX}
+\toprule
+\textbf{Pair} & \textbf{Panel A rejected} & \textbf{Panel B rejected} & \textbf{Cross-panel classification} \\
+\midrule
+Cocoa-Gold & 8/8 & 2/8 & Calendar-sensitive \\
+Cocoa-Brent & 8/8 & 3/8 & Calendar-sensitive \\
+Cocoa-WTI & 8/8 & 3/8 & Calendar-sensitive \\
+Cocoa-Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
+Gold-Brent & 8/8 & 8/8 & Calendar-robust rejection \\
+Gold-WTI & 8/8 & 8/8 & Calendar-robust rejection \\
+Gold-Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
+Brent-WTI & 8/8 & 8/8 & Calendar-robust rejection \\
+Brent-Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
+WTI-Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Three commodity-commodity pairs are therefore robustly inconsistent with every member of the tested eight-family static copula set: Gold-Brent, Gold-WTI and Brent-WTI. This conclusion survives both calendar constructions.
+
+The four commodity-Cedi pairs show the opposite pattern. None of the eight tested static families is rejected for Cocoa-Cedi, Gold-Cedi, Brent-Cedi or WTI-Cedi in either panel. This is also calendar-robust, but its interpretation is deliberately limited. Non-rejection does not establish that all eight families are equally plausible or that any one of them is the true dependence model. It only states that the implemented GOF procedure does not reject them at the 5\% level.
+
+The cocoa-related commodity pairs are where the calendar construction matters most. Panel A rejects all eight families for Cocoa-Gold, Cocoa-Brent and Cocoa-WTI. Panel B rejects only two of eight for Cocoa-Gold and three of eight for Cocoa-Brent and Cocoa-WTI. The broad claim that every commodity-commodity pair rejects every tested static copula is therefore not robust. The evidence supports a narrower statement: complete eight-family rejection is robust for Gold-Brent, Gold-WTI and Brent-WTI, while the three cocoa-related commodity pairs are calendar-sensitive.
+
+One Panel A Cocoa-Cedi Frank result lies close to the 5\% decision boundary after the higher-resolution bootstrap. The later PIT-clipping audit shows that its observed GOF statistic is unchanged when the artificial three-way Cedi floor tie is de-clipped. The borderline classification is therefore a Monte Carlo-precision issue rather than a consequence of the PIT-clipping artifact.
+
+\subsection{Stress-period finite-tail concentration}
+
+The stress analysis produces a different kind of robustness result. Across the combined COVID-19 plus 2024 definition, COVID-19 alone and 2024 alone, neither panel produces a multiplicity-adjusted discovery under Bonferroni or Benjamini-Hochberg correction.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lXXXXXXX}
+\toprule
+\textbf{Stress definition} & \textbf{Panel A nominal p<0.05} & \textbf{Panel B nominal p<0.05} & \textbf{Panel A Bonferroni} & \textbf{Panel B Bonferroni} & \textbf{Panel A BH} & \textbf{Panel B BH} & \textbf{Classification} \\
+\midrule
+Combined COVID + 2024 & 6/60 & 5/60 & 0 & 0 & 0 & 0 & Calendar-robust \\
+COVID-19 only & 11/60 & 11/60 & 0 & 0 & 0 & 0 & Calendar-robust \\
+2024 only & 6/60 & 7/60 & 0 & 0 & 0 & 0 & Calendar-robust \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The nominal counts show that several individual cells fall below 0.05 before correction, and the exact set is not identical across calendars. Those nominal results are descriptive rather than headline discoveries. The inferential conclusion is determined within each prespecified 60-test family.
+
+Under that rule, the result is the same in all six panel-by-stress combinations: zero Bonferroni discoveries and zero Benjamini-Hochberg discoveries. The absence of multiplicity-adjusted stress findings is therefore calendar-robust under the tested stress definitions, thresholds and moving-block-bootstrap design.
+
+This result should not be restated as evidence that tail dependence is constant or that crises do not affect commodity or exchange-rate relationships. The statistical result is narrower: none of the 60 finite-threshold stress-versus-calm comparisons in any of the three stress families survives either multiplicity procedure in either panel.
+
+\subsection{Cedi-related stress evidence and the prespecified follow-up trigger}
+
+The absence of corrected stress findings also applies to commodity-Cedi cells in Panel B. The prespecified rule required a full synchronized seven-treatment Cedi robustness rerun only if at least one Panel B commodity-Cedi stress cell survived Bonferroni or Benjamini-Hochberg correction.
+
+That trigger was not activated under the combined, COVID-only or 2024-only stress definition. Accordingly, the existing seven-treatment Panel A analysis remains supporting robustness evidence, but it is not promoted to a symmetric two-panel result. No additional synchronized Cedi-treatment search is needed to sustain the current headline stress conclusion.
+
+\subsection{Extreme-value diagnostics}
+
+The EVT results are interpreted separately from the copula stress tests. In Panel B, the 90th-percentile POT/GPD fit for the Cedi gives approximately
+
+\[
+\hat\xi=0.693,\qquad
+\hat\beta=0.329,
+\]
+
+with
+
+\[
+\operatorname{VaR}_{0.99}\approx2.332
+\]
+
+and
+
+\[
+\operatorname{ES}_{0.99}\approx7.616
+\]
+
+in standardized-residual units. Across the Cedi threshold-sensitivity range from 0.85 to 0.975, the fitted shape parameter remains positive and ranges approximately from 0.63 to 0.79.
+
+These values indicate a heavy fitted loss tail under the retained Panel B reference model, but the Cedi margin fails the adequacy gate. The estimates are therefore conditional diagnostics. They should not be presented as model-free evidence that the Cedi has a particular structural tail index, and they should not be substituted for Panel A quantities without identifying the calendar panel.
+
+The same caution applies to the very large degrees-of-freedom estimate in the Panel A Cocoa-Cedi Student-t copula. The PIT-tie audit shows that the estimate is numerically weakly identified near the Gaussian limit and that the associated GOF statistic is essentially unchanged by recovering the unclipped rank ordering. The large numerical movement in the degrees-of-freedom parameter is not a substantive change in dependence.
+
+\subsection{Results by research question}
+
+The three research questions can now be answered directly from the cross-panel evidence.
+
+\textbf{RQ1: Do finite-threshold lower- and upper-tail concentration measures differ between calm and stress periods, and are those conclusions robust to calendar alignment?}  
+At the nominal 5\% level, several cells differ from calm in each stress family. After the prespecified Bonferroni and Benjamini-Hochberg corrections, no cell survives in either panel for the combined, COVID-only or 2024-only stress definition. The corrected stress conclusion is therefore calendar-robust.
+
+\textbf{RQ2: Can any of the eight tested static bivariate copula families adequately represent the dependence structure, and which conclusions are robust across calendars?}  
+For Gold-Brent, Gold-WTI and Brent-WTI, all eight tested families are rejected in both panels. For all four commodity-Cedi pairs, none of the eight families is rejected in either panel. Cocoa-Gold, Cocoa-Brent and Cocoa-WTI are calendar-sensitive because complete rejection in Panel A weakens to partial rejection in Panel B.
+
+\textbf{RQ3: How sensitive are Cedi-related dependence and extreme-value diagnostics to the Cedi's zero-heavy distribution, marginal inadequacy and calendar construction?}  
+The Cedi remains inadequately modeled by the tested continuous marginal candidates under both panels. Its exact selected reference model changes across calendars, and Panel B EVT estimates remain strongly heavy-tailed, but those EVT quantities are conditional on marginal misspecification. The Panel A PIT-clipping audit shows that the identified three-value floor tie does not alter the prespecified stress-tail memberships and has negligible effect on observed Cedi-pair GOF statistics. The main Cedi-related limitation is therefore the inadequacy of the tested marginal models, not the small clipping artifact.
+
+\subsection{Empirical synthesis}
+
+Taken together, the results separate three different kinds of evidence.
+
+First, there is \textbf{calendar-robust copula inadequacy} for Gold-Brent, Gold-WTI and Brent-WTI within the eight tested static families.
+
+Second, there is \textbf{calendar-sensitive copula adequacy} for Cocoa-Gold, Cocoa-Brent and Cocoa-WTI. These pairs show that calendar construction can materially alter absolute-model conclusions even when the underlying return series remain highly correlated across panels.
+
+Third, there is a \textbf{calendar-robust absence of multiplicity-adjusted stress discoveries} across all three stress definitions. The nominal p-value patterns vary, but no corrected stress finding survives in either panel.
+
+The Cedi results require a separate qualification: the copula non-rejections are cross-panel robust, but the Cedi marginal remains inadequate in both constructions. Cedi-related dependence and EVT results are therefore retained as conditional evidence rather than used to support stronger structural claims.
