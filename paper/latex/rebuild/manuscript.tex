@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\title{Commodity Tail Dependence and Exchange-Rate Risk in Ghana:\\
+Copula Adequacy, Stress Tests, and Calendar Robustness}
+\author{Jonathan Nelson\\Independent Research Project}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This study examines commodity tail dependence and exchange-rate risk in Ghana using two co-equal calendar constructions for cocoa, gold, Brent crude oil, WTI crude oil and the Ghanaian cedi over 2015--2026. The analysis combines explicit marginal convergence and adequacy gates, eight static bivariate copula families evaluated with a Rosenblatt-transform Cramér--von Mises statistic and parametric bootstrap, finite-threshold lower- and upper-tail concentration at prespecified thresholds, and moving-block-bootstrap stress comparisons corrected for multiple testing. Across the combined COVID-19 plus 2024 stress definition, COVID-19 alone and 2024 alone, no stress-calm comparison survives either Bonferroni or Benjamini--Hochberg correction in either calendar panel. Copula adequacy is more heterogeneous. Gold--Brent, Gold--WTI and Brent--WTI reject all eight tested static families under both calendar constructions, while all four commodity--Cedi pairs reject none of the eight in either panel. Cocoa--Gold, Cocoa--Brent and Cocoa--WTI are calendar-sensitive, with complete rejection under business-day alignment but only partial rejection under common-observation alignment. The Cedi remains inadequately represented by the tested continuous marginal models under both panels, so Cedi-related copula and extreme-value estimates are interpreted as conditional diagnostics. The results show that calendar alignment, absolute model adequacy and multiplicity control materially affect which dependence conclusions are defensible.
+\end{abstract}
+
+\noindent\textbf{Keywords:} tail dependence; copulas; commodity risk; Ghana; exchange-rate risk; model adequacy; calendar alignment; stress testing
+
+\input{sections/01_introduction}
+\input{sections/02_related_literature}
+\input{sections/03_data_calendar}
+\input{sections/04_methodology}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_robustness_limitations}
+\input{sections/08_conclusion}
+
+\section*{Data and Code Availability}
+The analysis code and publication-rebuild materials are maintained in the project repository:
+\url{https://github.com/Jonathanerrils/tail-dependence-ghana}. The reconstructed manuscript is restricted to claims supported by the audited data, code and reproducible outputs documented in the project.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
