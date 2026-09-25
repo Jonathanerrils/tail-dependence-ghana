@@ -1,0 +1,110 @@
+\section{Robustness and Limitations}
+\label{sec:robustness_and_limitations}
+
+\subsection{Calendar robustness as the main specification check}
+
+The principal robustness exercise is built into the study design rather than added after the main analysis. Panel A preserves the documented business-day construction with limited forward filling, while Panel B uses only consecutive common observation dates. The two panels are not treated as a primary analysis and a secondary robustness check. They are co-equal representations of the observation process.
+
+This comparison yields three different outcomes. The absence of Bonferroni- and Benjamini-Hochberg-adjusted stress discoveries is stable across both panels for the combined, COVID-only and 2024-only stress families. Complete rejection of all eight tested static copulas is also stable for Gold-Brent, Gold-WTI and Brent-WTI. By contrast, the copula adequacy conclusions for Cocoa-Gold, Cocoa-Brent and Cocoa-WTI are not stable: all eight families are rejected in Panel A, while only a subset is rejected in Panel B.
+
+The value of the second panel is therefore not that it confirms every result. It reveals where a substantive conclusion depends on the calendar construction. This is why the manuscript distinguishes calendar-robust findings from calendar-sensitive findings rather than reporting a single preferred preprocessing choice.
+
+\subsection{Marginal convergence and admissibility audit}
+
+The marginal stage was re-audited after the original analysis to ensure that optimizer convergence was treated as a hard admissibility condition. All 20 Panel A candidate fits were checked under the rule that a model is valid only when the optimizer converges and the log likelihood, estimated parameters, standardized residuals, conditional volatility and PIT values are finite.
+
+One Panel A candidate, Cedi AR(1)-EGARCH-t, failed the convergence gate. Excluding it from both the adequacy pool and the AIC fallback did not change any of the previously selected Panel A models. Cocoa and Gold remain AR(1)-GJR-GARCH-t, Brent remains AR(1)-GJR-GARCH-skew-t, WTI remains AR(1)-EGARCH-t, and the Cedi remains an inadequate AR(1)-GJR-GARCH-t reference.
+
+The Panel B marginal rebuild applies the same rule. Cocoa, Gold, Brent and WTI have an adequate selected candidate, while the Cedi again has no adequate tested specification and is represented only by an inadequate reference model. The persistence of the Cedi problem across both calendars is therefore not explained by a failed optimizer in one branch of the analysis.
+
+\subsection{Copula-estimator implementation audit}
+
+Because Panel A and Panel B were produced through different reconstruction branches, the copula GOF implementation was checked directly before cross-panel conclusions were frozen. The audit compared the estimators used by the historical Panel A GOF path with those used by the Panel B publication rebuild.
+
+For all eight families and all ten pair cells, the compared fitting routes produced the same observed fitted parameters and the same observed GOF statistics when supplied with the same PIT inputs. The audit also confirmed that the bootstrap refits the copula in every replicate and that the current publication p-value convention is
+
+\[
+\hat p=\frac{\text{exceedances}+1}{B+1}.
+\]
+
+No material estimator mismatch was detected. A new Panel A GOF bootstrap was therefore not required on implementation-equivalence grounds. The observed cross-panel differences in GOF classification are attributed to the different panel inputs and marginal selections rather than to different copula estimators.
+
+This audit does not prove that the GOF procedure is the only appropriate test. It establishes only that the cross-panel comparison is not confounded by an unnoticed change in the implemented estimator.
+
+\subsection{PIT clipping and ties}
+
+The stored PIT values are clipped to \([10^{-6},1-10^{-6}]\) before the copula rank transformation. Panel B contains no exact PIT ties. Panel A contains one three-way Cedi tie at the lower clipping boundary, on 19 September 2022, 21 February 2023 and 29 December 2023.
+
+Using the saved standardized residuals, the underlying order of the three observations was recovered. Their correct lower-tail ranks are 3, 2 and 1, respectively, rather than the common average rank of 2 induced by clipping. Only two pseudo-observations change, and the maximum displacement is approximately \(3.32\times10^{-4}\).
+
+The correction does not change membership at \(q=0.025\), \(0.05\) or \(0.10\). It therefore does not change which observations enter the prespecified finite-tail sets. Across the 32 Panel A commodity-Cedi GOF cells, the largest observed change in the GOF statistic is \(0.000262\). For the borderline Cocoa-Cedi Frank cell, the observed statistic is unchanged to the reported precision.
+
+The PIT tie is therefore a documented numerical artifact, but not a material driver of the current stress or GOF conclusions. A full bootstrap rerun was not warranted on this basis.
+
+\subsection{Alternative Cedi treatments}
+
+Panel A contains an additional seven-treatment Cedi sensitivity analysis designed to examine whether nominal commodity-Cedi stress patterns depend on how the zero-heavy Cedi process is handled. The treatments include the baseline GARCH reference, raw-rank treatment, AR-only filtering, weekly aggregation, a hurdle Student-t treatment, a hurdle-mixture treatment and a hurdle-Markov treatment.
+
+These analyses are diagnostic rather than co-equal headline specifications. Each treatment evaluates 12 commodity-Cedi diagnostic cells without multiplicity correction. The number of nominal 5\% findings varies across treatments:
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Cedi treatment} & \textbf{Nominal findings out of 12} \\
+\midrule
+Baseline GARCH reference & 3 \\
+No-GARCH raw ranks & 3 \\
+AR-only & 2 \\
+Weekly frequency & 0 \\
+Hurdle Student-t & 2 \\
+Hurdle mixture & 2 \\
+Hurdle Markov & 2 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+A negative Brent-Cedi lower-tail difference at \(q=0.05\) appears repeatedly under several daily treatments but disappears under the weekly treatment. This lack of invariance is one reason the pattern is not interpreted as a structural commodity-Cedi result.
+
+The synchronized Panel B seven-treatment matrix was not run automatically. The follow-up rule was fixed in advance: it would be triggered only if at least one Panel B commodity-Cedi stress cell survived Bonferroni or Benjamini-Hochberg correction. No such cell survived under any of the three stress definitions, so the trigger was not activated. The Panel A seven-treatment exercise therefore remains supporting diagnostic evidence rather than a two-panel headline result.
+
+\subsection{Extreme-value sensitivity}
+
+The main POT/GPD threshold is fixed at the 90th percentile of the standardized-residual loss series. For the Panel B Cedi reference, the fitted shape parameter remains positive over the examined threshold range from 0.85 to 0.975, approximately 0.63 to 0.79.
+
+This threshold stability is informative about the fitted reference series, but it does not resolve the marginal-model problem. Because the Cedi's selected marginal specification fails the PIT adequacy test, the EVT quantities remain conditional on that reference residual process. The threshold sensitivity exercise therefore supports robustness of the fitted heavy-tail pattern within that model, not identification of a model-free structural tail index.
+
+\subsection{Withdrawn monthly transmission branch}
+
+An earlier version of the project included monthly regressions linking aggregated tail measures to Cedi depreciation, inflation and export growth. That branch is excluded from the present manuscript.
+
+The reason is data validity, not an unfavorable statistical result. The audit of the extracted Bank of Ghana macroeconomic series identified invalid literal zero values in headline inflation for part of 2023. The processed export series also contained a source gap that had previously been masked by the extraction pipeline. Because the monthly regressions depend on those inputs, their coefficients and p-values are withdrawn from the current evidence base.
+
+The paper therefore makes no empirical claim about monthly commodity-to-Cedi, inflation or export transmission. Reintroducing that question would require reconstruction of the macroeconomic panel from independently verified authoritative data followed by a fresh analysis.
+
+This withdrawal is an important part of the reproducibility record. A historical result is not retained simply because it had already appeared in an earlier draft.
+
+\subsection{Remaining statistical limitations}
+
+Several limitations remain after the robustness work.
+
+First, the Cedi marginal remains unresolved. The tested continuous conditional distributions do not adequately reproduce its zero-heavy daily process. This limitation propagates into Cedi-related copula and EVT quantities.
+
+Second, the copula analysis is bivariate and static. Rejection of all eight tested families for some commodity pairs suggests the need for richer dependence structures, but the present analysis does not determine whether a dynamic, regime-switching, mixture, vine or nonparametric alternative would be adequate.
+
+Third, neither calendar construction achieves perfect market synchronization. Panel A can create carry-forward zero returns, while Panel B uses intervals ranging from one to six calendar days. Intraday timing differences are not modeled.
+
+Fourth, the stress analysis is conditional on the prespecified COVID-19 and 2024 windows, the thresholds \(q=0.025,0.05,0.10\), a moving-block length of 20 and the chosen multiplicity procedures. The study does not claim that every reasonable alternative definition would produce the same point estimates or p-values.
+
+Fifth, static GOF non-rejection for the commodity-Cedi pairs may reflect limited ability to discriminate among weak dependence structures. The present study does not perform a separate empirical power analysis for those real-data cells, so low power is not asserted as a demonstrated explanation.
+
+Finally, the commodity price files are described only to the level established by the audited sources and processing scripts. The manuscript does not make unverified claims about continuous-futures roll rules or back adjustment.
+
+\subsection{Robustness summary}
+
+The robustness work changes the paper in a substantive way. It confirms some findings, weakens others and removes one entire analysis branch.
+
+The stress conclusion survives the two calendar constructions and the prespecified multiplicity procedures. Complete eight-family copula rejection survives for Gold-Brent, Gold-WTI and Brent-WTI but not for the three cocoa-related commodity pairs. The marginal convergence audit leaves the Panel A selections unchanged but confirms that the Cedi remains unresolved. The GOF implementation audit rules out an estimator mismatch as the source of the cross-panel differences. The PIT clipping audit identifies a real numerical artifact but shows that it is too small to alter the current conclusions. The Cedi sensitivity analysis shows that nominal daily patterns are not invariant to alternative treatment and frequency. The monthly transmission branch is removed because its input data failed audit.
+
+The resulting manuscript is therefore narrower than the historical draft, but the remaining claims are supported by a clearer chain from source data to statistical conclusion.
