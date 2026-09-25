@@ -1,0 +1,162 @@
+{
+  "pit_sha256": "be42455c12bf2f4a9c7ef33494930ad396f569192f571386d099046a388119d1",
+  "freeze_hash_match": true,
+  "floor_value": 1e-06,
+  "floor_count": 3,
+  "floor_dates": [
+    "2022-09-19",
+    "2023-02-21",
+    "2023-12-29"
+  ],
+  "current_average_ranks": [
+    2.0,
+    2.0,
+    2.0
+  ],
+  "current_pseudo_u": [
+    0.0006648936170212766,
+    0.0006648936170212766,
+    0.0006648936170212766
+  ],
+  "possible_distinct_pseudo_u": [
+    0.0003324468085106383,
+    0.0006648936170212766,
+    0.0009973404255319148
+  ],
+  "max_pseudo_u_displacement": 0.0003324468085106383,
+  "threshold_membership": [
+    {
+      "q": 0.025,
+      "current_all_below_q": true,
+      "possible_distinct_all_below_q": true
+    },
+    {
+      "q": 0.05,
+      "current_all_below_q": true,
+      "possible_distinct_all_below_q": true
+    },
+    {
+      "q": 0.1,
+      "current_all_below_q": true,
+      "possible_distinct_all_below_q": true
+    }
+  ],
+  "source_hits": [
+    {
+      "file": "src\\tailrisk\\copulas.py",
+      "line": 165,
+      "text": "if abs(theta) < 1e-6:"
+    },
+    {
+      "file": "src\\tailrisk\\gof.py",
+      "line": 85,
+      "text": "if abs(th) < 1e-6:"
+    },
+    {
+      "file": "src\\tailrisk\\gof.py",
+      "line": 159,
+      "text": "if abs(th) < 1e-6:"
+    },
+    {
+      "file": "src\\tailrisk\\marginals.py",
+      "line": 87,
+      "text": "pit = pd.Series(pit_vals, index=std_resid.index, name=name).clip(1e-6, 1 - 1e-6)"
+    },
+    {
+      "file": "scripts\\13_cedi_markov.py",
+      "line": 66,
+      "text": "random_state=seed, tol=1e-6)"
+    },
+    {
+      "file": "scripts\\28_publication_rebuild_stage1.py",
+      "line": 88,
+      "text": "np.clip(pit_vals, 1e-6, 1 - 1e-6),"
+    },
+    {
+      "file": "scripts\\30_original_panel_convergence_gate_audit.py",
+      "line": 75,
+      "text": "np.clip(np.asarray(dist.cdf(z.to_numpy(), dparams), dtype=float), 1e-6, 1 - 1e-6),"
+    },
+    {
+      "file": "scripts\\34_panelA_cedi_pit_tie_diagnostic.py",
+      "line": 131,
+      "text": "print(\"- If it lies in an extreme PIT region, or comes from boundary clipping, it deserves closer scrutiny.\")"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 1,
+      "text": "\"\"\"Audit the Panel A Cedi PIT floor/clipping artifact."
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 5,
+      "text": "Trace the exact 1e-6 Cedi PIT tie to local code and quantify how much it can"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 36,
+      "text": "FLOOR = 1e-6"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 68,
+      "text": "# PIT/CDF terminology with clipping."
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 71,
+      "text": "pit_clip = (\"clip\" in low and (\"pit\" in low or \"cdf\" in low))"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 72,
+      "text": "if explicit_floor or pit_clip:"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 101,
+      "text": "print(f\"exactly equal to 1e-6: {floor_count}\")"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 157,
+      "text": "print(\"--- Source scan for PIT clipping/floor logic ---\")"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 163,
+      "text": "print(\"No explicit 1e-6 / PIT clipping lines found under src/ or scripts/.\")"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit.py",
+      "line": 228,
+      "text": "print(\"First use the source-scan output to identify whether 1e-6 is an explicit numerical clip.\")"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit_SAFE.py",
+      "line": 15,
+      "text": "FLOOR = 1e-6"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit_SAFE.py",
+      "line": 37,
+      "text": "explicit_floor = any(t in low for t in (\"1e-6\", \"1.e-6\", \"0.000001\"))"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit_SAFE.py",
+      "line": 38,
+      "text": "pit_clip = \"clip\" in low and any(t in low for t in (\"pit\", \"cdf\", \"prob\", \"uniform\"))"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit_SAFE.py",
+      "line": 39,
+      "text": "if explicit_floor or pit_clip:"
+    },
+    {
+      "file": "scripts\\35_panelA_pit_floor_audit_SAFE.py",
+      "line": 58,
+      "text": "print(\"--- Exact 1e-6 Cedi PIT observations ---\")"
+    }
+  ],
+  "pseudo_obs_source": "def pseudo_obs(x: pd.DataFrame | np.ndarray) -> np.ndarray:\n    \"\"\"Rank-based pseudo-observations u_i = rank_i / (n + 1).\"\"\"\n    a = np.asarray(x, dtype=float)\n    n = a.shape[0]\n    ranks = np.apply_along_axis(stats.rankdata, 0, a)\n    return ranks / (n + 1.0)\n"
+}

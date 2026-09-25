@@ -1,0 +1,6 @@
+series,spec,selection_status,selection_rule,convergence_flag,valid_fit,aic,bic,loglikelihood,lb_resid_p,lb_sq_p,ks_pit_p,adequate_5pct,dist_param_names,dist_param_values
+cocoa,AR1-GJR-GARCH-t,ADEQUATE,first valid adequate candidate in fixed ladder,0,True,11852.8216156,11894.3154109,-5919.41080778,0.659504996993,0.981156229308,0.877526752132,True,nu,7.27595764668
+gold,AR1-GJR-GARCH-t,ADEQUATE,first valid adequate candidate in fixed ladder,0,True,7465.1622283,7506.65602362,-3725.58111415,0.612280175539,0.42340148349,0.529179149105,True,nu,4.49192724143
+brent,AR1-GJR-GARCH-t,ADEQUATE,first valid adequate candidate in fixed ladder,0,True,12094.243777,12135.7375723,-6040.1218885,0.966071326872,0.99999735754,0.531168585457,True,nu,5.12167165823
+wti,AR1-GJR-GARCH-t,ADEQUATE,first valid adequate candidate in fixed ladder,0,True,12548.0383313,12589.5321267,-6267.01916567,0.891426091796,0.990625014263,0.406123732824,True,nu,6.27047955076
+cedi,AR1-EGARCH-t,INADEQUATE_REFERENCE,lowest AIC among valid converged candidates; no candidate passed gate,0,True,-3951.20392815,-3909.71013283,1982.60196407,0.918148321867,0.999999955745,3.36686058699e-33,False,nu,2.05

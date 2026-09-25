@@ -183,14 +183,18 @@ def load_real_data(ingest_dir: str | None) -> tuple[pd.DataFrame, pd.DataFrame]:
 
 def load_data(data: str, ingest_dir: str | None) -> tuple[pd.DataFrame, pd.DataFrame]:
     if data == "real":
-        canon = PROC / "returns_real.csv"
-        try:
+        # Canonical BoG-based files by default. The alternate ingestion
+        # path is only attempted when the caller explicitly passes
+        # --ingest-dir; previously this was tried unconditionally first,
+        # meaning the validated canonical panel could be silently
+        # replaced by an unrelated ingestion pipeline's output if that
+        # file ever happened to exist, with no explicit signal that this
+        # had happened.
+        if ingest_dir is not None:
             return load_real_data(ingest_dir)
-        except FileNotFoundError as e:
-            if canon.exists():
-                print(f"  ({e}) — falling back to previously built canonical files.")
-            else:
-                raise
+        prices = pd.read_csv(PROC / "prices_real.csv", index_col=0, parse_dates=True)
+        rets = pd.read_csv(PROC / "returns_real.csv", index_col=0, parse_dates=True)
+        return prices, rets
     prices = pd.read_csv(PROC / f"prices_{data}.csv", index_col=0, parse_dates=True)
     rets = pd.read_csv(PROC / f"returns_{data}.csv", index_col=0, parse_dates=True)
     return prices, rets
@@ -224,10 +228,17 @@ def main(data: str = "synthetic", ingest_dir: str | None = None) -> None:
             **inference.marginal_diagnostics(f.std_resid, f.pit),
         })
         if not f.adequate:
-            print(f"  !! MARGINAL INADEQUATE for {label(name)}: no ladder spec "
-                  f"passed; kept best-AIC ({f.spec}). Univariate VaR/EVT for "
-                  f"this series is flagged; copula layer uses ranks and is "
-                  f"unaffected by the density misfit. See DECISIONS.md.")
+            print(f"  !! MARGINAL UNRESOLVED for {label(name)}: no ladder "
+                  f"specification passed the adequacy gate. The deterministic "
+                  f"reference fit ({f.spec}) is retained for pipeline "
+                  f"continuity only, not as a preferred model. This is NOT "
+                  f"inert for downstream inference: cross-environment "
+                  f"replication showed the resulting rank ordering, "
+                  f"including extreme-tail membership, is itself unstable "
+                  f"(see diagnostics/diagnose_cedi_v3.py and DECISIONS.md). "
+                  f"Results involving this series must be interpreted "
+                  f"through the alternative-treatment robustness analysis, "
+                  f"not from this single fit.")
     pd.DataFrame(marg_rows).round(3).to_csv(TAB / "marginal_garch.csv", index=False)
     pit.to_csv(TAB / f"_pit_{data}.csv")      # persisted for stages 3-6
     resid.to_csv(TAB / f"_resid_{data}.csv")

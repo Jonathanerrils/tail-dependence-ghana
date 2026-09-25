@@ -1,0 +1,11 @@
+panel,series,n,n_unique,duplicate_count,tied_groups,observations_in_tied_groups,share_observations_in_tied_groups,max_multiplicity
+A,cocoa,3007,3007,0,0,0,0.0,1
+A,gold,3007,3007,0,0,0,0.0,1
+A,brent,3007,3007,0,0,0,0.0,1
+A,wti,3007,3007,0,0,0,0.0,1
+A,cedi,3007,3005,2,1,3,0.0009976720984369804,3
+B,cocoa,2773,2773,0,0,0,0.0,1
+B,gold,2773,2773,0,0,0,0.0,1
+B,brent,2773,2773,0,0,0,0.0,1
+B,wti,2773,2773,0,0,0,0.0,1
+B,cedi,2773,2773,0,0,0,0.0,1

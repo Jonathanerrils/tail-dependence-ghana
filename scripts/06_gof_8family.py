@@ -1,7 +1,11 @@
-import sys, itertools, time
+import sys, itertools, time, hashlib
 sys.path.insert(0, "src")
 import pandas as pd
 from tailrisk import copulas, gof
+
+def stable_seed(*parts):
+    key = "|".join(map(str, parts)).encode("utf-8")
+    return int.from_bytes(hashlib.sha256(key).digest()[:4], "big")
 
 pit = pd.read_csv("outputs/tables/_pit_real.csv", index_col=0)
 LABELS = {"cocoa": "Cocoa", "gold": "Gold", "brent": "Brent", "wti": "WTI", "cedi": "Cedi"}
@@ -14,7 +18,7 @@ t0 = time.time()
 for i, (a, b) in enumerate(pairs):
     u, v = copulas.pseudo_obs(pit[[a]])[:, 0], copulas.pseudo_obs(pit[[b]])[:, 0]
     for fam in FAMILIES:
-        r = gof.gof_test(u, v, fam, n_boot=500, seed=hash((a, b, fam)) % (2**31))
+        r = gof.gof_test(u, v, fam, n_boot=500, seed=stable_seed(a, b, fam))
         rows.append({"pair": f"{LABELS[a]}\u2013{LABELS[b]}", "family": fam,
                      "Sn": r["Sn"], "p_value": r["p_value"],
                      "not_rejected_5pct": r["p_value"] >= 0.05, **r["params"]})

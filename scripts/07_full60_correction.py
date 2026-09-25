@@ -1,8 +1,12 @@
-import sys, itertools
+import sys, itertools, hashlib
 sys.path.insert(0, "src")
 import numpy as np
 import pandas as pd
 from tailrisk import copulas, inference
+
+def stable_seed(*parts):
+    key = "|".join(map(str, parts)).encode("utf-8")
+    return int.from_bytes(hashlib.sha256(key).digest()[:4], "big")
 
 pit = pd.read_csv("outputs/tables/_pit_real.csv", index_col=0, parse_dates=True)
 idx = pit.index
@@ -30,15 +34,16 @@ for q in (0.025, 0.05, 0.10):
             v_s = copulas.pseudo_obs(pit_stress[[b]])[:, 0]
             r = inference.calm_stress_difference(
                 u_c, v_c, u_s, v_s, q=q, n_boot=500, level=0.95,
-                seed=hash((a, b, q, tail)) % (2**31), bonf_m=M, upper=upper)
+                seed=stable_seed(a, b, q, tail), bonf_m=M, upper=upper)
             rows.append({
                 "q": q, "tail": tail, "pair": f"{LABELS[a]}\u2013{LABELS[b]}",
                 "lambda_calm": r["lambda_calm"], "lambda_stress": r["lambda_stress"],
                 "difference": r["difference"], "diff_lo": r["diff_lo"], "diff_hi": r["diff_hi"],
                 "p_value": r["p_value"],
                 "sig_uncorrected_5pct": r["significant_5pct"],
-                "diff_lo_bonf60": r["diff_lo_bonf"], "diff_hi_bonf60": r["diff_hi_bonf"],
-                "sig_bonferroni_m60": r["significant_bonferroni"],
+                "diff_lo_bonf60_UNRELIABLE_AT_500BOOT": r["diff_lo_bonf"],
+                "diff_hi_bonf60_UNRELIABLE_AT_500BOOT": r["diff_hi_bonf"],
+                "sig_bonferroni_m60": r["p_value"] <= 0.05 / M,
             })
     print(f"q={q} done ({len(rows)} rows so far)", flush=True)
 

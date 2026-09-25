@@ -67,31 +67,33 @@ def calm_stress_difference(
     p_c, lo_c, hi_c, d_c = bootstrap_lambda_ci(u_calm, v_calm, q, n_boot, rng=rng)
     p_s, lo_s, hi_s, d_s = bootstrap_lambda_ci(u_stress, v_stress, q, n_boot, rng=rng)
     diff = d_s - d_c
+    observed_difference = p_s - p_c
     a = (1 - level) / 2
     dlo, dhi = np.quantile(diff, [a, 1 - a])
-    # Two-sided bootstrap p-value for H0: difference = 0 (basic percentile
-    # approach with a +1 continuity correction, matching the convention
-    # already used in gof.py's parametric-bootstrap p-values, to avoid a
-    # literal p=0 with only n_boot replicates). Needed for Benjamini-
-    # Hochberg FDR, which requires actual p-values, not just CIs.
-    n_below = int(np.sum(diff <= 0))
-    n_above = int(np.sum(diff >= 0))
-    p_below = (n_below + 1) / (n_boot + 1)
-    p_above = (n_above + 1) / (n_boot + 1)
-    p_value = float(min(1.0, 2 * min(p_below, p_above)))
+    # Two-sided centered bootstrap test of H0: difference = 0.
+    # The raw bootstrap differences are centered around the observed
+    # difference, so subtracting that observed difference gives the
+    # bootstrap approximation to the estimation-error distribution under
+    # the null. The observed distance from zero is then compared with the
+    # absolute centered bootstrap deviations.
+    p_value = float((1 + np.sum(np.abs(diff - observed_difference)
+                                >= abs(observed_difference))) / (n_boot + 1))
     out = {
         "lambda_calm": p_c, "calm_lo": lo_c, "calm_hi": hi_c,
         "lambda_stress": p_s, "stress_lo": lo_s, "stress_hi": hi_s,
         "difference": p_s - p_c, "diff_lo": float(dlo), "diff_hi": float(dhi),
         "p_value": p_value,
-        "significant_5pct": bool(dlo > 0 or dhi < 0),
+        "significant_5pct": bool(p_value <= 0.05),
     }
     if bonf_m:
         ab = (0.05 / bonf_m) / 2
         blo, bhi = np.quantile(diff, [ab, 1 - ab])
+        # Retain the percentile interval as a descriptive bootstrap interval.
+        # The multiple-testing decision itself is based on the centered
+        # bootstrap p-value, so the decision rule is identical everywhere.
         out["diff_lo_bonf"] = float(blo)
         out["diff_hi_bonf"] = float(bhi)
-        out["significant_bonferroni"] = bool(blo > 0 or bhi < 0)
+        out["significant_bonferroni"] = bool(p_value <= 0.05 / bonf_m)
     return out
 
 
