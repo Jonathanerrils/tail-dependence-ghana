@@ -1,0 +1,6 @@
+be42455c12bf2f4a9c7ef33494930ad396f569192f571386d099046a388119d1  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\_pit_real.csv
+229e4b901a809cb309c6bddd5e202e27362f64d8c5d805de0b6a127c2e2404c6  C:\Users\Jack\Desktop\tail-dependence-ghana\src\tailrisk\gof.py
+5d107f932f788ac036d4167fcb388a71c4839d7c020d2fc6107d274154e69975  C:\Users\Jack\Desktop\tail-dependence-ghana\src\tailrisk\copulas.py
+97f5e130c7b48dfef17532edeb44e8e2d9579db0974dfd234c424934f62fe90f  C:\Users\Jack\Desktop\tail-dependence-ghana\scripts\18_publication_gof_8family.py
+808dbf86fd9f19e48c600fbab14ad87cb01a6cd455506dbc1899ce60ca4d1864  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\copula_gof_8family_checkpoint.csv
+72717ab5643476985293ae301a1bd0032d8c95295e52b8eed7edcab8a6828b63  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\copula_gof_8family_B2000_B5000.csv

@@ -1,0 +1,6 @@
+series,canonical_price_days,exact_positive_source_days,carried_forward_or_aligned_days,carried_forward_pct,longest_consecutive_carried_run
+cocoa,3008,2898,110,3.656914893617,1
+gold,3008,2897,111,3.690159574468,1
+brent,3008,2899,109,3.623670212766,1
+wti,3008,2897,111,3.690159574468,1
+cedi,3008,2852,156,5.186170212766,3

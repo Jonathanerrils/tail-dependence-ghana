@@ -1,0 +1,8 @@
+﻿be42455c12bf2f4a9c7ef33494930ad396f569192f571386d099046a388119d1  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\_pit_real.csv
+f49a2bf179b56bee1c2a18fad4bf0174ee500e8eab33377641edeed66b6d27f7  C:\Users\Jack\Desktop\tail-dependence-ghana\src\tailrisk\inference.py
+076ba635b004363cfee7fb32f664fe345f673c099469e9f3343e058275df66e1  C:\Users\Jack\Desktop\tail-dependence-ghana\scripts\15_publication_stress_combined.py
+e607bf4f9bbb5cedd14af40e2d1f46729adaffe58a2fea8a4b245382d8cdedea  C:\Users\Jack\Desktop\tail-dependence-ghana\scripts\16_publication_stress_disaggregated.py
+81d733d30bb440aa14d5846a05fbe62ee1ccc97ad461fe0c78de6568241e799d  C:\Users\Jack\Desktop\tail-dependence-ghana\scripts\17_diagnose_brent_wti_covid.py
+d26ac380aa5b7b3685351dbeaffbf4e6f33e8bb6e69493aa131db7ee75c87fb7  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\calm_stress_full60_B15000.csv
+4a7c0c2bc13165864282432636667da6b11e0dfd1d9c45f4326a22cf116c8757  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\calm_stress_disaggregated_B15000.csv
+b5040cb1f09d6772e897c94d88bdff5b11cf577c7cc295326fa6d8b1a24f6dcc  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\diagnostic_brent_wti_covid_upper.csv

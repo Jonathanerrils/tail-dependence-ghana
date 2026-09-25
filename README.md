@@ -1,8 +1,8 @@
-# Commodity Tail Dependence and Exchange-Rate Risk in Ghana: Copula Adequacy, Stress Tests, and Calendar Robustness
+# Commodity Tail Dependence and Exchange-Rate Risk in Ghana
 
-**Research repository for a copula-EVT study of cocoa, gold, crude oil and the Ghana cedi, with explicit attention to calendar construction, marginal-model adequacy, stress-period tail concentration and reproducibility.**
+**Copula adequacy, stress tests, calendar robustness, and reproducible reconstruction of cocoa, gold, Brent, WTI, and Ghana cedi dependence.**
 
-> **Project status:** The scientific analysis is under active reconstruction from audited data and reproducible outputs. Some older manuscript claims and pipeline outputs remain in the repository for history and comparison, but they should not be treated as the final publication evidence unless they are identified below as verified.
+> **Current status:** The scientific reconstruction is substantially complete. The publication analysis now uses two co-equal calendar panels, the publication-resolution stress analysis has been completed for both panels, the major implementation audits are closed, and a reconstructed LaTeX manuscript is available on the `manuscript-rebuild-latex` branch. Historical scripts, outputs, and the older manuscript remain in the repository for provenance and must not be treated as current publication authority unless explicitly identified as verified.
 
 Working manuscript title:
 
@@ -12,124 +12,104 @@ Target journal: *Risks*.
 
 ---
 
-## Why this repository is being rebuilt
+## Scientific design
 
-The original analysis used a business-day panel with capped forward filling. A later provenance audit showed that this documented rule has material consequences for a study of contemporaneous dependence:
-
-- the Bank of Ghana source ends on **10 July 2026**, while the original processed panel extends to **15 July 2026** through the stated forward-fill rule;
-- cross-market calendar alignment creates artificial zero returns on some source-missing or market-closure dates;
-- the April 2020 negative WTI settlement requires special treatment because logarithmic returns cannot pass through a non-positive price;
-- the Ghana cedi remains unusually concentrated near zero even after calendar-generated zeros are reduced;
-- some copula goodness-of-fit conclusions, especially for cocoa-related commodity pairs, change under a stricter common-observation construction.
-
-These findings do **not** mean that the original panel was fabricated or that its documented methodology was invalid. They show that two defensible calendar constructions answer slightly different empirical questions.
-
-For that reason, the publication analysis now uses a **deliberate two-panel design**.
-
----
-
-## Two-panel design
+The paper uses two co-equal calendar constructions. Neither is treated as the true, corrected, or primary panel.
 
 ### Panel A: business-day alignment
 
-This is the project's original documented construction.
-
-- **3,008 return observations**
-- **5 January 2015 to 15 July 2026**
+- 3,008 return observations
+- 5 January 2015 to 15 July 2026
 - business-day calendar
-- forward fill capped at three business days
+- forward fill limited to three business days
 - preserves nominal business-day frequency
-- retained as a fully audited analysis specification
 
-The frozen return file has SHA-256:
+Frozen return SHA-256:
 
 ```text
 3e9769f42ec7925aacd951277ddae6ff529822408815b01210de87659221341f
 ```
 
-A strengthened convergence audit of all 20 marginal candidates confirmed that **none of the previously selected Panel A marginal models changes** when optimizer convergence and finite-fit validity are imposed as hard requirements.
+Frozen PIT SHA-256:
+
+```text
+be42455c12bf2f4a9c7ef33494930ad396f569192f571386d099046a388119d1
+```
 
 ### Panel B: common-observation alignment
 
-This is the stricter synchronization specification.
-
-- **2,774 return observations**
-- **5 January 2015 to 10 July 2026**
+- 2,774 return observations
+- 5 January 2015 to 10 July 2026
 - no forward-filled return observations
-- each multivariate row uses the same start and end observation dates for all five series
-- return intervals range from one to six calendar days
-- median interval is one calendar day
+- every multivariate row uses the same pair of common actual observation dates
+- return intervals span one to six calendar days, median one
 
-The synchronized return file has SHA-256:
+Frozen return SHA-256:
 
 ```text
 e6312d6163aeb7c9fb7ce722ebe46be1898f23855d5a87395830e4d1e82bf3b3
 ```
 
+Frozen PIT SHA-256:
+
+```text
+9b322bda7c4e63534da14d1a7e360e758762e98cb39101cf329cdceb5afc216f
+```
+
 ### Interpretation rule
 
-Neither panel is treated as the automatic "truth" and neither is described as a correction of an erroneous dataset.
+Results are classified as:
 
-Headline conclusions are classified as:
+- **calendar-robust** when the same inferential conclusion survives both panels;
+- **calendar-sensitive** when the conclusion changes materially across the two constructions;
+- **panel-specific diagnostic** when an analysis belongs to only one panel and is not promoted to a cross-panel result.
 
-- **calendar-robust**: the inferential conclusion survives both panel constructions;
-- **calendar-sensitive**: the conclusion changes materially across the two constructions;
-- **panel-specific diagnostic**: the analysis has only been completed under one construction and is not promoted as a cross-panel result.
-
-This structure was adopted before running any further synchronized-panel stress analysis.
+This classification was frozen before the final stress interpretation.
 
 ---
 
-## Verified findings so far
+## Marginal-model gate
 
-### Marginal-model validity
-
-The publication workflow now treats optimizer convergence as a hard admissibility condition.
-
-A candidate marginal model is considered valid only if:
-
-- `convergence_flag == 0`;
-- log likelihood and fitted parameters are finite;
-- standardized residuals are finite;
-- conditional volatility is finite and strictly positive;
-- PIT values are finite.
-
-Among valid candidates, the first specification in the fixed ladder that passes the 5% adequacy gate is selected. If none passes, the lowest-AIC valid model is retained only as an **inadequate deterministic reference**.
-
-Candidate ladder:
+The publication workflow uses a fixed four-model ladder:
 
 1. AR(1)-GJR-GARCH(1,1)-t
 2. AR(2)-GJR-GARCH(1,1)-t
 3. AR(1)-EGARCH(1,1)-t
 4. AR(1)-GJR-GARCH(1,1)-skew-t
 
-Panel A selections:
+A candidate is admissible only when:
 
-| Series | Selected specification | Status |
-|---|---|---|
-| Cocoa | AR(1)-GJR-GARCH-t | Adequate |
-| Gold | AR(1)-GJR-GARCH-t | Adequate |
-| Brent | AR(1)-GJR-GARCH-skew-t | Adequate |
-| WTI | AR(1)-EGARCH-t | Adequate |
-| Cedi | AR(1)-GJR-GARCH-t | Inadequate reference |
+- `convergence_flag == 0`;
+- log likelihood and parameters are finite;
+- standardized residuals are finite;
+- conditional volatility is finite and positive;
+- PIT values are finite.
 
-Panel B selections:
+Adequacy then requires all three 5% diagnostics to pass:
 
-| Series | Selected specification | Status |
-|---|---|---|
-| Cocoa | AR(1)-GJR-GARCH-t | Adequate |
-| Gold | AR(1)-GJR-GARCH-t | Adequate |
-| Brent | AR(1)-GJR-GARCH-t | Adequate |
-| WTI | AR(1)-GJR-GARCH-t | Adequate |
-| Cedi | AR(1)-EGARCH-t | Inadequate reference |
+- Ljung-Box on standardized residuals;
+- Ljung-Box on squared standardized residuals;
+- Kolmogorov-Smirnov test of PIT uniformity.
 
-The Panel B Cedi reference converges, but its PIT uniformity test fails strongly. The Cedi marginal therefore remains an explicit limitation rather than being forced into an "adequate" specification.
+If no valid candidate is adequate, the lowest-AIC valid model is retained only as an **inadequate reference model**.
+
+### Selected margins
+
+| Series | Panel A | Status | Panel B | Status |
+|---|---|---|---|---|
+| Cocoa | AR(1)-GJR-GARCH-t | Adequate | AR(1)-GJR-GARCH-t | Adequate |
+| Gold | AR(1)-GJR-GARCH-t | Adequate | AR(1)-GJR-GARCH-t | Adequate |
+| Brent | AR(1)-GJR-GARCH-skew-t | Adequate | AR(1)-GJR-GARCH-t | Adequate |
+| WTI | AR(1)-EGARCH-t | Adequate | AR(1)-GJR-GARCH-t | Adequate |
+| Cedi | AR(1)-GJR-GARCH-t | Inadequate reference | AR(1)-EGARCH-t | Inadequate reference |
+
+The Cedi remains an explicit modeling limitation under both calendar constructions.
 
 ---
 
 ## Copula goodness-of-fit
 
-Eight static bivariate copula families are evaluated:
+Eight static bivariate copula families are tested:
 
 - Gaussian
 - Student-t
@@ -140,36 +120,37 @@ Eight static bivariate copula families are evaluated:
 - survival Clayton
 - survival Gumbel
 
-AIC is used only for relative comparison. Absolute adequacy is assessed with a Rosenblatt-transform Cramér-von Mises-type parametric-bootstrap test.
+Absolute adequacy is evaluated using a **Rosenblatt-transform Cramér-von Mises statistic with parametric bootstrap**.
 
-Publication GOF settings:
+Publication settings:
 
-- 10 asset pairs
-- 8 copula families
-- 80 pair-family cells
+- 10 unordered asset pairs
+- 8 families
+- 80 pair-family cells per panel
 - 50 x 50 evaluation grid
-- `B = 2,000` bootstrap replicates for every cell
-- initial p-values in `[0.03, 0.07]` rerun from scratch at `B = 5,000`
-- model re-estimated within each bootstrap sample
+- `B = 2,000` for every cell
+- initial p-values in `[0.03, 0.07]` rerun at `B = 5,000`
+- copula re-estimated within every bootstrap sample
 - Monte Carlo p-value `(exceedances + 1) / (B + 1)`
 
-### Calendar-robust GOF findings
+### Calendar-robust complete rejection
 
-The following results currently survive both calendar constructions:
+| Pair | Panel A | Panel B |
+|---|---:|---:|
+| Gold-Brent | 8/8 rejected | 8/8 rejected |
+| Gold-WTI | 8/8 rejected | 8/8 rejected |
+| Brent-WTI | 8/8 rejected | 8/8 rejected |
 
-| Pair | Panel A | Panel B | Classification |
-|---|---:|---:|---|
-| Gold-Brent | 8/8 rejected | 8/8 rejected | Calendar-robust |
-| Gold-WTI | 8/8 rejected | 8/8 rejected | Calendar-robust |
-| Brent-WTI | 8/8 rejected | 8/8 rejected | Calendar-robust |
-| Cocoa-Cedi | 0/8 rejected | 0/8 rejected | Calendar-robust |
-| Gold-Cedi | 0/8 rejected | 0/8 rejected | Calendar-robust |
-| Brent-Cedi | 0/8 rejected | 0/8 rejected | Calendar-robust |
-| WTI-Cedi | 0/8 rejected | 0/8 rejected | Calendar-robust |
+### Calendar-robust non-rejection
 
-### Calendar-sensitive GOF findings
+| Pair | Panel A | Panel B |
+|---|---:|---:|
+| Cocoa-Cedi | 0/8 rejected | 0/8 rejected |
+| Gold-Cedi | 0/8 rejected | 0/8 rejected |
+| Brent-Cedi | 0/8 rejected | 0/8 rejected |
+| WTI-Cedi | 0/8 rejected | 0/8 rejected |
 
-The cocoa-related commodity pairs are sensitive to calendar construction:
+### Calendar-sensitive cocoa pairs
 
 | Pair | Panel A | Panel B |
 |---|---:|---:|
@@ -177,112 +158,149 @@ The cocoa-related commodity pairs are sensitive to calendar construction:
 | Cocoa-Brent | 8/8 rejected | 3/8 rejected |
 | Cocoa-WTI | 8/8 rejected | 3/8 rejected |
 
-The repository therefore no longer treats "all commodity-commodity pairs reject all eight static copulas" as a universal finding.
-
-A GOF non-rejection does not prove that a copula is correctly specified, and rejection of all eight tested families does not imply that copulas in general fail.
+A GOF non-rejection does not prove model correctness. Complete rejection is limited to the eight tested static families and does not imply that copulas in general fail.
 
 ---
 
 ## Stress-period tail concentration
 
-The stress design evaluates empirical finite-tail concentration at:
+Finite-threshold lower- and upper-tail concentration is evaluated at:
 
 ```text
 q = 0.025, 0.05, 0.10
 ```
 
-for:
+for 10 pairs, two tails, and three stress definitions.
 
-- 10 asset pairs;
-- lower and upper tails;
-- three stress definitions.
-
-Each stress definition therefore contains:
+Each stress family therefore contains:
 
 ```text
-10 pairs x 3 q levels x 2 tails = 60 tests
+10 pairs x 3 thresholds x 2 tails = 60 tests
 ```
 
-The three inferential families are:
+The three families are:
 
-1. COVID-19 stress, March-June 2020;
-2. calendar year 2024 cocoa-stress window;
-3. combined COVID-19 + 2024 stress.
+1. COVID-19, 1 March to 30 June 2020;
+2. calendar year 2024;
+3. combined COVID-19 plus 2024.
 
-This means **180 tested cells overall**, not ninety simultaneous tests.
+The common calm baseline excludes both stress windows.
 
-Multiplicity correction is applied **separately within each 60-test family** using:
+Inference uses:
 
-- Bonferroni family-wise error control;
-- Benjamini-Hochberg false-discovery-rate control.
+- moving-block bootstrap;
+- block length 20;
+- `B = 15,000` per cell;
+- reranking within every regime and bootstrap replicate;
+- Bonferroni correction within each 60-test family;
+- Benjamini-Hochberg FDR correction within each 60-test family.
 
-### Panel A stress status
+### Publication-resolution result
 
-The publication-resolution Panel A analysis found nominally significant cells, but **no cells survived Bonferroni or Benjamini-Hochberg correction** in any of the three 60-test stress families.
+| Stress definition | Panel A nominal p<0.05 | Panel B nominal p<0.05 | Panel A corrected | Panel B corrected |
+|---|---:|---:|---:|---:|
+| Combined COVID + 2024 | 6/60 | 5/60 | 0/60 | 0/60 |
+| COVID-19 only | 11/60 | 11/60 | 0/60 | 0/60 |
+| 2024 only | 6/60 | 7/60 | 0/60 | 0/60 |
 
-### Panel B stress status
+No cell survives either Bonferroni or Benjamini-Hochberg correction in any of the three families under either panel.
 
-**Not yet completed at publication resolution.**
+The defensible conclusion is therefore:
 
-The Panel B stress analysis is intentionally being held until the two-panel interpretation rules are frozen. Its purpose will be to determine whether the corrected stress conclusion is calendar-robust or calendar-sensitive.
+> **Within the prespecified stress windows, thresholds, moving-block-bootstrap design, and multiplicity procedures, the absence of adjusted stress discoveries is calendar-robust.**
 
-No Panel B stress result should currently be inferred from the GOF analysis.
+This is not evidence that tail dependence is constant or that crises cannot affect the markets.
 
 ---
 
-## Extreme-value diagnostics
+## Cedi robustness and EVT
 
-POT/GPD analysis is applied to negative standardized residuals from the selected marginal reference models.
-
-For Panel B, the q90 Cedi reference gives approximately:
-
-```text
-xi       = 0.693
-beta     = 0.329
-n_exc    = 278
-VaR99    = 2.332 standardized-residual units
-ES99     = 7.616 standardized-residual units
-```
-
-Across Cedi thresholds from `q = 0.85` to `0.975`, the estimated shape parameter remains positive, approximately `0.63` to `0.79`.
-
-These values are treated as **conditional diagnostics**, not model-free structural facts, because no tested Cedi marginal passes the full adequacy gate.
-
-Older EVT numbers in superseded manuscript drafts should not be treated as current publication evidence.
-
----
-
-## Cedi robustness
-
-The original business-day analysis includes seven Cedi treatments, labelled A-G, covering alternatives such as:
+The original Panel A analysis includes seven Cedi treatments:
 
 - baseline GARCH reference;
 - raw ranks;
 - AR-only filtering;
 - weekly aggregation;
-- hurdle treatment;
-- static mixture treatment;
-- Markov-switching treatment.
+- hurdle Student-t;
+- hurdle mixture;
+- hurdle Markov.
 
-These remain valid as Panel A robustness evidence.
+Nominal 5% diagnostic counts out of 12 cells are:
 
-A complete seven-treatment rerun on Panel B is **not automatically required**. It will only be triggered if synchronized-panel stress results involving the Cedi materially change the substantive conclusion, or if a later review requires the full cross-panel matrix.
+```text
+A baseline GARCH     3
+B raw ranks          3
+C AR-only            2
+D weekly             0
+E hurdle Student-t   2
+F hurdle mixture     2
+G hurdle Markov      2
+```
+
+These are uncorrected diagnostic results, not headline discoveries.
+
+A synchronized seven-treatment Panel B rerun was prespecified to occur only if at least one commodity-Cedi Panel B stress cell survived Bonferroni or BH correction. No such cell survived, so the trigger was not activated.
+
+For Panel B, the q90 Cedi POT/GPD reference gives approximately:
+
+```text
+xi       = 0.693
+beta     = 0.329
+VaR99    = 2.332
+ES99     = 7.616
+```
+
+Across thresholds from `q = 0.85` to `0.975`, the Cedi shape estimate remains positive, approximately `0.63` to `0.79`.
+
+These are **conditional diagnostics** because the selected Cedi marginal is inadequate.
 
 ---
 
-## Monthly transmission analysis
+## Closed implementation audits
 
-The previous monthly transmission results are **withdrawn from the current manuscript evidence**.
+### Panel A marginal convergence audit
 
-A data-integrity audit found invalid literal zero values in the extracted Bank of Ghana headline year-on-year inflation series for part of 2023. The prior monthly regression outputs therefore cannot be treated as publication findings.
+All 20 Panel A marginal candidates were rechecked with convergence and finite-value validity enforced as hard requirements.
 
-The monthly transmission question will remain suspended until:
+- one Cedi EGARCH candidate was invalid/non-converged;
+- no previously selected Panel A marginal changed.
 
-1. the CPI series is rebuilt from a verified authoritative source;
-2. the monthly panel is re-audited;
-3. the regression analysis is rerun from scratch.
+### GOF estimator-equivalence audit
 
-The March 2025 zero monthly Cedi return was separately checked and is a genuine zero in the available Bank of Ghana series.
+The historical Panel A and publication Panel B GOF fitting routes were tested on identical inputs.
+
+Across all eight families and ten cells:
+
+- fitted parameters matched;
+- observed GOF statistics matched;
+- maximum absolute observed statistic difference was zero.
+
+No Panel A GOF rerun was required on estimator-equivalence grounds.
+
+### PIT clipping/tie audit
+
+Panel B contains no exact PIT ties.
+
+Panel A contains one three-way Cedi PIT floor tie at `1e-6`. Recovering the underlying residual rank ordering:
+
+- changes only two pseudo-observations;
+- changes no membership at `q = 0.025, 0.05, 0.10`;
+- changes the largest observed Cedi-pair GOF statistic by only `0.000262`;
+- leaves the borderline Cocoa-Cedi Frank observed statistic unchanged.
+
+The clipping issue is therefore closed and is not a material driver of the publication conclusions.
+
+---
+
+## Monthly transmission branch
+
+The previous monthly transmission analysis is **withdrawn from the manuscript**.
+
+The macroeconomic audit identified invalid literal zero values in the extracted Bank of Ghana headline inflation series for part of 2023 and a source gap in the exports series that had previously been masked by the extraction pipeline.
+
+The historical monthly regression coefficients and p-values are not current evidence.
+
+Any future transmission extension must begin with a separately validated macroeconomic data pipeline.
 
 ---
 
@@ -297,169 +315,183 @@ Daily-source-frequency commodity series:
 - Brent crude oil: `BZ=F`
 - WTI crude oil: `CL=F`
 
-The repository records the provider symbols and retrieval workflow. The project does not assume that the provider's continuous-series construction eliminates futures-roll effects.
+The manuscript does not make unverified claims about the provider's continuous-futures roll or back-adjustment methodology.
 
-The World Bank Pink Sheet comparison is used only as a low-frequency external consistency check, not as proof that daily futures-roll effects are absent.
+### Ghana cedi
 
-### Exchange rate
+The publication exchange-rate source is the Bank of Ghana interbank USD/GHS series.
 
-The canonical exchange-rate source is the **Bank of Ghana interbank USD/GHS mid-rate**.
-
-The sign is reversed for dependence analysis so that:
+Returns are oriented so that:
 
 ```text
 negative Cedi return = depreciation
 ```
 
-This aligns adverse Cedi movements with the lower-tail orientation used for commodity-price declines.
-
-The Yahoo `GHS=X` series is used only as a diagnostic comparator and is not the publication exchange-rate input.
+This places adverse commodity and Cedi movements in the same lower-tail orientation.
 
 ---
 
-## Repository structure
+## Reconstructed manuscript
+
+The historical manuscript in `paper/latex/paper.tex` is retained for provenance.
+
+The reconstructed scientific manuscript is being reviewed on the branch:
+
+```text
+manuscript-rebuild-latex
+```
+
+and is assembled under:
+
+```text
+paper/latex/rebuild/
+  manuscript.tex
+  references.bib
+  README.md
+  sections/
+    01_introduction.tex
+    02_related_literature.tex
+    03_data_calendar.tex
+    04_methodology.tex
+    05_results.tex
+    06_discussion.tex
+    07_robustness_limitations.tex
+    08_conclusion.tex
+```
+
+Draft pull request:
+
+**PR #1: Rebuild manuscript in LaTeX from audited scientific sections**
+
+The reconstructed manuscript currently contains Sections 1 through 8 and is awaiting final cross-section consistency, bibliography, compilation, figure/table, and submission-format checks before merge.
+
+---
+
+## Repository layout
+
+The publication reconstruction currently uses the following main areas:
 
 ```text
 paper/
-  latex/                       Manuscript source and compiled paper artifacts
-  VERIFICATION_LEDGER.csv      Historical ledger from the earlier analysis; being rebuilt
+  latex/
+    paper.tex                       Historical manuscript
+    rebuild/                        Reconstructed LaTeX manuscript
+  VERIFICATION_LEDGER.csv           Historical ledger; not current authority
 
 src/tailrisk/
-  marginals.py                 Marginal-model code
-  evt.py                       POT/GPD and tail diagnostics
-  copulas.py                   8-family bivariate copula estimation
-  gof.py                       Copula goodness-of-fit machinery
-  inference.py                 Bootstrap and marginal diagnostics
-  networks.py                  Rolling/network analysis utilities
+  marginals.py                      Marginal models
+  evt.py                            POT/GPD diagnostics
+  copulas.py                        Eight-family copula estimation
+  gof.py                            GOF implementation
+  inference.py                      Bootstrap and diagnostic utilities
 
 scripts/
-  00-13                        Original data, analysis and robustness workflow
-  23-27                        Data provenance and calendar-construction audits
-  28                           Panel B marginal + EVT publication rebuild
-  29                           Panel B 8-family GOF rebuild
-  30                           Panel A hard convergence-gate audit
-  31                           Planned Panel B publication stress comparison
-
-data/
-  raw/                         Source inputs permitted in the repository
-  processed/                   Processed analysis inputs
+  00-22                             Historical/original workflow
+  23_data_provenance_audit.py
+  24_alignment_macro_integrity_audit.py
+  25_native_return_panel_audit.py
+  26_native_return_panel_corrected_audit.py
+  27_synchronized_common_interval_audit.py
+  28_publication_rebuild_stage1.py
+  29_publication_rebuild_stage2_gof.py
+  30_original_panel_convergence_gate_audit.py
+  31_publication_rebuild_stage3_stress_SAFE.py
+  32_gof_implementation_equivalence_audit.py
+  33_pit_ties_audit.py
+  34_panelA_cedi_pit_tie_diagnostic.py
+  35_panelA_pit_floor_audit_SAFE.py
+  36_panelA_cedi_declipped_rank_gof_sensitivity_SAFE_v2.py
 
 outputs/
-  tables/                      Original-panel and historical result tables
-  figures/                     Figures
-  original_panel_gate_audit/   Hard-gate audit for Panel A
-  publication_rebuild_v2/      Panel B publication-rebuild outputs
+  tables/                           Panel A and historical/audit outputs
+  original_panel_gate_audit/        Panel A convergence audit
+  gof_equivalence_audit/            GOF implementation audit
+  pit_ties_audit/                    PIT clipping/tie audit
+  publication_rebuild_v2/            Panel B publication outputs
 ```
 
-Some older scripts and outputs remain for provenance and reproducibility. Their presence does not mean every historical claim remains active in the current manuscript.
+Older files remain for provenance. Their presence does not make stale results current evidence.
 
 ---
 
-## Current reproduction status
+## Reproduction status
 
-The repository is **not yet at a one-command final-publication reproduction stage**.
+The project is not yet reduced to one final publication command.
 
-Do not assume that the legacy command:
+The main publication stages are:
 
-```bash
-python scripts/02_run_pipeline.py --data real
-```
-
-reproduces the current two-panel publication architecture. That script belongs to the earlier business-day workflow and is retained for provenance.
-
-The current publication reconstruction proceeds through explicit audited stages:
-
-### Panel A audit
+### Panel A hard-gate audit
 
 ```bash
 python scripts/30_original_panel_convergence_gate_audit.py
 ```
 
-This verifies the frozen 3,008-row input and applies the strengthened hard convergence gate without altering any existing analysis artifacts.
-
-### Panel B marginal rebuild
+### Panel B marginals and EVT
 
 ```bash
 python scripts/28_publication_rebuild_stage1.py
 ```
 
-### Panel B copula GOF
+### Panel B GOF
 
 ```bash
 python scripts/29_publication_rebuild_stage2_gof.py
 ```
 
-### Panel B stress comparison
+### Panel B stress inference
+
+The publication stress analysis has already been completed with the safe Stage 31 workflow. Do not rerun the full `B = 15,000` jobs casually because they are computationally expensive.
+
+### Implementation audits
 
 ```bash
-python scripts/31_publication_rebuild_stage3_stress.py
+python scripts/32_gof_implementation_equivalence_audit.py
+python scripts/33_pit_ties_audit.py
+python scripts/34_panelA_cedi_pit_tie_diagnostic.py
+python scripts/35_panelA_pit_floor_audit_SAFE.py
+python scripts/36_panelA_cedi_declipped_rank_gof_sensitivity_SAFE_v2.py
 ```
 
-**Do not run Stage 31 merely because it is listed here.** It is the next planned expensive analysis and should only be run after the two-panel interpretation protocol is accepted and frozen.
-
-A final top-level publication reproduction command will be added after the scientific architecture and manuscript are frozen.
+A final release workflow will be added after the manuscript, figures, tables, bibliography, and verification ledger are frozen.
 
 ---
 
-## Reproducibility safeguards
+## Local-versus-GitHub authority
 
-The current publication workflow uses:
+A substantial part of the reconstruction was completed on the author's local PC before being synchronized to GitHub.
 
-- SHA-256 hashes for frozen analysis inputs and outputs;
-- deterministic seed derivation;
-- optimizer-convergence gating;
-- finite-value validity checks;
-- explicit adequacy diagnostics;
-- bootstrap checkpoints for long-running GOF jobs;
-- separate output directories for historical and rebuilt analyses;
-- non-destructive audit scripts;
-- explicit separation between relative fit and absolute model adequacy.
+Until the local reconstruction is fully uploaded:
 
-The project does not silently replace historical outputs when a new audit is run.
+> **The audited local project files and verified publication outputs are the authority when they conflict with stale files currently on GitHub.**
+
+Do not infer the current implementation solely from historical GitHub files.
+
+Before the next public release, the local scripts, source modules, publication outputs, manuscript-support files, and documentation will be synchronized into the reconstruction branch and reviewed before merge.
 
 ---
 
-## What is currently settled
+## Files that should not be committed
 
-The following points are considered established for the current reconstruction:
+Do not commit Python virtual environments, caches, local IDE state, or transient build artifacts.
 
-- the original 3,008-row Panel A is exactly identified and hash-frozen;
-- the synchronized 2,774-row Panel B is exactly identified and hash-frozen;
-- enforcing optimizer convergence does not change any selected Panel A marginal model;
-- the Cedi remains marginally inadequate under both panel constructions;
-- Gold-Brent, Gold-WTI and Brent-WTI static-copula inadequacy is robust across both panels;
-- all four commodity-Cedi GOF non-rejections are robust across both panels;
-- cocoa-related commodity GOF conclusions are calendar-sensitive;
-- Panel A corrected stress inference finds no Bonferroni or BH discoveries;
-- monthly transmission results are withdrawn pending CPI reconstruction.
+In particular, the local project currently contains both `.venv/` and `venv/`. Neither belongs in Git.
+
+Use the repository `.gitignore` and inspect `git status` before committing.
 
 ---
 
-## What remains open
+## Remaining release work
 
-The main remaining scientific tasks are:
-
-1. freeze the two-panel interpretation protocol;
-2. run the Panel B publication-resolution stress comparison;
-3. classify stress conclusions as calendar-robust or calendar-sensitive;
-4. decide whether any synchronized Cedi A-G follow-up is triggered;
-5. rebuild the monthly macroeconomic panel if transmission remains in scope;
-6. rewrite the manuscript from verified outputs;
-7. refresh figures, tables and the verification ledger;
-8. convert the final paper to the target journal format;
-9. create a clean one-command reproducibility workflow for the frozen publication release.
-
----
-
-## Manuscript status
-
-The manuscript currently in `paper/latex/` contains historical material that is being reconstructed from the audited evidence base.
-
-Until the rewrite is complete:
-
-- do not treat every numerical claim in the current PDF as authoritative;
-- prefer the audited CSV/JSON outputs; the verification ledger is being rebuilt;
-- treat older manuscript drafts as historical artifacts.
+1. synchronize the current local reconstruction with GitHub;
+2. reconcile any differences between local `src/` and stale GitHub source files;
+3. upload current scripts 23-36 and publication outputs that form the evidence record;
+4. rebuild the current verification ledger from the frozen evidence;
+5. run cross-section consistency and citation audits on the assembled manuscript;
+6. compile and inspect the LaTeX manuscript;
+7. refresh publication tables and figures from frozen outputs;
+8. normalize the bibliography;
+9. adapt the final paper to *Risks* submission format;
+10. create a clean release tag and one-command reproduction workflow.
 
 ---
 

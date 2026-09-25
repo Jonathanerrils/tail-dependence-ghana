@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
+venv/
 .ipynb_checkpoints/
 
 # Yahoo Finance ToS: fetch-only, do not redistribute raw/derived Yahoo data
@@ -21,3 +22,19 @@ paper/latex/*.blg
 paper/latex/*.log
 paper/latex/*.out
 paper/latex/*.spl
+
+# Local development caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# Nested LaTeX build artifacts
+paper/latex/**/*.aux
+paper/latex/**/*.bbl
+paper/latex/**/*.blg
+paper/latex/**/*.log
+paper/latex/**/*.out
+paper/latex/**/*.fls
+paper/latex/**/*.fdb_latexmk
+paper/latex/**/*.synctex.gz
