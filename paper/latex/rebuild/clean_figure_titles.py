@@ -36,3 +36,44 @@ for name, (original_height, crop_top) in CROPS.items():
                 f"Unexpected height for {name}: {im.height}; "
                 f"expected {original_height} or {original_height - crop_top}"
             )
+
+
+# Once title bands are physically removed from the PNGs, remove LaTeX-side
+# trim values so captions/axes are not cropped a second time.
+TEXT_REPLACEMENTS = {
+    ROOT / "sections" / "04_methodology.tex": [
+        (r"\\includegraphics[width=\\linewidth,trim=0 0 0 180,clip]{figures/repository_study_design_workflow.png}",
+         r"\\includegraphics[width=\\linewidth]{figures/repository_study_design_workflow.png}"),
+    ],
+    ROOT / "sections" / "05_results.tex": [
+        (r"\\includegraphics[width=\\linewidth,trim=0 0 0 48,clip]{figures/figure_02_tail_concentration_profiles.png}",
+         r"\\includegraphics[width=\\linewidth]{figures/figure_02_tail_concentration_profiles.png}"),
+        (r"\\includegraphics[width=0.90\\linewidth,trim=0 0 0 65,clip]{figures/figure_03_copula_gof_heatmap.png}",
+         r"\\includegraphics[width=0.90\\linewidth]{figures/figure_03_copula_gof_heatmap.png}"),
+        (r"\\includegraphics[width=\\linewidth,trim=0 0 0 58,clip]{figures/figure_04_stress_summary.png}",
+         r"\\includegraphics[width=\\linewidth]{figures/figure_04_stress_summary.png}"),
+        (r"\\includegraphics[width=0.96\\linewidth,trim=0 0 0 110,clip]{figures/cross_panel_evidence_summary.png}",
+         r"\\includegraphics[width=0.96\\linewidth]{figures/cross_panel_evidence_summary.png}"),
+    ],
+    ROOT / "sections" / "09_supplementary_figures.tex": [
+        (r"\\includegraphics[width=0.90\\linewidth,trim=0 0 0 70,clip]{figures/figure_S1_cedi_evt_threshold_sensitivity.png}",
+         r"\\includegraphics[width=0.90\\linewidth]{figures/figure_S1_cedi_evt_threshold_sensitivity.png}"),
+        (r"\\includegraphics[width=0.90\\linewidth,trim=0 0 0 70,clip]{figures/figure_S2_cedi_AG_sensitivity.png}",
+         r"\\includegraphics[width=0.90\\linewidth]{figures/figure_S2_cedi_AG_sensitivity.png}"),
+        (r"\\includegraphics[width=0.90\\linewidth,trim=0 0 0 70,clip]{figures/figure_S3_pit_clipping_diagnostic.png}",
+         r"\\includegraphics[width=0.90\\linewidth]{figures/figure_S3_pit_clipping_diagnostic.png}"),
+    ],
+    ROOT / "graphical_abstract.tex": [
+        (r"\\includegraphics[width=\\textwidth,trim=0 0 0 55,clip]{figures/graphical_abstract_verified_findings.png}",
+         r"\\includegraphics[width=\\textwidth]{figures/graphical_abstract_verified_findings.png}"),
+    ],
+}
+
+for path, replacements in TEXT_REPLACEMENTS.items():
+    text = path.read_text(encoding="utf-8")
+    original = text
+    for old, new in replacements:
+        text = text.replace(old, new)
+    if text != original:
+        path.write_text(text, encoding="utf-8")
+        print(f"updated {path.relative_to(ROOT)}")
