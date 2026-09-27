@@ -25,6 +25,19 @@ The Panel A hard-gate audit checked all 20 candidate fits. One candidate, the Ce
 
 This result is important for the interpretation that follows. Commodity-only dependence results are supported by margins that pass the stated gate in both panels. Cedi-related copula and extreme-value quantities are conditional on an inadequate continuous marginal reference under both calendar constructions.
 
+\subsection{Empirical finite-threshold tail concentration}
+
+Figure~\ref{fig:tail-profiles} compares empirical lower- and upper-tail concentration at the prespecified thresholds \(q=0.025\), \(0.05\) and \(0.10\) for selected pairs under both calendar constructions. These are finite-threshold concentration measures and are not interpreted as asymptotic tail-dependence coefficients.
+
+The profiles show that some pairwise tail features are similar across the two calendar constructions while others are more sensitive to the observation calendar. This descriptive evidence is therefore interpreted jointly with the absolute copula goodness-of-fit results rather than used on its own to identify a parametric dependence structure.
+
+\begin{figure}[htbp]
+\centering
+\refstepcounter{figure}
+\includegraphics[width=\linewidth]{figures/figure_02_tail_concentration_profiles.png}
+\label{fig:tail-profiles}
+\end{figure}
+
 \subsection{Static copula adequacy: robust failures, robust non-rejections and calendar sensitivity}
 
 The clearest cross-panel difference appears in the absolute copula goodness-of-fit results. Table 2 reports the number of rejected families, out of the eight tested, for each pair.
@@ -32,23 +45,33 @@ The clearest cross-panel difference appears in the absolute copula goodness-of-f
 \begin{table}[htbp]
 \centering
 \small
-\begin{tabularx}{\textwidth}{lXXX}
+\begin{tabularx}{\textwidth}{lcc>{\raggedright\arraybackslash}X}
 \toprule
 \textbf{Pair} & \textbf{Panel A rejected} & \textbf{Panel B rejected} & \textbf{Cross-panel classification} \\
 \midrule
-Cocoa-Gold & 8/8 & 2/8 & Calendar-sensitive \\
-Cocoa-Brent & 8/8 & 3/8 & Calendar-sensitive \\
-Cocoa-WTI & 8/8 & 3/8 & Calendar-sensitive \\
-Cocoa-Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
-Gold-Brent & 8/8 & 8/8 & Calendar-robust rejection \\
-Gold-WTI & 8/8 & 8/8 & Calendar-robust rejection \\
-Gold-Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
-Brent-WTI & 8/8 & 8/8 & Calendar-robust rejection \\
-Brent-Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
-WTI-Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
+Cocoa--Gold & 8/8 & 2/8 & Calendar-sensitive \\
+Cocoa--Brent & 8/8 & 3/8 & Calendar-sensitive \\
+Cocoa--WTI & 8/8 & 3/8 & Calendar-sensitive \\
+Cocoa--Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
+Gold--Brent & 8/8 & 8/8 & Calendar-robust rejection \\
+Gold--WTI & 8/8 & 8/8 & Calendar-robust rejection \\
+Gold--Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
+Brent--WTI & 8/8 & 8/8 & Calendar-robust rejection \\
+Brent--Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
+WTI--Cedi & 0/8 & 0/8 & Calendar-robust non-rejection \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\begin{figure}[htbp]
+\centering
+\refstepcounter{figure}
+\includegraphics[width=0.90\linewidth]{figures/figure_03_copula_gof_heatmap.png}
+\label{fig:gof-heatmap}
+\end{figure}
+
+Figure~\ref{fig:gof-heatmap} visualizes the same cross-panel adequacy pattern as the table, using the number of families not rejected out of the eight tested.
+
 
 Three commodity-commodity pairs are therefore robustly inconsistent with every member of the tested eight-family static copula set: Gold-Brent, Gold-WTI and Brent-WTI. This conclusion survives both calendar constructions.
 
@@ -65,16 +88,26 @@ The stress analysis produces a different kind of robustness result. Across the c
 \begin{table}[htbp]
 \centering
 \small
-\begin{tabularx}{\textwidth}{lXXXXXXX}
+\begin{tabularx}{\textwidth}{lccX}
 \toprule
-\textbf{Stress definition} & \textbf{Panel A nominal p<0.05} & \textbf{Panel B nominal p<0.05} & \textbf{Panel A Bonferroni} & \textbf{Panel B Bonferroni} & \textbf{Panel A BH} & \textbf{Panel B BH} & \textbf{Classification} \\
+\textbf{Stress definition} & \textbf{Panel A nominal} & \textbf{Panel B nominal} & \textbf{Multiplicity-controlled result} \\
 \midrule
-Combined COVID + 2024 & 6/60 & 5/60 & 0 & 0 & 0 & 0 & Calendar-robust \\
-COVID-19 only & 11/60 & 11/60 & 0 & 0 & 0 & 0 & Calendar-robust \\
-2024 only & 6/60 & 7/60 & 0 & 0 & 0 & 0 & Calendar-robust \\
+Combined COVID + 2024 & 6/60 & 5/60 & 0 Bonferroni; 0 BH in both panels \\
+COVID-19 only & 13/60 & 11/60 & 0 Bonferroni; 0 BH in both panels \\
+2024 only & 6/60 & 7/60 & 0 Bonferroni; 0 BH in both panels \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\begin{figure}[htbp]
+\centering
+\refstepcounter{figure}
+\includegraphics[width=\linewidth]{figures/figure_04_stress_summary.png}
+\label{fig:stress-summary}
+\end{figure}
+
+Figure~\ref{fig:stress-summary} separates the nominal counts from the multiplicity-controlled conclusion.
+
 
 The nominal counts show that several individual cells fall below 0.05 before correction, and the exact set is not identical across calendars. Those nominal results are descriptive rather than headline discoveries. The inferential conclusion is determined within each prespecified 60-test family.
 
