@@ -25,6 +25,16 @@ The corresponding marginal-model probability integral transform (PIT) panels beg
 \end{itemize}
 The two panels are treated as co-equal representations of the same underlying daily-source information. Neither is labelled the primary, corrected or true panel.
 
+
+\begin{figure}[htbp]
+\centering
+\refstepcounter{figure}
+\includegraphics[width=\linewidth]{figures/figure_01_calendar_workflow.png}
+\label{fig:calendar-workflow}
+\end{figure}
+
+Figure~\ref{fig:calendar-workflow} summarizes the two calendar constructions and the common analytical sequence applied to them.
+
 \subsection{Panel A: business-day alignment}
 
 Panel A reproduces the documented business-day construction used in the original analysis. A business-day calendar is imposed across the five series and missing prices are carried forward for at most three business days before log returns are calculated. The purpose of this construction is to retain a nominal business-day frequency while avoiding unrestricted interpolation across long gaps.
