@@ -1,0 +1,161 @@
+\section{Data and Calendar Construction}
+\label{sec:data_and_calendar_construction}
+
+\subsection{Data sources and sample}
+
+The analysis combines daily-source-frequency commodity prices with the Ghanaian cedi exchange rate. The commodity set comprises cocoa, gold, Brent crude oil and West Texas Intermediate (WTI) crude oil. Commodity prices were obtained from Yahoo Finance, while the Cedi series was obtained from the Bank of Ghana. The audited raw files used for the reconstruction have been preserved and hashed as part of the project provenance record.
+
+The analysis begins in January 2015. The two calendar constructions share the same starting period but differ at the end because the underlying sources do not terminate on the same date. The Yahoo commodity data extend beyond the final Bank of Ghana observation, while the last actual Bank of Ghana exchange-rate observation in the audited source is 10 July 2026. The business-day construction therefore continues to 15 July 2026 under its documented limited forward-filling rule, whereas the common-observation construction ends on 10 July 2026.
+
+The Cedi series is expressed so that positive returns correspond to an appreciation of the Cedi and negative returns to a depreciation. The reconstructed sign orientation matches the archived processing exactly, with correlation equal to one and maximum numerical difference below \(2\times10^{-15}\) in the audit comparison.
+
+The resulting return panels are:
+
+\begin{itemize}
+\item \textbf{Panel A, business-day alignment:} 3,008 return observations from 5 January 2015 to 15 July 2026.
+\item \textbf{Panel B, common-observation alignment:} 2,774 return observations from 5 January 2015 to 10 July 2026.
+
+\end{itemize}
+The corresponding marginal-model probability integral transform (PIT) panels begin one observation later because the fitted conditional models require the first return as initialization:
+
+\begin{itemize}
+\item \textbf{Panel A PIT:} 3,007 observations from 6 January 2015 to 15 July 2026.
+\item \textbf{Panel B PIT:} 2,773 observations from 6 January 2015 to 10 July 2026.
+
+\end{itemize}
+The two panels are treated as co-equal representations of the same underlying daily-source information. Neither is labelled the primary, corrected or true panel.
+
+\subsection{Panel A: business-day alignment}
+
+Panel A reproduces the documented business-day construction used in the original analysis. A business-day calendar is imposed across the five series and missing prices are carried forward for at most three business days before log returns are calculated. The purpose of this construction is to retain a nominal business-day frequency while avoiding unrestricted interpolation across long gaps.
+
+The rule has observable consequences. Because a carried-forward price does not change, it generates a zero return for that asset on the affected business day. In the audited Panel A return file, the fraction of exact zero returns is approximately 4.42\% for cocoa, 4.06\% for gold, 4.06\% for Brent, 4.09\% for WTI and 22.27\% for the Cedi. The much larger zero share for the Cedi reflects both its underlying quote process and the interaction between the quote calendar and the business-day alignment rule. For this reason, the Cedi margin is treated separately in the diagnostic discussion rather than assumed to behave like the commodity margins.
+
+Panel A contains 3,008 return rows. Its reconstructed return file has SHA256 checksum
+
+\texttt{3e9769f42ec7925aacd951277ddae6ff529822408815b01210de87659221341f}.
+
+The audited Panel A PIT file has SHA256 checksum
+
+\texttt{be42455c12bf2f4a9c7ef33494930ad396f569192f571386d099046a388119d1}.
+
+These hashes are used as fixed provenance checks for later analysis scripts.
+
+The end of the Panel A sample illustrates the implications of this construction. The audited Yahoo data extend beyond the last actual Bank of Ghana observation, while the Bank of Ghana raw series ends on 10 July 2026. Under the documented three-business-day carry-forward rule, the Cedi price is therefore carried into 13, 14 and 15 July, allowing the aligned panel to end on 15 July 2026. These final dates are not additional Bank of Ghana observations; they arise from the calendar rule.
+
+\subsection{Panel B: common-observation alignment}
+
+Panel B is constructed without forward-filled return observations. Instead, prices are restricted to dates on which all five series have actual source observations, and returns are calculated between consecutive common observation dates.
+
+For asset \(i\), let \(t^{-}\) denote the previous date on which all five series are jointly observed. The return is
+
+\[
+r_{i,t}=100\left[\log P_{i,t}-\log P_{i,t^{-}}\right].
+\]
+
+For the Cedi, the sign is reversed to maintain the interpretation that positive returns correspond to appreciation.
+
+This construction produces synchronized close-to-close returns on common observation dates, but it should not be described as perfect intraday synchronization or as a fixed 24-hour daily return series. The interval between consecutive common dates varies with weekends, holidays and source-specific missing observations. Among the 2,774 Panel B returns, 2,118 intervals span one calendar day, 53 span two days, 461 span three days, 115 span four days, 26 span five days and one spans six days. The median interval is one day and the maximum is six days.
+
+Before the final return calculation, 2,776 dates are common to the five actual-source price series. One synchronized endpoint, 21 April 2020, is invalid because the preceding common-price interval crosses the non-positive WTI observation of 20 April 2020. After removing the affected endpoint, the final Panel B contains 2,774 returns from 5 January 2015 to 10 July 2026.
+
+The Panel B return file has SHA256 checksum
+
+\texttt{e6312d6163aeb7c9fb7ce722ebe46be1898f23855d5a87395830e4d1e82bf3b3}.
+
+Its PIT file has SHA256 checksum
+
+\texttt{9b322bda7c4e63534da14d1a7e360e758762e98cb39101cf329cdceb5afc216f}.
+
+As with Panel A, these hashes are used as fixed reproducibility checks.
+
+\subsection{Negative WTI price episode}
+
+WTI presents a special data issue on 20 April 2020, when the audited raw price is \(-37.630001\). A standard log return is undefined at a non-positive price, so this observation cannot enter the return calculation in the same way as an ordinary positive price.
+
+The two calendar constructions handle the episode differently because their alignment rules differ. In Panel A, the processed positive-price sequence around the episode is:
+
+\begin{itemize}
+\item 17 April 2020: 18.27, return \(-8.3951\%\);
+\item 20 April 2020: 18.27, return \(0\%\);
+\item 21 April 2020: 10.01, return \(-60.1676\%\);
+\item 22 April 2020: 13.78, return \(31.9634\%\).
+
+\end{itemize}
+Thus the negative raw WTI observation is not used directly in the Panel A log-return calculation. The resulting loss is shifted to the next positive-price observation rather than represented as a log return on 20 April itself.
+
+Panel B uses only common actual-source price dates and requires a valid positive-price interval. The 20 April non-positive observation makes the synchronized interval ending on 21 April invalid, so both 20 and 21 April are absent from the final Panel B return series. The next retained WTI return is 22 April 2020, \(31.9634\%\).
+
+The paper reports this episode explicitly because it is economically exceptional and because different preprocessing rules can relocate or remove extreme observations. No attempt is made to treat the negative settlement as if it were a standard positive log-price observation.
+
+\subsection{Zero returns and small movements}
+
+The two panels differ markedly in the frequency of exact zeros. In Panel B, exact zero-return shares are much lower for the commodities and lower for the Cedi than under business-day alignment:
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lXX}
+\toprule
+\textbf{Series} & \textbf{Exact zero returns, Panel A} & \textbf{Exact zero returns, Panel B} \\
+\midrule
+Cocoa & 4.42\% & 0.65\% \\
+Gold & 4.06\% & 0.40\% \\
+Brent & 4.06\% & 0.40\% \\
+WTI & 4.09\% & 0.43\% \\
+Cedi & 22.27\% & 16.51\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Panel B also retains a high concentration of small Cedi movements. Approximately 47.19\% of non-zero Cedi returns have absolute magnitude at most 0.05\%, 61.14\% are at most 0.10\%, and 89.98\% are at most 0.50\%. The zero-heavy and highly concentrated character of the Cedi return distribution is therefore not created solely by business-day forward filling, although the business-day construction increases the exact-zero frequency.
+
+This feature matters for the marginal modeling stage. The Cedi's selected continuous marginal specification fails PIT adequacy diagnostics in both calendar panels, while the selected commodity margins pass their stated adequacy gates. Consequently, later Cedi-related copula and extreme-value quantities are presented as conditional diagnostics and interpreted more cautiously than the commodity-only results.
+
+\subsection{Descriptive comparison of the two panels}
+
+Although the calendar constructions differ, the resulting return series remain strongly related on shared dates. Pearson correlations between corresponding Panel A and Panel B series are approximately 0.976 to 0.986, while Spearman correlations are approximately 0.975 to 0.996. The panels should therefore not be understood as two unrelated datasets. They are two closely related representations of the same market information that differ in how they handle non-common trading dates and missing observations.
+
+The stress-window sample counts also change. Panel A contains 87 observations in the prespecified COVID-19 window and 262 observations in 2024. Panel B contains 80 COVID-19 observations and 242 observations in 2024. The combined Panel B stress sample therefore contains 322 observations. These differences are part of the design rather than nuisances to be hidden, because the paper asks whether inferential conclusions depend on the calendar construction that generates them.
+
+\subsection{Why both panels are retained}
+
+Neither construction dominates the other on every criterion. Panel A preserves a regular business-day index and closely reproduces the documented historical pipeline, but forward filling can generate artificial zero returns and can extend an aligned series beyond the final actual observation of one source. Panel B avoids forward-filled return observations and ensures that each multivariate row uses the same pair of common observation dates, but its returns span irregular one- to six-day calendar intervals and therefore cannot be interpreted as fixed-horizon 24-hour returns.
+
+For this reason, the paper does not designate one panel as primary and the other as a robustness check. The two are co-equal specifications of the observation process. A substantive conclusion is called \textbf{calendar-robust} when the same inferential conclusion is obtained under both constructions. A conclusion is called \textbf{calendar-sensitive} when the two constructions lead to different inferential classifications. Findings that arise only as diagnostics of one construction are labelled \textbf{panel-specific}.
+
+This classification is determined by the analysis protocol rather than by which panel produces the more convenient result. It is used consistently in the copula adequacy and stress-inference sections that follow.
+
+\subsection{Reproducibility and provenance}
+
+The reconstruction preserves raw-source hashes, processed-return hashes and PIT hashes so that later analysis can be tied to fixed inputs. The data-audit stage also records special-case transformations such as the WTI negative-price episode, the Cedi sign orientation and the dates added to Panel A through limited forward filling.
+
+The paper intentionally avoids making claims about unverified details of the upstream commodity contract construction that are not established by the archived raw data and scripts. In particular, the manuscript does not assert an unverified continuous-futures roll or back-adjustment rule. The publication record is restricted to processing steps that were directly audited and reproduced.
+
+\paragraph{Table 1. Calendar construction summary}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{lXX}
+\toprule
+\textbf{Feature} & \textbf{Panel A: business-day alignment} & \textbf{Panel B: common-observation alignment} \\
+\midrule
+Return observations & 3,008 & 2,774 \\
+Return period & 5 Jan 2015--15 Jul 2026 & 5 Jan 2015--10 Jul 2026 \\
+PIT observations & 3,007 & 2,773 \\
+PIT period & 6 Jan 2015--15 Jul 2026 & 6 Jan 2015--10 Jul 2026 \\
+Price alignment & Business-day grid & Common actual-source dates \\
+Missing-price rule & Forward fill, maximum 3 business days & No forward-filled return observations \\
+Return interval & Nominal business-day & Previous common observation date \\
+Calendar-day span & Normally one business-day step, with carried prices possible & 1--6 calendar days, median 1 \\
+Final actual BoG date & 10 Jul 2026 & 10 Jul 2026 \\
+Final panel date & 15 Jul 2026 & 10 Jul 2026 \\
+WTI 20 Apr 2020 & Negative raw price excluded from direct log return; processed price held at 18.27 & Non-positive interval causes affected common endpoint to be dropped \\
+Exact Cedi zero-return share & 22.27\% & 16.51\% \\
+Role in paper & Co-equal panel & Co-equal panel \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Note:} "Common-observation alignment" means returns between consecutive dates on which all five source series are observed. It does not imply identical intraday timestamps.

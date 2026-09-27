@@ -1,0 +1,158 @@
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Marginal filtering and the validity gate}
+
+Each return series is filtered before dependence estimation using a fixed four-model ladder: AR(1)-GJR-GARCH(1,1)-t, AR(2)-GJR-GARCH(1,1)-t, AR(1)-EGARCH(1,1)-t, and AR(1)-GJR-GARCH(1,1)-skew-t. For the GJR-GARCH candidates,
+
+\[
+r_t=\mu+\sum_{j=1}^{p}\phi_j r_{t-j}+\varepsilon_t,\qquad
+\varepsilon_t=\sigma_t z_t,
+\]
+
+\[
+\sigma_t^2=\omega+\left(\alpha+\gamma I\{\varepsilon_{t-1}<0\}\right)\varepsilon_{t-1}^2+\beta\sigma_{t-1}^2.
+\]
+
+The ladder is fixed rather than expanded after seeing the data.
+
+A candidate is eligible only if the optimizer reports \texttt{convergence\_flag = 0} and the fitted log likelihood, parameters, standardized residuals, conditional volatilities and PIT values are finite. Non-converged candidates do not enter either the adequacy pool or the AIC fallback.
+
+For each valid fit, standardized residuals are \(\hat z_t=\hat\varepsilon_t/\hat\sigma_t\). Adequacy is assessed at the 5\% level using a Ljung-Box test on standardized residuals, a Ljung-Box test on squared standardized residuals, and a Kolmogorov-Smirnov test of PIT values against Uniform(0,1). The Ljung-Box diagnostics use 10 lags. A candidate is adequate only when all three tests fail to reject.
+
+The first valid adequate candidate in the fixed ladder is selected. If none passes, the valid converged candidate with the lowest AIC is retained only as an \textbf{inadequate reference model}. This distinction is preserved in downstream interpretation.
+
+\subsection{PIT values and rank-based pseudo-observations}
+
+For a selected margin,
+
+\[
+\tilde u_t=\hat F(\hat z_t),
+\]
+
+where \(\hat F\) is the fitted innovation CDF. PIT values are clipped to \([10^{-6},1-10^{-6}]\) for numerical stability. Copula estimation then uses rank-based pseudo-observations,
+
+\[
+u_t=\frac{\operatorname{rank}(\tilde u_t)}{n+1}.
+\]
+
+The clipping rule was separately audited. In Panel A it creates one three-way Cedi floor tie; recovering the underlying order changes no prespecified tail-set membership and only negligibly changes observed Cedi-pair GOF statistics.
+
+\subsection{Extreme-value diagnostics}
+
+Extreme-value calculations are applied to the loss transform of standardized residuals,
+
+\[
+L_t=-\hat z_t.
+\]
+
+A peaks-over-threshold generalized Pareto model is fitted above the empirical 90th percentile of \(L_t\). For exceedance \(Y=L-u\),
+
+\[
+G_{\xi,\beta}(y)=1-\left(1+\xi\frac{y}{\beta}\right)^{-1/\xi},
+\]
+
+on its admissible support. The analysis records the threshold, shape \(\xi\), scale \(\beta\), number of exceedances, 99\% VaR, 99\% expected shortfall and a Hill diagnostic using \(k=\max\{25,\lfloor0.05n\rfloor\}\). The main threshold remains fixed at 0.90; Cedi threshold sensitivity is treated as a diagnostic, not as an alternative headline specification.
+
+\subsection{Pairwise copula families}
+
+With five series there are ten unordered pairs. Each pair is estimated under eight static copula families: Gaussian, Student-t, Clayton, Gumbel, Frank, Joe, survival Clayton and survival Gumbel.
+
+AIC is retained only as a relative-fit descriptor. Absolute adequacy is assessed separately for every pair-family cell. A dedicated implementation audit confirmed that the Panel A and Panel B GOF branches use equivalent family estimators when supplied with the same pseudo-observations.
+
+\subsection{Absolute copula goodness of fit}
+
+Absolute GOF uses a Rosenblatt-transform Cramér-von Mises statistic with parametric bootstrap. For fitted family \(C_{\hat\theta}\),
+
+\[
+e_{1i}=u_i,\qquad e_{2i}=h_{\hat\theta}(v_i\mid u_i).
+\]
+
+The transformed empirical CDF is evaluated on a 50 by 50 grid,
+
+\[
+g_j=\frac{j}{51},\qquad j=1,\ldots,50,
+\]
+
+and
+
+\[
+S_n=
+\sum_{j=1}^{50}\sum_{k=1}^{50}
+\left[\hat D_n(g_j,g_k)-g_jg_k\right]^2.
+\]
+
+For each bootstrap replicate, a sample of size \(n\) is simulated from the fitted family, the simulated margins are re-ranked, the family is re-estimated, and the statistic is recomputed. The Monte Carlo p-value is
+
+\[
+\hat p=\frac{1+\sum_{b=1}^{B}I\{S_n^{(b)}\ge S_n\}}{B+1}.
+\]
+
+All 80 cells are first evaluated with \(B=2000\). Cells with initial \(0.03\le\hat p\le0.07\) are automatically rerun with \(B=5000\), and the higher-resolution result replaces the base value. The implemented procedure is described as a \textbf{Rosenblatt-transform Cramér-von Mises statistic with parametric bootstrap}. It is not claimed to be an exact reproduction of every statistic in \citet{genest2009}.
+
+A rejection at 5\% means the tested family is inadequate under this procedure. Non-rejection is not evidence that the family is the true model.
+
+\subsection{Finite-threshold tail concentration}
+
+For pseudo-observations \(u_i,v_i\),
+
+\[
+\hat\lambda_L(q)=\frac{1}{nq}\sum_{i=1}^{n}I(u_i\le q,v_i\le q),
+\]
+
+\[
+\hat\lambda_U(q)=\frac{1}{nq}\sum_{i=1}^{n}I(u_i\ge1-q,v_i\ge1-q),
+\]
+
+with \(q\in\{0.025,0.05,0.10\}\).
+
+These are finite-threshold concentration measures, not direct estimates of the asymptotic tail-dependence coefficient as \(q\to0\).
+
+\subsection{Stress definitions and calm baseline}
+
+Three stress families are evaluated: combined COVID-19 plus 2024, COVID-19 alone from 1 March to 30 June 2020, and calendar year 2024 alone. All three use the same calm baseline, which excludes both stress windows.
+
+Within every calm and stress subsample, PIT values are re-ranked before tail concentration is calculated. For each pair, tail and threshold,
+
+\[
+d=\hat\lambda_{stress}(q)-\hat\lambda_{calm}(q).
+\]
+
+Each family contains 10 pairs x 3 thresholds x 2 tails = 60 comparisons.
+
+\subsection{Moving-block bootstrap}
+
+Inference for \(d\) uses a moving-block bootstrap with block length 20 and \(B=15000\) replications per cell. Calm and stress sequences are resampled separately. Within each bootstrap replicate, both margins are re-ranked before the finite-tail statistic is recalculated.
+
+If \(d^{(b)}\) is the bootstrap difference, the two-sided centered p-value is
+
+\[
+\hat p=
+\frac{1+\sum_{b=1}^{B}I\{|d^{(b)}-d|\ge |d|\}}{B+1}.
+\]
+
+The bootstrap output also records the empirical 2.5\% and 97.5\% quantiles of the difference distribution. Stable SHA256-derived seeds are used for reproducibility.
+
+\subsection{Multiplicity control}
+
+Multiplicity is controlled separately within each 60-cell stress family. Bonferroni control uses
+
+\[
+\alpha_{Bonf}=0.05/60\approx0.0008333,
+\]
+
+and the Benjamini-Hochberg procedure controls the false discovery rate at 5\%.
+
+The combined, COVID-only and 2024-only analyses are therefore three separate correction families, not one 180-test family. Nominal p-values below 0.05 remain descriptive unless they survive the relevant correction.
+
+\subsection{Cross-panel interpretation}
+
+The two calendar panels are co-equal. A result is \textbf{calendar-robust} when the same inferential classification is obtained in both panels under the same rule. For a cell-level stress discovery, this requires survival of the same multiplicity procedure in both panels and the same direction of the estimated difference.
+
+A result is \textbf{calendar-sensitive} when corrected status changes across panels or the direction changes in a way that alters interpretation. A result is \textbf{panel-specific} when it is reported only as a diagnostic of one construction.
+
+Nominal-only differences are not promoted to robust discoveries, and GOF non-rejection is not interpreted as proof of correctness.
+
+\subsection{Reproducibility controls}
+
+The publication analysis uses fixed input hashes, deterministic seeds, checkpointed long-running computations and non-destructive output directories. Panel-specific PIT files are hash-checked before downstream analysis. Historical exploratory artifacts are retained for provenance but do not override results reproduced from the frozen inputs under the audited implementation.

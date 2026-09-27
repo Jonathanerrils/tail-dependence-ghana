@@ -1,0 +1,90 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Stress-period evidence: nominal signals without multiplicity-adjusted discoveries}
+
+The stress results are more informative when read as an inferential result than as a simple count of p-values. Across the combined COVID-19 plus 2024 definition, COVID-19 alone and 2024 alone, both calendar panels contain several nominal \(p<0.05\) cells. None survives either Bonferroni or Benjamini-Hochberg correction. The important result is therefore not that the estimated tail-concentration differences are all zero. They are not. It is that, under the prespecified 60-test families and the moving-block-bootstrap design, the observed differences do not provide multiplicity-adjusted evidence strong enough to support individual stress effects.
+
+This finding is narrower than some of the crisis literature, but it is not necessarily inconsistent with it. \citet{qiao2023} report stronger lower- and upper-tail contagion across a broad network of commodity futures after the onset of COVID-19, while other dynamic and quantile-based studies document stronger cross-market connectedness during periods of distress. Those studies examine different asset sets, dependence objects, model structures and testing procedures. The present study asks a more specific question: whether finite-threshold concentration for ten Ghana-relevant bivariate pairs differs between the prespecified stress and calm regimes strongly enough to survive correction across 60 simultaneous comparisons.
+
+That distinction matters. A crisis can alter market dependence without producing a corrected discovery in every pair, tail and threshold. Conversely, a collection of nominal \(p<0.05\) values can arise in a large comparison set without establishing a robust crisis effect. The absence of Bonferroni and BH discoveries in both panels therefore supports a cautious conclusion: within the tested thresholds, windows and bootstrap design, the data do not provide multiplicity-adjusted evidence for stress-period changes in finite-tail concentration.
+
+The agreement between the two calendar panels strengthens that conclusion. The exact nominal cells differ, but the family-level inferential outcome is the same in all three stress definitions. In this sense, the stress result is more robust than the individual nominal p-values that generate it.
+
+\subsection{Why calendar construction matters most for the cocoa pairs}
+
+The copula GOF results show that calendar construction can matter even when two return panels are highly correlated. Gold-Brent, Gold-WTI and Brent-WTI reject all eight tested static families in both panels, whereas Cocoa-Gold, Cocoa-Brent and Cocoa-WTI reject all eight families in the business-day panel but only a subset in the common-observation panel.
+
+This is consistent with the broader nonsynchronous-trading literature. \citet{scholes1977} and \citet{lo1990} show that the observation process can affect return moments and cross-dependence. \citet{martens2001} demonstrate that close-to-close returns measured across different market hours can distort international correlation estimates, and \citet{schotman2006} show that moving to lower frequency does not automatically remove the problem. \citet{dimitriou2025} provide recent evidence that synchronization choices can alter spillover conclusions during crisis periods.
+
+The present results extend that concern from correlation and spillover measurement to absolute copula adequacy. The two panels remain strongly correlated on shared dates, yet the rejection pattern for all three cocoa-related commodity pairs changes materially. This means that a high cross-panel correlation is not sufficient to establish that higher-order dependence features are invariant to calendar construction.
+
+The result does not identify one calendar as correct. Panel A preserves a regular business-day structure but introduces zero returns through limited carry-forward. Panel B removes forward-filled return observations but allows variable one- to six-day intervals between common observations. Both are defensible representations of imperfectly synchronized source data. The empirical contribution is therefore the identification of which conclusions survive both representations and which do not.
+
+For cocoa-related dependence in particular, the correct interpretation is calendar sensitivity, not model failure under one preferred dataset. Any substantive interpretation of Cocoa-Gold, Cocoa-Brent or Cocoa-WTI based on a single alignment rule would hide an important source of specification uncertainty.
+
+\subsection{Static copula inadequacy as model risk}
+
+The robust rejection of all eight tested static families for Gold-Brent, Gold-WTI and Brent-WTI is a different result from the stress analysis. It does not say that the pairs are independent, nor does it say that "copulas fail." It says that none of the eight tested static bivariate families provides an adequate representation under the implemented Rosenblatt-transform GOF procedure in either calendar panel.
+
+This distinction between relative fit and absolute adequacy is central. An AIC winner must exist whenever several estimable candidate models are compared, even when every candidate is misspecified. The GOF results show why selecting the lowest-AIC family is not sufficient evidence for a satisfactory dependence model. For the three robustly rejected commodity pairs, model choice within the eight-family set is therefore a choice among relatively better fitting but absolutely inadequate static specifications.
+
+The result is consistent with literature showing that commodity dependence can be time-varying, asymmetric and regime-dependent. \citet{ignatieva2017}, \citet{ning2025}, and related commodity-currency studies document changing dependence across market states. \citet{supper2020} further show that static tail-dependence estimators can be misleading when extreme dependence varies over time. The present GOF results do not identify which alternative class is correct, but they provide a concrete reason to consider richer models such as dynamic copulas, regime-switching structures, vine constructions or nonparametric dependence estimators in future work.
+
+The calendar-sensitive cocoa results add another layer to this model-risk interpretation. A model can appear inadequate under one defensible observation scheme and not under another. Model adequacy is therefore partly a property of the processed statistical object being fitted, not only of the named market pair.
+
+\subsection{Commodity-Cedi non-rejection requires a different interpretation}
+
+The commodity-Cedi pairs produce 0/8 GOF rejections in both panels. It would be incorrect to read this as evidence that all eight families describe commodity-Cedi dependence well. A non-rejection only means that the implemented test does not detect sufficient lack of fit at the chosen level.
+
+There are at least two reasons for caution. First, the empirical dependence signal may be weak enough that very different copula shapes are difficult to distinguish statistically. Second, and more importantly for this study, the Cedi marginal fails the stated adequacy gate in both calendar constructions. \citet{fantazzini2009} shows that marginal misspecification can distort copula and risk estimates. The commodity-Cedi GOF results therefore sit downstream of a known marginal-model limitation.
+
+The Cedi's zero-heavy return process is not merely an artifact of Panel A forward filling. The exact-zero share falls from 22.27\% in Panel A to 16.51\% in Panel B, but it remains large in the common-observation construction. This is consistent with the conclusion that the difficulty is structural to the observed daily Cedi series and the continuous marginal family being imposed, rather than being created solely by the business-day calendar rule.
+
+The clipping audit helps separate a minor numerical issue from the larger modeling problem. The three Panel A Cedi PIT values clipped to \(10^{-6}\) produce one artificial tie, but recovering their underlying order changes no prespecified tail membership and has negligible effect on observed Cedi-pair GOF statistics. The main limitation is therefore not the clipping rule. It is that none of the tested continuous Cedi marginal candidates provides an adequate PIT representation in either panel.
+
+This distinction also governs the EVT interpretation. The positive and relatively large Panel B Cedi GPD shape estimate is evidence of a heavy fitted loss tail conditional on the retained reference model. It is not a model-free estimate of the Cedi's structural tail index. A discrete-continuous or otherwise more flexible marginal model may alter that estimate.
+
+\subsection{Relation to the Ghana literature}
+
+The findings fit more naturally with the Ghana literature when frequency and estimand are kept explicit. \citet{archer2022}, \citet{barson2023}, \citet{yeboah2025} and related studies find asymmetric, nonlinear or time-frequency relationships between commodity prices and the Cedi or Ghanaian macro-financial variables. Those studies do not imply that every daily tail-concentration contrast should be statistically significant after correction.
+
+\citet{barson2023}, for example, emphasize time-frequency comovement, while \citet{atipaga2025} find that Cedi relationships with global uncertainty measures vary across horizons. \citet{woode2025} likewise report time- and frequency-varying connectedness in commodity-dependent sub-Saharan African markets. These findings make it plausible that economically meaningful relationships may appear more clearly at medium or longer horizons than in the daily finite-tail contrasts used here.
+
+The present results should therefore not be framed as contradicting the Ghana literature. They refine the question. The paper finds that, at the daily-source frequency and under the prespecified finite-tail stress design, no individual stress-calm difference survives multiplicity correction across either calendar construction. At the same time, the copula GOF analysis shows substantial dependence-model inadequacy for several commodity pairs. Weak corrected stress evidence and strong model-adequacy concerns can coexist.
+
+\citet{mensah2020} is especially relevant because it already demonstrates that copula-based tail analysis is feasible for Ghanaian exchange rates. The present study differs by combining commodity-Cedi pairs with explicit calendar sensitivity, hard marginal adequacy gates, eight-family absolute GOF testing and multiplicity-controlled stress inference. The contribution is therefore not the introduction of copulas to Ghana, but the identification of which dependence conclusions remain stable after these additional layers of scrutiny.
+
+\subsection{Implications for empirical risk analysis}
+
+Three practical implications follow from the results.
+
+First, crisis labels should not substitute for formal stress inference. COVID-19 and the 2024 episode are economically important periods, but the presence of a named crisis does not guarantee a statistically robust increase in every tail-dependence measure. Risk analysis is better served by prespecified windows, explicit estimands and multiplicity control than by selecting visually striking crisis-period estimates after the fact.
+
+Second, model selection and model adequacy should be reported separately. For Gold-Brent, Gold-WTI and Brent-WTI, every tested static family is rejected in both panels. Reporting only an AIC-best copula for those pairs would create a false sense of precision. A relative winner can still be an inadequate model.
+
+Third, calendar construction should be treated as part of the empirical specification. The cocoa-pair results show that dependence-model conclusions can change even when the corresponding return series remain highly correlated across alternative panels. For applications involving nonsynchronous commodity and exchange-rate data, documenting the alignment rule is therefore part of documenting the statistical model.
+
+These are methodological implications rather than policy prescriptions. The paper does not estimate fiscal losses, reserve effects, hedging effectiveness or causal pass-through from commodity prices to the Cedi. Those questions require separate designs and, in some cases, lower-frequency macroeconomic data.
+
+\subsection{Limitations revealed by the reconstruction}
+
+The reconstruction makes several limitations explicit.
+
+The first is the Cedi marginal. No tested continuous specification passes the adequacy gate under either panel. This limits the strength of commodity-Cedi copula and EVT claims.
+
+The second is the use of static bivariate copulas. The robust GOF rejections for three commodity pairs suggest that the tested static families are too restrictive for some relationships. Dynamic, regime-switching, vine or nonparametric models are natural extensions, but the present results do not establish which of these would be adequate.
+
+The third is calendar granularity. Panel B avoids forward-filled return observations but contains variable one- to six-day intervals. It is not a fixed-horizon return panel and does not solve intraday synchronization. Panel A maintains nominal business-day spacing but introduces carry-forward zeros. The two-panel design exposes this trade-off rather than eliminating it.
+
+The fourth is stress-window definition. The study uses prespecified COVID-19 and 2024 windows and three finite thresholds. Different stress definitions or thresholds could produce different point estimates. Such alternatives should be treated as new exploratory analyses rather than retrofitted after seeing the current results.
+
+The fifth is scope. Earlier monthly transmission regressions were withdrawn after the macroeconomic data audit identified invalid CPI observations in the extracted series. The present paper therefore does not make claims about commodity-to-inflation, export or monthly exchange-rate transmission.
+
+\subsection{Discussion summary}
+
+The main contribution of the results is not a single copula estimate or a single stress p-value. It is the separation of conclusions by how well they survive competing sources of specification uncertainty.
+
+The absence of multiplicity-adjusted stress discoveries survives both calendar constructions and all three stress definitions. Complete rejection of the eight tested static copulas survives both calendars for Gold-Brent, Gold-WTI and Brent-WTI. The equivalent conclusion does not survive for Cocoa-Gold, Cocoa-Brent or Cocoa-WTI, whose adequacy results are calendar-sensitive. Commodity-Cedi non-rejection is also stable across calendars, but it must be interpreted alongside the unresolved Cedi marginal.
+
+This pattern supports a broader methodological lesson: robustness in dependence analysis cannot be inferred from one fitted model, one preprocessing rule or one nominally significant cell. In this setting, the strongest conclusions are the ones that remain after calendar construction, marginal adequacy, absolute goodness of fit and multiple testing are all made explicit.
