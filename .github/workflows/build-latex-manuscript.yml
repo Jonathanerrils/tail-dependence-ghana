@@ -1,0 +1,31 @@
+name: Build LaTeX manuscript
+
+on:
+  push:
+    branches:
+      - manuscript-publication-revision
+    paths:
+      - 'paper/latex/rebuild/**'
+      - '.github/workflows/build-latex-manuscript.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile manuscript
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: manuscript.tex
+          working_directory: paper/latex/rebuild
+          latexmk_use_xelatex: false
+
+      - name: Upload compiled PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: tail-dependence-ghana-manuscript
+          path: paper/latex/rebuild/manuscript.pdf
+          if-no-files-found: error
