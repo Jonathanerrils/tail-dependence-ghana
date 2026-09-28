@@ -19,7 +19,7 @@ from scipy import stats
 class MarginalFit:
     name: str
     params: pd.Series
-    nu: float                    # Student-t degrees of freedom
+    nu: float                    # Student-t df; NaN for non-Student-t innovation distributions
     std_resid: pd.Series         # standardized residuals
     pit: pd.Series               # PIT(u) = F_t(std_resid; nu)
     cond_vol: pd.Series
@@ -32,66 +32,6 @@ def fit_marginal(returns: pd.Series, name: str | None = None) -> MarginalFit:
     return _fit_spec(returns, name or str(returns.name),
                      dict(mean="AR", lags=1, vol="GARCH", p=1, o=1, q=1,
                           dist="t"))
-
-
-def _fit_spec(returns: pd.Series, name: str, spec: dict,
-              spec_label: str = "AR(1)-GJR-GARCH(1,1)-t") -> MarginalFit:
-    r = returns.dropna()
-    res = arch_model(r, **spec).fit(disp="off")
-    std_resid = (res.resid / res.conditional_volatility).dropna()
-    dist = res.model.distribution
-    k = dist.num_params
-    dparams = res.params.values[-k:] if k else []
-    pit = pd.Series(np.asarray(dist.cdf(std_resid.to_numpy(), dparams)),
-                    index=std_resid.index, name=name).clip(1e-6, 1 - 1e-6)
-    nu = float(res.params.get("nu", np.nan))
-    fit = MarginalFit(name=name, params=res.params, nu=nu,
-                      std_resid=std_resid.rename(name), pit=pit,
-                      cond_vol=res.conditional_volatility.rename(name),
-                      aic=res.aic, bic=res.bic)
-    fit.spec = spec_label  # attached attribute: which rung of the ladder
-    return fit
-
-
-# Specification ladder for the adequacy gate (order fixed ex ante):
-SPEC_LADDER = [
-    ("AR(1)-GJR-GARCH(1,1)-t",
-     dict(mean="AR", lags=1, vol="GARCH", p=1, o=1, q=1, dist="t")),
-    ("AR(2)-GJR-GARCH(1,1)-t",
-     dict(mean="AR", lags=2, vol="GARCH", p=1, o=1, q=1, dist="t")),
-    ("AR(1)-EGARCH(1,1)-t",
-     dict(mean="AR", lags=1, vol="EGARCH", p=1, o=1, q=1, dist="t")),
-    ("AR(1)-GJR-GARCH(1,1)-skewt",
-     dict(mean="AR", lags=1, vol="GARCH", p=1, o=1, q=1, dist="skewt")),
-]
-
-
-def fit_with_gate(returns: pd.Series, name: str | None = None,
-                  alpha: float = 0.05) -> tuple[MarginalFit, list[dict]]:
-    """Walk SPEC_LADDER; return the first adequate fit (Ljung-Box on
-    residuals and squares, KS uniformity of PIT, all p > alpha).
-    If none passes, return the best-AIC fit flagged inadequate.
-    Also returns the full search log for DECISIONS.md."""
-    from .inference import marginal_diagnostics
-
-    name = name or str(returns.name)
-    log, fits = [], []
-    for spec_label, spec in SPEC_LADDER:
-        try:
-            f = _fit_spec(returns, name, spec, spec_label)
-            d = marginal_diagnostics(f.std_resid, f.pit)
-        except Exception as e:  # noqa: BLE001
-            log.append({"series": name, "spec": spec_label, "error": str(e)})
-            continue
-        log.append({"series": name, "spec": spec_label, "aic": f.aic, **d})
-        fits.append((f, d))
-        if d["adequate_5pct"]:
-            f.adequate = True
-            return f, log
-    # none adequate: best AIC, flagged
-    f = min((f for f, _ in fits), key=lambda x: x.aic)
-    f.adequate = False
-    return f, log
 
 
 def fit_all(returns: pd.DataFrame, gate: bool = False):
@@ -137,9 +77,10 @@ def _fit_spec(returns: pd.Series, name: str, spec: dict) -> MarginalFit:
     std_resid = (res.resid / res.conditional_volatility).dropna()
     nu = float(res.params["nu"]) if "nu" in res.params else np.nan
     if spec["dist"] == "skewt":
+        eta = float(res.params["eta"])
         lam = float(res.params["lambda"])
         dist = res.model.distribution
-        pit_vals = dist.cdf(std_resid.to_numpy(), parameters=[nu, lam])
+        pit_vals = dist.cdf(std_resid.to_numpy(), parameters=[eta, lam])
     else:
         scale = np.sqrt(nu / (nu - 2.0))
         pit_vals = stats.t.cdf(std_resid * scale, df=nu)
@@ -154,9 +95,16 @@ def fit_with_gate(returns: pd.Series, name: str | None = None,
                   alpha: float = 0.05):
     """Walk SPEC_LADDER; return (fit, spec_name, diagnostics, search_log).
 
-    A spec passes if Ljung-Box on standardized residuals and squares and
-    the KS uniformity test on the PIT all exceed `alpha`. If none passes,
-    the best-AIC candidate is returned with adequate=False.
+    A specification passes if the Ljung-Box tests on standardized residuals
+    and squared standardized residuals, together with the KS uniformity test
+    on the PIT, all exceed `alpha`.
+
+    If no specification passes, no candidate is declared preferred solely
+    on the basis of AIC. The simplest successfully fitted ladder
+    specification is retained as a deterministic reference model and
+    labeled UNRESOLVED. Candidate AIC values remain available descriptively
+    in the search log. Substantive inference for an unresolved marginal
+    should be evaluated through the corresponding robustness analysis.
     """
     from .inference import marginal_diagnostics
 
@@ -173,5 +121,31 @@ def fit_with_gate(returns: pd.Series, name: str | None = None,
         candidates.append((fit, spec_name, diag))
         if diag["adequate_5pct"]:
             return fit, spec_name, diag, log
-    best = min(candidates, key=lambda c: c[0].aic)
-    return best[0], best[1] + " (INADEQUATE — best AIC)", best[2], log
+    # No candidate passed the adequacy gate. AIC-based selection among
+    # inadequate candidates was tested for reproducibility and found NOT
+    # to be stable across computational environments for at least one
+    # series (the cedi) -- see diagnostics/diagnose_cedi_v3.py and
+    # DECISIONS.md. Treating an unstable AIC comparison as though it
+    # identifies a genuine "best" fallback would misrepresent what the
+    # data actually supports. Instead: fall back deterministically to the
+    # first (simplest) ladder specification, for procedural consistency
+    # only, not as a claim that it is preferred. Every attempted
+    # candidate's AIC is still reported descriptively in `log`.
+    # Substantive conclusions involving this series should rely on the
+    # alternative-treatment robustness analysis, not on this fallback fit.
+    if not candidates:
+        raise RuntimeError(f"No specification in SPEC_LADDER could be fit for {name}")
+
+    baseline_name = SPEC_LADDER[0][0]
+    fallback = next(
+        ((f, sn, d) for f, sn, d in candidates if sn == baseline_name),
+        candidates[0],
+    )
+    fit, actual_spec_name, diag = fallback
+
+    label = (f"{actual_spec_name} (UNRESOLVED -- no candidate specification "
+             f"passed the adequacy gate; AIC ranking among inadequate "
+             f"candidates is not used to select a fallback; this "
+             f"specification is retained only as a deterministic reference "
+             f"for the downstream robustness analysis)")
+    return fit, label, diag, log

@@ -1,0 +1,8 @@
+﻿1f5d43c89a7e85079fba6b0713fe5264c8ffb33c7ded3da406c1b01ae6be591f  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\_resid_real.csv
+408b0844b4606f76a58be8c5a493acc36bf1c514ae6e89b052462ab87bfe73c6  C:\Users\Jack\Desktop\tail-dependence-ghana\src\tailrisk\evt.py
+b37d1aaa7ef01cad0272dc5ffb840faeb246f545acddc065f33341a3afdd6a15  C:\Users\Jack\Desktop\tail-dependence-ghana\scripts\19_cedi_evt_audit.py
+0d61e2d606ccf664ec70bde88de5dc8bea2b3d64be21cd64c7500f4d65a3e28b  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\evt_pot_gpd.csv
+9234b547d8bdf5961fad93e23ed6b946a949b252bb5fbacf35dc025027c68c58  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\cedi_evt_audit_current.csv
+2e39c6bb956e47542df339faa2841b811b3992395665b7f0978798952fc16802  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\cedi_evt_threshold_sensitivity_audit.csv
+12f67d28313dafa945f955a7926ea61c4bae350ea23388c2417112f7ee4abec1  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\evt_pot_gpd_recomputed_audit.csv
+1655e61d8ec26a295ed3ffd42750935ea4d70fae75794ed42948882fa71a57d5  C:\Users\Jack\Desktop\tail-dependence-ghana\outputs\tables\cedi_evt_existing_file_inventory.csv

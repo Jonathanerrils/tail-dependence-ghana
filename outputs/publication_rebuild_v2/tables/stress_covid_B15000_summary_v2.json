@@ -1,0 +1,18 @@
+{
+  "stress_definition": "covid",
+  "pit_sha256": "9b322bda7c4e63534da14d1a7e360e758762e98cb39101cf329cdceb5afc216f",
+  "n_calm": 2451,
+  "n_stress": 80,
+  "n_tests": 60,
+  "B": 15000,
+  "block": 20,
+  "min_p": 0.00266648890074,
+  "uncorrected_rejections": 11,
+  "bonf_rejections": 0,
+  "bh_rejections": 0,
+  "bonf_threshold": 0.0008333333333333334,
+  "bh_cutoff": null,
+  "corrected_cedi_rejections": 0,
+  "cedi_A_to_G_triggered": false,
+  "runtime_seconds_this_invocation": 2064.336023569107
+}

@@ -1,0 +1,13 @@
+{
+  "pit_sha256": "9b322bda7c4e63534da14d1a7e360e758762e98cb39101cf329cdceb5afc216f",
+  "n_obs": 2773,
+  "n_cells": 80,
+  "borderline_initial_cells": 1,
+  "all_rejected": 32,
+  "all_nonrejected": 48,
+  "commodity_commodity_cells": 48,
+  "commodity_commodity_rejected": 32,
+  "commodity_cedi_cells": 32,
+  "commodity_cedi_rejected": 0,
+  "runtime_seconds": 15222.341983556747
+}

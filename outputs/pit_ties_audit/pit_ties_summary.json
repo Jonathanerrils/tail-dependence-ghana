@@ -1,0 +1,25 @@
+{
+  "A": {
+    "path": "outputs\\tables\\_pit_real.csv",
+    "sha256": "be42455c12bf2f4a9c7ef33494930ad396f569192f571386d099046a388119d1",
+    "shape": [
+      3007,
+      5
+    ],
+    "start": "2015-01-06",
+    "end": "2026-07-15",
+    "any_exact_PIT_ties": true
+  },
+  "B": {
+    "path": "outputs\\publication_rebuild_v2\\tables\\_pit_publication_v2.csv",
+    "sha256": "9b322bda7c4e63534da14d1a7e360e758762e98cb39101cf329cdceb5afc216f",
+    "shape": [
+      2773,
+      5
+    ],
+    "start": "2015-01-06",
+    "end": "2026-07-10",
+    "freeze_check": true,
+    "any_exact_PIT_ties": false
+  }
+}

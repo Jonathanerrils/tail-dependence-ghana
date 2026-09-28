@@ -1,0 +1,62 @@
+{
+  "input_file": "outputs\\tables\\returns_real_synchronized_common_candidate.csv",
+  "input_sha256": "e6312d6163aeb7c9fb7ce722ebe46be1898f23855d5a87395830e4d1e82bf3b3",
+  "returns_shape": [
+    2774,
+    5
+  ],
+  "returns_period": [
+    "2015-01-05",
+    "2026-07-10"
+  ],
+  "resid_shape": [
+    2773,
+    5
+  ],
+  "pit_shape": [
+    2773,
+    5
+  ],
+  "selected_marginals": {
+    "cocoa": {
+      "spec": "AR1-GJR-GARCH-t",
+      "status": "ADEQUATE",
+      "convergence_flag": 0,
+      "lb_resid_p": 0.6595049969930425,
+      "lb_sq_p": 0.9811562293077005,
+      "ks_pit_p": 0.8775267521318455
+    },
+    "gold": {
+      "spec": "AR1-GJR-GARCH-t",
+      "status": "ADEQUATE",
+      "convergence_flag": 0,
+      "lb_resid_p": 0.6122801755391316,
+      "lb_sq_p": 0.4234014834900247,
+      "ks_pit_p": 0.5291791491053361
+    },
+    "brent": {
+      "spec": "AR1-GJR-GARCH-t",
+      "status": "ADEQUATE",
+      "convergence_flag": 0,
+      "lb_resid_p": 0.9660713268716338,
+      "lb_sq_p": 0.9999973575400165,
+      "ks_pit_p": 0.5311685854568682
+    },
+    "wti": {
+      "spec": "AR1-GJR-GARCH-t",
+      "status": "ADEQUATE",
+      "convergence_flag": 0,
+      "lb_resid_p": 0.8914260917959752,
+      "lb_sq_p": 0.9906250142628866,
+      "ks_pit_p": 0.40612373282356107
+    },
+    "cedi": {
+      "spec": "AR1-EGARCH-t",
+      "status": "INADEQUATE_REFERENCE",
+      "convergence_flag": 0,
+      "lb_resid_p": 0.9181483218667004,
+      "lb_sq_p": 0.999999955744668,
+      "ks_pit_p": 3.366860586993332e-33
+    }
+  }
+}

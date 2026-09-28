@@ -1,0 +1,107 @@
+{
+  "panel_A": {
+    "sha256": "be42455c12bf2f4a9c7ef33494930ad396f569192f571386d099046a388119d1",
+    "shape": [
+      3007,
+      5
+    ],
+    "period": [
+      "2015-01-06",
+      "2026-07-15"
+    ],
+    "matches_current_audited_panel_A_PIT_geometry": true
+  },
+  "panel_B": {
+    "sha256": "9b322bda7c4e63534da14d1a7e360e758762e98cb39101cf329cdceb5afc216f",
+    "shape": [
+      2773,
+      5
+    ],
+    "period": [
+      "2015-01-06",
+      "2026-07-10"
+    ],
+    "freeze_check_passed": true
+  },
+  "historical_panel_A_GOF": {
+    "estimator": "gof.estimate",
+    "uses_kendall_tau_for_multiple_families": false,
+    "t_nu_fixed_grid": false,
+    "bootstrap_refit_uses_same_gof_estimate": true,
+    "p_value_formula": "(exceed + 0.5)/(B + 1)"
+  },
+  "panel_B_stage2_GOF": {
+    "estimator": "copulas.FAMILIES pseudo-MLE / MLE fit functions",
+    "bootstrap_refit": "same copulas.FAMILIES estimator",
+    "p_value_formula": "(exceed + 1)/(B + 1)"
+  },
+  "family_observed_parameter_comparison": [
+    {
+      "family": "gaussian",
+      "cells": 10,
+      "same_parameter_cells": 10,
+      "different_parameter_cells": 0,
+      "max_abs_Sn_difference": 0.0,
+      "mean_abs_Sn_difference": 0.0
+    },
+    {
+      "family": "t",
+      "cells": 10,
+      "same_parameter_cells": 10,
+      "different_parameter_cells": 0,
+      "max_abs_Sn_difference": 0.0,
+      "mean_abs_Sn_difference": 0.0
+    },
+    {
+      "family": "clayton",
+      "cells": 10,
+      "same_parameter_cells": 10,
+      "different_parameter_cells": 0,
+      "max_abs_Sn_difference": 0.0,
+      "mean_abs_Sn_difference": 0.0
+    },
+    {
+      "family": "gumbel",
+      "cells": 10,
+      "same_parameter_cells": 10,
+      "different_parameter_cells": 0,
+      "max_abs_Sn_difference": 0.0,
+      "mean_abs_Sn_difference": 0.0
+    },
+    {
+      "family": "frank",
+      "cells": 10,
+      "same_parameter_cells": 10,
+      "different_parameter_cells": 0,
+      "max_abs_Sn_difference": 0.0,
+      "mean_abs_Sn_difference": 0.0
+    },
+    {
+      "family": "joe",
+      "cells": 10,
+      "same_parameter_cells": 10,
+      "different_parameter_cells": 0,
+      "max_abs_Sn_difference": 0.0,
+      "mean_abs_Sn_difference": 0.0
+    },
+    {
+      "family": "survival_clayton",
+      "cells": 10,
+      "same_parameter_cells": 10,
+      "different_parameter_cells": 0,
+      "max_abs_Sn_difference": 0.0,
+      "mean_abs_Sn_difference": 0.0
+    },
+    {
+      "family": "survival_gumbel",
+      "cells": 10,
+      "same_parameter_cells": 10,
+      "different_parameter_cells": 0,
+      "max_abs_Sn_difference": 0.0,
+      "mean_abs_Sn_difference": 0.0
+    }
+  ],
+  "material_implementation_mismatch": false,
+  "bootstrap_rerun_performed": false,
+  "recommended_action": "No estimator mismatch found; no Panel A GOF rerun required on this basis."
+}

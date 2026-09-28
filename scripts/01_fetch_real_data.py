@@ -3,9 +3,17 @@
     pip install yfinance wbgapi
     python scripts/01_fetch_real_data.py
 
-Writes data/processed/prices_real.csv and returns_real.csv in the schema
-the analysis pipeline expects, so afterwards run:
+Writes data/processed/prices_yahoo_clean.csv and returns_yahoo_clean.csv.
+These are NOT the canonical analysis inputs -- scripts/04_integrate_bog.py
+reads data/raw/prices_yahoo_raw.csv (written here, unchanged) and produces
+the actual canonical prices_real.csv / returns_real.csv with the BoG cedi
+rate substituted in. Previously this script wrote directly to
+prices_real.csv / returns_real.csv, the same filenames script 04 also
+writes -- meaning a rerun of this script after script 04 would silently
+overwrite the validated BoG-based canonical panel with the Yahoo-proxy
+version, no error or warning. Run this first, then:
 
+    python scripts/04_integrate_bog.py
     python scripts/02_run_pipeline.py --data real
     python scripts/03_build_dashboard.py --data real
 
@@ -21,6 +29,13 @@ Sources
   annual) — replace/augment with Bank of Ghana monthly CPI and the
   interbank cedi rate from https://www.bog.gov.gh for the frequency the
   paper needs (Yahoo's GHS=X is a low-quality proxy).
+
+Sample window
+-------------
+START and END define the inclusive publication sample window. The Yahoo
+Finance API uses an exclusive end boundary, so the download request is
+advanced by one calendar day and the resulting panel is then explicitly
+sliced back to START:END.
 
 Cleaning decisions (deliberate, logged to console)
 --------------------------------------------------
@@ -46,6 +61,9 @@ import pandas as pd
 
 OUT = Path(__file__).resolve().parents[1] / "data" / "raw"
 PROC = Path(__file__).resolve().parents[1] / "data" / "processed"
+
+START = "2015-01-01"
+END = "2026-07-15"
 
 TICKERS = {
     "cocoa": "CC=F",
@@ -102,15 +120,22 @@ def clean_panel(prices: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     return px, rets
 
 
-def main(start: str = "2015-01-01") -> None:
+def main(start: str = START, end: str = END) -> None:
     import yfinance as yf
 
     OUT.mkdir(parents=True, exist_ok=True)
     PROC.mkdir(parents=True, exist_ok=True)
 
+    # yfinance's end= is exclusive (confirmed against its own documentation:
+    # "for end='2023-01-01', the last data point will be '2022-12-31'"),
+    # while START/END here are meant as an inclusive publication window.
+    # Advance the request boundary by one day so the declared END date is
+    # actually included in what gets requested.
+    end_exclusive = (pd.Timestamp(end) + pd.Timedelta(days=1)).strftime("%Y-%m-%d")
+
     frames = {}
     for name, tic in TICKERS.items():
-        px = yf.download(tic, start=start, auto_adjust=True, progress=False)["Close"]
+        px = yf.download(tic, start=start, end=end_exclusive, auto_adjust=True, progress=False)["Close"]
         if isinstance(px, pd.DataFrame):  # newer yfinance returns 2-D
             px = px.iloc[:, 0]
         px.name = name
@@ -119,13 +144,23 @@ def main(start: str = "2015-01-01") -> None:
               f"{px.dropna().index.max().date()}  ({px.dropna().size} obs)")
 
     raw = pd.concat(frames.values(), axis=1, sort=True).dropna(how="all")
-    raw.to_csv(OUT / "prices_yahoo_raw.csv")  # keep the uncleaned original
+    # Second, independent safeguard: even if yfinance's boundary behavior
+    # ever changes, the saved raw panel cannot extend beyond the declared
+    # publication cutoff.
+    raw = raw.loc[pd.Timestamp(start):pd.Timestamp(end)]
+    raw.to_csv(OUT / "prices_yahoo_raw.csv")  # keep the uncleaned original;
+    # this is the file scripts/04_integrate_bog.py actually reads
 
     prices, rets = clean_panel(raw)
-    prices.to_csv(PROC / "prices_real.csv")
-    rets.to_csv(PROC / "returns_real.csv")
-    print(f"Clean panel: {rets.shape[0]} obs x {rets.shape[1]} series, "
-          f"{rets.index.min().date()} → {rets.index.max().date()}")
+    # NOT prices_real.csv / returns_real.csv -- those filenames are
+    # reserved exclusively for scripts/04_integrate_bog.py's canonical,
+    # BoG-based output. Writing there from this script would silently
+    # overwrite the validated canonical panel on any rerun.
+    prices.to_csv(PROC / "prices_yahoo_clean.csv")
+    rets.to_csv(PROC / "returns_yahoo_clean.csv")
+    print(f"Clean panel (Yahoo-only, NOT canonical): {rets.shape[0]} obs x "
+          f"{rets.shape[1]} series, {rets.index.min().date()} → "
+          f"{rets.index.max().date()}")
 
     # --- Ghana macro (annual CPI from World Bank; swap in BoG monthly data)
     try:

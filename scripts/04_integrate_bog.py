@@ -44,7 +44,7 @@ START = "2015-01-01"
 
 def log_decision(text: str) -> None:
     print(f"DECISION: {text}")
-    with DEC.open("a") as f:
+    with DEC.open("a", encoding="utf-8") as f:
         f.write(f"- {text}\n")
 
 

@@ -1,0 +1,6 @@
+series,selected_spec_hard_gate,selection_status_hard_gate,selection_rule,convergence_flag,valid_fit,aic,lb_resid_p,lb_sq_p,ks_pit_p,adequate_5pct
+cocoa,AR1-GJR-GARCH-t,ADEQUATE,first valid adequate candidate in fixed ladder,0,True,12645.8280328,0.809714696532,0.954227267596,0.170817629148,True
+gold,AR1-GJR-GARCH-t,ADEQUATE,first valid adequate candidate in fixed ladder,0,True,7850.33670148,0.56082139533,0.119156676977,0.184673703656,True
+brent,AR1-GJR-GARCH-skewt,ADEQUATE,first valid adequate candidate in fixed ladder,0,True,12895.9409455,0.694733857173,0.65865954386,0.0657758118893,True
+wti,AR1-EGARCH-t,ADEQUATE,first valid adequate candidate in fixed ladder,0,True,13409.1332938,0.563987866063,0.327876650179,0.0668147622711,True
+cedi,AR1-GJR-GARCH-t,INADEQUATE_REFERENCE,lowest AIC among valid converged candidates; no valid candidate passed adequacy,0,True,-5007.65212317,0.870697030722,0.999999978019,8.10362551616e-32,False

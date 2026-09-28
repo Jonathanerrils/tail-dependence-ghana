@@ -1,0 +1,24 @@
+{
+  "pit_sha256": "be42455c12bf2f4a9c7ef33494930ad396f569192f571386d099046a388119d1",
+  "freeze_hash_match": true,
+  "n": 3007,
+  "n_unique": 3005,
+  "duplicate_count": 2,
+  "tied_groups": 1,
+  "observations_in_tied_groups": 3,
+  "share_observations_in_tied_groups": 0.0009976720984369804,
+  "max_multiplicity": 3,
+  "tied_values": [
+    {
+      "value": 1e-06,
+      "multiplicity": 3,
+      "dates": [
+        "2022-09-19",
+        "2023-02-21",
+        "2023-12-29"
+      ],
+      "is_lower_q10": true,
+      "is_upper_q90": false
+    }
+  ]
+}

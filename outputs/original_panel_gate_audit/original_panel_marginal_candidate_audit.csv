@@ -1,0 +1,24 @@
+series,spec,convergence_flag,optimizer_success,optimizer_message,finite_fit,valid_fit,aic,bic,loglikelihood,lb_resid_p,lb_sq_p,ks_pit_p,adequate_5pct,dist_param_names,dist_param_values,warnings
+cocoa,AR1-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,12645.8280328,12687.8889201,-6315.91401642,0.809714696532,0.954227267596,0.170817629148,True,nu,6.54898613792,
+cocoa,AR2-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,12639.0866916,12687.1536162,-6311.54334582,0.993533782639,0.962668037925,0.267438938479,True,nu,6.50656236526,
+cocoa,AR1-EGARCH-t,0,True,Optimization terminated successfully,True,True,12652.0192377,12694.080125,-6319.00961884,0.811416916352,0.933760892909,0.151297787226,True,nu,6.48265786298,
+cocoa,AR1-GJR-GARCH-skewt,0,True,Optimization terminated successfully,True,True,12646.9849596,12695.0545451,-6315.49247981,0.807376190237,0.953321549426,0.097258923373,True,"eta,lambda","6.59231680106,-0.0224131427019",
+gold,AR1-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,7850.33670148,7892.39758876,-3918.16835074,0.56082139533,0.119156676977,0.184673703656,True,nu,3.95541416901,
+gold,AR2-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,7848.30177081,7896.36869538,-3916.15088541,0.54137206303,0.121277046594,0.16463224412,True,nu,3.94443672929,
+gold,AR1-EGARCH-t,0,True,Optimization terminated successfully,True,True,7845.00889066,7887.06977794,-3915.50444533,0.547907363487,0.0312528408187,0.186308935348,False,nu,3.96226411435,
+gold,AR1-GJR-GARCH-skewt,0,True,Optimization terminated successfully,True,True,7850.34530631,7898.41489177,-3917.17265315,0.559267950568,0.125345377653,0.112234345243,True,"eta,lambda","3.99306726031,-0.0327416926087",
+brent,AR1-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,12918.80574,12960.8666273,-6452.40286999,0.702105495757,0.663276246602,0.0077445129239,False,nu,4.60186177117,
+brent,AR2-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,12913.4914119,12961.5583365,-6448.74570597,0.57855177913,0.675272924395,0.0231799563004,False,nu,4.57569378816,
+brent,AR1-EGARCH-t,0,True,Optimization terminated successfully,True,True,12922.5884985,12964.6493858,-6454.29424927,0.628305874293,0.2667047656,0.0134332604316,False,nu,4.46105669765,
+brent,AR1-GJR-GARCH-skewt,0,True,Optimization terminated successfully,True,True,12895.9409455,12944.010531,-6439.97047277,0.694733857173,0.65865954386,0.0657758118893,True,"eta,lambda","4.81907972153,-0.119297602314",
+wti,AR1-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,13406.7276918,13448.7885791,-6696.36384591,0.748424191793,0.970526642435,0.0311152635945,False,nu,5.6883308127,
+wti,AR2-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,13399.7245375,13447.7914621,-6691.86226875,0.727909287505,0.973697052565,0.0254158629209,False,nu,5.65975007218,
+wti,AR1-EGARCH-t,0,True,Optimization terminated successfully,True,True,13409.1332938,13451.1941811,-6697.56664692,0.563987866063,0.327876650179,0.0668147622711,True,nu,5.33372856576,
+wti,AR1-GJR-GARCH-skewt,0,True,Optimization terminated successfully,True,True,13378.4166684,13426.4862539,-6681.2083342,0.74774341248,0.971383849384,0.171570211267,True,"eta,lambda","5.91851025625,-0.136320205358",
+cedi,AR1-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,-5007.65212317,-4965.59123589,2510.82606159,0.870697030722,0.999999978019,8.10362551616e-32,False,nu,2.73234023244,
+cedi,AR2-GJR-GARCH-t,0,True,Optimization terminated successfully,True,True,362.120288592,410.187213155,-173.060144296,5.23106258793e-82,2.69810385405e-05,0,False,nu,3.88152916407,
+cedi,AR1-EGARCH-t,4,False,Inequality constraints incompatible,True,False,29619.5153987,29661.5762859,-14802.7576993,,,,False,nu,4.05867808831,"The optimizer returned code 4. The message is:
+Inequality constraints incompatible
+See scipy.optimize.fmin_slsqp for code meaning.
+"
+cedi,AR1-GJR-GARCH-skewt,0,True,Optimization terminated successfully,True,True,11468.5337163,11516.6033018,-5726.26685816,4.50805175935e-119,0.00024929811948,0,False,"eta,lambda","4.71551384337,-0.0049596261646",

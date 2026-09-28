@@ -1,0 +1,8 @@
+spec,convergence_flag,optimizer_message,aic,bic,params_finite,loglik_finite,warnings,valid_fit
+AR1-GJR-GARCH-t,0,Optimization terminated successfully,-5007.652123170603,-4965.591235889683,True,True,,True
+AR2-GJR-GARCH-t,0,Optimization terminated successfully,362.120288592429,410.187213154932,True,True,,True
+AR1-EGARCH-t,4,Inequality constraints incompatible,29619.515398665997,29661.576285946918,True,True,"The optimizer returned code 4. The message is:
+Inequality constraints incompatible
+See scipy.optimize.fmin_slsqp for code meaning.
+",False
+AR1-GJR-GARCH-skewt,0,Optimization terminated successfully,11468.533716317605,11516.603301781513,True,True,,True

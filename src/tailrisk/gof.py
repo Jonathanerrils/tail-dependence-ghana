@@ -1,18 +1,32 @@
-"""Cramér-von Mises copula goodness-of-fit with parametric bootstrap
-(Genest, Rémillard & Beaudoin 2009 procedure, grid-evaluated variant).
+"""Grid-evaluated Rosenblatt Cramér-von Mises-type copula goodness-of-fit,
+calibrated by parametric bootstrap.
 
 Implementation notes (documented in DECISIONS.md):
-* Statistic: Sn = sum over a fixed 50x50 grid of (C_n(u) - C_theta(u))^2,
-  where C_n is the empirical copula of the pseudo-observations and
-  C_theta the fitted copula's CDF approximated by the empirical CDF of
-  m=5000 simulated points. Using the SAME statistic and the SAME
-  estimator for the data and every bootstrap replicate makes the
-  p-value valid; the grid/simulation approximation trades a little
-  power for tractability and is standard practice.
-* Estimator (data and bootstrap alike): Kendall-tau inversion for the
-  dependence parameter (rho = sin(pi*tau/2) for elliptical families,
-  theta = 2tau/(1-tau) Clayton, theta = 1/(1-tau) Gumbel), with the
-  t copula's nu profiled over a fixed grid by pseudo-likelihood.
+* Statistic: under the fitted copula, the Rosenblatt-transformed pair
+  (e1, e2) = (u, h(v|u)) should be i.i.d. Uniform(0,1)^2 if the family
+  is correctly specified. The statistic measures the squared
+  discrepancy, on a fixed 50x50 grid, between the empirical joint CDF
+  of the transformed observations and the independence-copula CDF (uv)
+  -- not a comparison against a simulated approximation of the fitted
+  copula's own CDF, which an earlier version of this docstring
+  incorrectly described. Not claimed here to be numerically identical
+  to the Genest-Remillard-Beaudoin (2009) statistic without that
+  equivalence having been separately verified; described conservatively
+  as a Rosenblatt CvM-type statistic in this family's spirit.
+* Estimator (data and bootstrap alike): the same continuous pseudo-MLE
+  fitting functions used by the AIC-selection stage (src/tailrisk/
+  copulas.py, FAMILIES dict), not a separate closed-form/tau-inversion
+  estimator. This was previously a real methodological inconsistency --
+  the manuscript describes fitting by pseudo-MLE and testing goodness-
+  of-fit of those same fitted models, but this module's bootstrap
+  actually used Kendall-tau inversion internally, a different (though
+  individually valid) estimator. Unified so the GOF stage genuinely
+  tests the models the AIC stage selected among.
+* p-value: (exceed + 1) / (n_boot + 1), the conventional finite-bootstrap
+  correction, consistent with the convention used in inference.py's
+  stress-test p-values. An earlier version used a "+0.5" mid-p-style
+  correction here with no stated justification for why this test
+  specifically should differ from that convention.
 """
 
 from __future__ import annotations
@@ -20,37 +34,16 @@ from __future__ import annotations
 import numpy as np
 from scipy import stats
 
-from .copulas import _t_loglik, fit_frank, fit_joe
-
-NU_GRID = np.array([3, 4, 5, 6, 8, 12, 20, 40], dtype=float)
+from .copulas import FAMILIES
 
 
 # ------------------------------------------------------------- estimators
 def estimate(family: str, u: np.ndarray, v: np.ndarray) -> dict:
-    tau = stats.kendalltau(u, v).statistic
-    tau = float(np.clip(tau, -0.95, 0.95))
-    if family == "gaussian":
-        return {"rho": np.sin(np.pi * tau / 2)}
-    if family == "t":
-        rho = np.sin(np.pi * tau / 2)
-        lls = [_t_loglik(rho, nu, u, v) for nu in NU_GRID]
-        return {"rho": rho, "nu": float(NU_GRID[int(np.argmax(lls))])}
-    if family == "clayton":
-        return {"theta": max(2 * tau / (1 - tau), 1e-3)}
-    if family == "gumbel":
-        return {"theta": max(1 / (1 - tau), 1.0 + 1e-6)}
-    if family == "frank":
-        # MLE estimator (Frank's tau-theta relation has no closed-form
-        # inverse; MLE is a standard, fully valid choice of consistent
-        # estimator for the Genest-Remillard-Beaudoin bootstrap procedure).
-        return fit_frank(u, v).params
-    if family == "joe":
-        return fit_joe(u, v).params
-    if family == "survival_clayton":
-        return {"theta": max(2 * tau / (1 - tau), 1e-3)}
-    if family == "survival_gumbel":
-        return {"theta": max(1 / (1 - tau), 1.0 + 1e-6)}
-    raise ValueError(family)
+    """Fit `family` to (u, v) using the exact same pseudo-MLE function
+    the AIC-selection stage uses, so the GOF bootstrap tests the same
+    class of fitted model throughout, not a separate closed-form
+    approximation to it."""
+    return FAMILIES[family](u, v).params
 
 
 # --------------------------------------------------------------- samplers
@@ -101,7 +94,7 @@ def sample(family: str, params: dict, n: int,
         # Conditional (h-function inversion) sampler, vectorized across all
         # n observations at once via array-valued bisection -- exact for
         # any Archimedean copula with a tractable h-function, and fast
-        # enough for the 500-replicate bootstrap this feeds.
+        # enough for the bootstrap this feeds.
         th = params["theta"]
         u1 = rng.uniform(0, 1, n)
         w = rng.uniform(0, 1, n)
@@ -141,7 +134,7 @@ def _pseudo(x: np.ndarray) -> np.ndarray:
 
 
 def h_func(family: str, params: dict, u: np.ndarray, v: np.ndarray) -> np.ndarray:
-    """Conditional CDF h(v|u) = dC(u,v)/du — exact for all four families."""
+    """Conditional CDF h(v|u) = dC(u,v)/du — exact for all supported families."""
     u = np.clip(u, 1e-9, 1 - 1e-9)
     v = np.clip(v, 1e-9, 1 - 1e-9)
     if family == "gaussian":
@@ -185,10 +178,12 @@ def h_func(family: str, params: dict, u: np.ndarray, v: np.ndarray) -> np.ndarra
 
 def cvm_rosenblatt(u: np.ndarray, v: np.ndarray, family: str, params: dict,
                    grid_size: int = 50) -> float:
-    """Sn(B) of Genest-Rémillard-Beaudoin (2009): after the Rosenblatt
-    transform e1=u, e2=h(v|u), the pair is i.i.d. Uniform(0,1)^2 under H0;
-    Sn(B) is the CvM distance of its empirical CDF from the independence
-    copula, evaluated exactly on a grid."""
+    """Grid-evaluated Rosenblatt CvM-type statistic.
+
+    Under H0, e1=u and e2=h(v|u) should follow the independence
+    copula. The statistic measures squared empirical-CDF discrepancy
+    from uv over a fixed grid.
+    """
     e1, e2 = u, h_func(family, params, u, v)
     g = np.arange(1, grid_size + 1) / (grid_size + 1)
     a = (e1[:, None] <= g[None, :]).astype(np.float32)
@@ -213,4 +208,4 @@ def gof_test(u: np.ndarray, v: np.ndarray, family: str,
         th_b = estimate(family, su, sv)
         exceed += (cvm_rosenblatt(su, sv, family, th_b, grid_size) >= s0)
     return {"family": family, "params": theta0, "Sn": s0,
-            "p_value": (exceed + 0.5) / (n_boot + 1), "n_boot": n_boot}
+            "p_value": (exceed + 1) / (n_boot + 1), "n_boot": n_boot}

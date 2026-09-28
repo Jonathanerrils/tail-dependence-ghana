@@ -1,8 +1,12 @@
-import sys, itertools, time
+import sys, itertools, time, hashlib
 sys.path.insert(0, "src")
 import numpy as np
 import pandas as pd
 from tailrisk import copulas, inference
+
+def stable_seed(*parts):
+    key = "|".join(map(str, parts)).encode("utf-8")
+    return int.from_bytes(hashlib.sha256(key).digest()[:4], "big")
 
 pit = pd.read_csv("outputs/tables/_pit_real.csv", index_col=0, parse_dates=True)
 idx = pit.index
@@ -39,7 +43,7 @@ def run_sweep(pit_stress, tag):
                 v_s = copulas.pseudo_obs(pit_stress[[b]])[:, 0]
                 r = inference.calm_stress_difference(
                     u_c, v_c, u_s, v_s, q=q, n_boot=500, level=0.95,
-                    seed=hash((tag, a, b, q, tail)) % (2**31), bonf_m=M, upper=upper)
+                    seed=stable_seed(tag, a, b, q, tail), bonf_m=M, upper=upper)
                 rows.append({
                     "stress_def": tag, "q": q, "tail": tail,
                     "pair": f"{LABELS[a]}\u2013{LABELS[b]}",
@@ -47,7 +51,7 @@ def run_sweep(pit_stress, tag):
                     "difference": r["difference"], "diff_lo": r["diff_lo"], "diff_hi": r["diff_hi"],
                     "p_value": r["p_value"],
                     "sig_uncorrected_5pct": r["significant_5pct"],
-                    "sig_bonferroni_m60": r["significant_bonferroni"],
+                    "sig_bonferroni_m60": r["p_value"] <= 0.05 / M,
                 })
     df = pd.DataFrame(rows)
     p = df["p_value"].to_numpy()

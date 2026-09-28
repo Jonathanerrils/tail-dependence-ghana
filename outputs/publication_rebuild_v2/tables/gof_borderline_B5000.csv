@@ -1,0 +1,2 @@
+pair,a,b,family,Sn,p_value,exceed,n_boot,params,loglik,AIC,lambda_lower_model,lambda_upper_model,seed
+Gold–Cedi,gold,cedi,frank,0.0273140496274,0.0665866826635,332,5000,"{""theta"": 0.04731662072721036}",0.0855426007725,1.82891479846,0,0,339244602

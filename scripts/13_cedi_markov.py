@@ -11,13 +11,48 @@ rets = pd.read_csv("data/processed/returns_real.csv", index_col=0, parse_dates=T
 cedi = rets["cedi"].dropna()
 
 # ------------------------------------------------ Part 1: dynamic zero-probability
-# (unchanged: validated earlier, zeros genuinely cluster)
+# Use the identical zero-process specification search used by Treatment E.
+# AR(1) and AR(2) are compared on the same sample, since df_logit requires
+# both lags before either model is fitted.
+
 I_t = (cedi == 0).astype(int)
-I_lag1, I_lag2 = I_t.shift(1), I_t.shift(2)
-df_logit = pd.DataFrame({"I": I_t, "I1": I_lag1, "I2": I_lag2}).dropna()
-logit2 = sm.Logit(df_logit["I"], sm.add_constant(df_logit[["I1", "I2"]])).fit(disp=0)
-X = sm.add_constant(pd.DataFrame({"I1": I_lag1, "I2": I_lag2}))
-p_t = logit2.predict(X.dropna())
+I_lag1 = I_t.shift(1)
+I_lag2 = I_t.shift(2)
+
+df_logit = pd.DataFrame({
+    "I": I_t,
+    "I1": I_lag1,
+    "I2": I_lag2,
+}).dropna()
+
+logit1 = sm.Logit(
+    df_logit["I"],
+    sm.add_constant(df_logit[["I1"]]),
+).fit(disp=0)
+
+logit2 = sm.Logit(
+    df_logit["I"],
+    sm.add_constant(df_logit[["I1", "I2"]]),
+).fit(disp=0)
+
+best_logit, order = (
+    (logit1, 1)
+    if logit1.aic < logit2.aic
+    else (logit2, 2)
+)
+
+print("Zero-indicator logistic model selection:")
+print(f"  AR(1): AIC={logit1.aic:.3f}")
+print(f"  AR(2): AIC={logit2.aic:.3f}")
+print(f"  Selected AR({order})")
+
+if order == 1:
+    X = sm.add_constant(df_logit[["I1"]])
+else:
+    X = sm.add_constant(df_logit[["I1", "I2"]])
+
+p_t = best_logit.predict(X)
+p_t.name = "p_zero"
 
 # ------------------------------------------------ Part 2: 2-state Markov-switching
 # continuous component, fit on the nonzero subsequence (same compression
@@ -25,17 +60,23 @@ p_t = logit2.predict(X.dropna())
 # apply between consecutive NONZERO observations, not calendar days --
 # documented explicitly, not glossed over).
 nz = cedi[cedi != 0].to_numpy().reshape(-1, 1)
-best_hmm, best_bic = None, np.inf
+best_hmm, best_ll = None, -np.inf
 for seed in range(10):
     hmm = GaussianHMM(n_components=2, covariance_type="diag", n_iter=500,
                       random_state=seed, tol=1e-6)
     hmm.fit(nz)
     ll = hmm.score(nz)
-    n_params = 2 + 2 * 2 + 2 * 2 - 1  # startprob(1 free)+transmat(2 free)+means(2)+vars(2), rough count
-    bic = -2 * ll + n_params * np.log(len(nz))
-    if bic < best_bic:
-        best_bic, best_hmm = bic, hmm
+    if ll > best_ll:
+        best_ll, best_hmm = ll, hmm
 hmm = best_hmm
+
+if hmm is None:
+    raise RuntimeError("All HMM initializations failed.")
+print(f"Selected HMM log-likelihood: {best_ll:.6f} | "
+      f"converged={hmm.monitor_.converged} | iterations={hmm.monitor_.iter}")
+if not hmm.monitor_.converged:
+    raise RuntimeError("Selected HMM initialization did not converge; "
+                       "Treatment G should not be used.")
 
 means = hmm.means_.ravel()
 stds = np.sqrt(hmm.covars_.ravel())
@@ -54,19 +95,26 @@ print(f"  Stationary distribution: {np.round(hmm.get_stationary_distribution(), 
 # predictive regime probabilities (information through t-1 only -- using
 # r_t itself to weight the distribution r_t is evaluated against would be
 # circular, exactly as GARCH's sigma_t never uses epsilon_t).
+from scipy.special import logsumexp
+
 T = len(nz)
-log_emit = hmm._compute_log_likelihood(nz)  # T x 2, log density of r_t under each state
-emit = np.exp(log_emit - log_emit.max(axis=1, keepdims=True))  # stabilized
-emit = emit / emit.sum(axis=1, keepdims=True) * np.exp(log_emit.max(axis=1, keepdims=True))
+
+log_emit = np.column_stack([
+    stats.norm.logpdf(nz[:, 0], loc=means[j], scale=stds[j])
+    for j in range(2)
+])
+
 alpha = np.zeros((T, 2))
-pi_pred = np.zeros((T, 2))  # one-step-ahead predicted state probs, used for the PIT
-pi_pred[0] = hmm.get_stationary_distribution()
-alpha[0] = pi_pred[0] * np.exp(log_emit[0])
-alpha[0] /= alpha[0].sum()
+pi_pred = np.zeros((T, 2))
+pi_pred[0] = hmm.startprob_
+
+logw = np.log(np.clip(pi_pred[0], 1e-300, None)) + log_emit[0]
+alpha[0] = np.exp(logw - logsumexp(logw))
+
 for t in range(1, T):
     pi_pred[t] = alpha[t - 1] @ hmm.transmat_
-    alpha[t] = pi_pred[t] * np.exp(log_emit[t])
-    alpha[t] /= alpha[t].sum()
+    logw = np.log(np.clip(pi_pred[t], 1e-300, None)) + log_emit[t]
+    alpha[t] = np.exp(logw - logsumexp(logw))
 
 print(f"\nOne-step-ahead P(quiet regime) stats: "
       f"mean={pi_pred[:, quiet].mean():.3f}, min={pi_pred[:, quiet].min():.3f}, "
@@ -85,9 +133,6 @@ Fz_nz = np.array([hmm_mixture_cdf(nz[i, 0], pi_pred[i]) for i in range(T)])
 F0_series = pd.Series(F0_nz, index=nz_index)
 Fz_series = pd.Series(Fz_nz, index=nz_index)
 
-# For zero-return days (not in the nonzero HMM), use the stationary
-# distribution as the regime weight (no better information available
-# for a calendar day that fell in the excluded/hurdle-modeled subset).
 F0_stationary = hmm_mixture_cdf(0.0, hmm.get_stationary_distribution())
 
 # ------------------------------------------------ Part 3: combine into full PIT
@@ -123,8 +168,10 @@ counts, edges = np.histogram(u_mix, bins=10, range=(0, 1))
 for c, e in zip(counts, edges):
     print(f"  [{e:.1f}, {e+0.1:.1f}): {c}  (expected ~{len(u_mix)/10:.0f} if uniform)")
 
-with open("outputs/fits.pkl", "rb") as f:
-    fits = pickle.load(f)
+_pit_canonical = pd.read_csv("outputs/tables/_pit_real.csv", index_col=0, parse_dates=True)
+class _FitStub:
+    def __init__(self, pit): self.pit = pit
+fits = {c: _FitStub(_pit_canonical[c]) for c in _pit_canonical.columns}
 ks_A = stats.kstest(fits["cedi"].pit.dropna(), "uniform")
 ks_G = stats.kstest(cedi_G, "uniform")
 print(f"\nKS test of PIT uniformity:")

@@ -1,0 +1,6 @@
+series,previous_spec,previous_status,previous_spec_convergence_flag_now,previous_spec_valid_now,previous_spec_adequate_now,hard_gate_spec,hard_gate_status,selection_changed
+cocoa,AR1-GJR-GARCH-t,ADEQUATE,0,True,True,AR1-GJR-GARCH-t,ADEQUATE,False
+gold,AR1-GJR-GARCH-t,ADEQUATE,0,True,True,AR1-GJR-GARCH-t,ADEQUATE,False
+brent,AR1-GJR-GARCH-skewt,ADEQUATE,0,True,True,AR1-GJR-GARCH-skewt,ADEQUATE,False
+wti,AR1-EGARCH-t,ADEQUATE,0,True,True,AR1-EGARCH-t,ADEQUATE,False
+cedi,AR1-GJR-GARCH-t,INADEQUATE_REFERENCE,0,True,False,AR1-GJR-GARCH-t,INADEQUATE_REFERENCE,False

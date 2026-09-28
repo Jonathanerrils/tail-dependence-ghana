@@ -1,0 +1,17 @@
+{
+  "input_sha256": "3e9769f42ec7925aacd951277ddae6ff529822408815b01210de87659221341f",
+  "freeze_check_passed": true,
+  "n_candidate_fits": 20,
+  "n_invalid_or_nonconverged_candidates": 1,
+  "invalid_candidates": [
+    {
+      "series": "cedi",
+      "spec": "AR1-EGARCH-t",
+      "convergence_flag": 4,
+      "optimizer_message": "Inequality constraints incompatible"
+    }
+  ],
+  "n_selections_changed_vs_previously_reported": 0,
+  "changed_series": [],
+  "all_previously_reported_selected_models_valid_now": true
+}
