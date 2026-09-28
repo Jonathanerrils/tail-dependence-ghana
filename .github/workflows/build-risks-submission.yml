@@ -28,6 +28,21 @@ jobs:
           root_file: supplementary.tex
           working_directory: paper/latex/risks_submission
 
+      - name: Check graphical abstract dimensions
+        run: |
+          python - <<'PY'
+          import struct
+          from pathlib import Path
+          p = Path("paper/latex/risks_submission/graphical_abstract.png")
+          data = p.read_bytes()
+          if data[:8] != b"\x89PNG\r\n\x1a\n":
+              raise SystemExit("graphical_abstract.png is not a valid PNG")
+          width, height = struct.unpack(">II", data[16:24])
+          print(f"Graphical abstract: {width} x {height} px")
+          if width < 1100 or height < 560:
+              raise SystemExit("Graphical abstract is below MDPI minimum 1100 x 560 px")
+          PY
+
       - name: Create journal submission ZIP
         run: |
           cd paper/latex/risks_submission
