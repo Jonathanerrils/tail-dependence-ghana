@@ -28,11 +28,18 @@ jobs:
           root_file: supplementary.tex
           working_directory: paper/latex/risks_submission
 
-      - name: Upload submission PDFs
+      - name: Create journal submission ZIP
+        run: |
+          cd paper/latex/risks_submission
+          zip -r ../../../risks-submission-source.zip . \
+            -x "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "*.fls" "*.fdb_latexmk" "*.synctex.gz" "manuscript.pdf" "supplementary.pdf"
+
+      - name: Upload submission package
         uses: actions/upload-artifact@v4
         with:
-          name: risks-submission-pdfs
+          name: risks-submission-package
           path: |
             paper/latex/risks_submission/manuscript.pdf
             paper/latex/risks_submission/supplementary.pdf
+            risks-submission-source.zip
           if-no-files-found: error
