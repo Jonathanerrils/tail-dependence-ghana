@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%	MDPI class for LaTeX files	 13 March 2026
+%%%%	MDPI class for pdfLaTeX version
 %% %%	For any information please send an e-mail to:
 %% %%		latex@mdpi.com
 %% %%
@@ -18,13 +18,15 @@
 %% %%		v2.0 when Dr. Janine Daum started (March 2013)
 %% %%		v3.0 layout change September 2015
 %%%%		v4.0 layout change December 2020
-%%%%             v5.0 layout change December 2024
-%%%%             v6.0 layout change December 2025
+%%%%           v5.0 layout change December 2024
+%%%%           v6.0 layout change December 2025
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% IDENTIFICATION
+\def\mdpidate{2026-09-11}
+\def\mdpiversion{v6.5a}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Definitions/mdpi}[13/03/2026 MDPI paper class]
+\ProvidesClass{Definitions/mdpi}[\mdpidate\ \mdpiversion\ MDPI paper class for pdflatex]
 
  %% PRELIMINARY DECLARATIONS
 \LoadClass[10pt,a4paper]{article}
@@ -33,7 +35,7 @@
 \RequirePackage{calc}
 \RequirePackage{indentfirst}
 \RequirePackage{fancyhdr}
-\RequirePackage{graphicx,epstopdf}
+\RequirePackage{graphicx}
 \RequirePackage{lastpage}
 \RequirePackage{ifthen}
 \RequirePackage{float}
@@ -70,6 +72,39 @@
 \RequirePackage[labelformat=simple]{subfig} % Support to add subfigures
 \renewcommand\thesubfigure{\normalfont(\textbf{\alph{subfigure}})} % Change subfigure label format
 \RequirePackage{alphalph} % Provide double letters numbers
+\graphicspath{{./Definitions/}{./Figures/}{./Figure/}{./figures/}{./figure/}}
+\RequirePackage[normalem]{ulem} % \uuline in abstract
+\RequirePackage{wasysym}
+\RequirePackage{mathcomp} % permille
+\RequirePackage{pifont}
+\RequirePackage{bm}
+\RequirePackage{bbm}
+\makeatletter
+\def\T@n@@nc@d@ngM@cr@M@d{}
+\def\LY@n@@nc@d@ngM@cr@M@d{}
+\let\mdpi@orignewcommand\newcommand
+\let\newcommand\providecommand
+\RequirePackage{verse}
+\let\newcommand\mdpi@orignewcommand
+\renewcommand*{\theHpoemline}{\arabic{verse@envctr}.\arabic{poemline}}
+\newsavebox\foobox
+\newcommand{\slantbox}[2][.2]{\mbox{%
+        \sbox{\foobox}{#2}%
+        \hskip\wd\foobox
+        \pdfsave
+        \pdfsetmatrix{1 0 #1 1}%
+        \llap{\usebox{\foobox}}%
+        \pdfrestore
+}}
+\let\mdpi@oldblacktriangledown\blacktriangledown
+\renewcommand{\dagger}{\mathchar"2279}
+\renewcommand{\ddagger}{\mathchar"227A}
+\newcommand{\mmathit}[1]{%
+  \ifthenelse{\equal{#1}{\ln}}{\mathit{ln}}{%
+    \ifthenelse{\equal{#1}{\max}}{\mathit{max}}{\mathit{#1}}%
+  }%
+}
+\robustify{\footnote}
 
 %% OPTIONS
 % For transition period to change back to continuous page numbers
@@ -146,6 +181,9 @@
 %% To choose the whether there is one or more authors
 \DeclareOption{oneauthor}{\gdef\@authornum{author}}
 \DeclareOption{moreauthors}{\gdef\@authornum{authors}}
+\newif\ifmdpiunicodemaps
+\mdpiunicodemapsfalse
+\DeclareOption{unicode}{\mdpiunicodemapstrue}
 
 %% Add the chosen options to the class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -235,10 +273,6 @@
  \setcounter{example}{0}
  \newtheorem{Example}[example]{Example}
  
- \newcounter{examplesanddefinitions}
- \setcounter{examplesanddefinitions}{0}
- \newtheorem{ExamplesandDefinitions}[examplesanddefinitions]{Examples and Definitions}
- 
  \newcounter{remark}
  \setcounter{remark}{0}
  \newtheorem{Remark}[remark]{Remark}
@@ -270,92 +304,22 @@
 \renewcommand{\right}{\aftergroup\egroup\originalright} 
 
 %%%% Chicago style journals
-\newcommand{\isChicagoStyle}{
-	\ifthenelse{\equal{\@journal}{arts}
-		\OR \equal{\@journal}{genealogy}
-		\OR \equal{\@journal}{histories}
-		\OR \equal{\@journal}{humanities}
-		\OR \equal{\@journal}{laws}
-		\OR \equal{\@journal}{literature}
-		\OR \equal{\@journal}{religions}
-		\OR \equal{\@journal}{risks}
-		\OR \equal{\@journal}{socsci}
-             \OR \equal{\@journal}{preprintschicago} %% Just use for preprints, not a real Chicago journal
-             \OR \equal{\@journal}{chicagojournal} %% Just use for chicago submission, not a real Chicago journal
-		}
+\newcommand{\isChicagoStyle}{%
+	\ifthenelse{\equal{\@journaltype}{Chicago}
+	}
 }
 
 %%%% APA style journals
-\newcommand{\isAPAStyle}{
-	\ifthenelse{\equal{\@journal}{admsci}       % Transfer to APA type
-		\OR \equal{\@journal}{aieduc}       
-		\OR \equal{\@journal}{behavsci}       % Transfer to APA type
-		\OR \equal{\@journal}{businesses}    % Transfer to APA type
-		\OR \equal{\@journal}{econometrics}% Transfer to APA type
-		\OR \equal{\@journal}{economies}    % Transfer to APA type
-		\OR \equal{\@journal}{education}     % Transfer to APA type
-		\OR \equal{\@journal}{ejihpe}           % Transfer to APA type
-		\OR \equal{\@journal}{famsci}           % Transfer to APA type
-		\OR \equal{\@journal}{games}          % Transfer to APA type
-		\OR \equal{\@journal}{humans}         % Transfer to APA type
-		\OR \equal{\@journal}{ijcs}               % Transfer to APA type
-		\OR \equal{\@journal}{ijfs}               % Transfer to APA type
-		\OR \equal{\@journal}{jintelligence}   % Transfer to APA type from 19 Dec. 2025
-		\OR \equal{\@journal}{journalmedia} % Transfer to APA type
-		\OR \equal{\@journal}{jrfm}              % Transfer to APA type
-		\OR \equal{\@journal}{jsam}             % New APA Journal
-		\OR \equal{\@journal}{languages}      % Transfer to APA type
-		\OR \equal{\@journal}{peacestud}      % New APA Journal
-		\OR \equal{\@journal}{projmanag}      % New APA Journal
-		\OR \equal{\@journal}{psycholint}      % Transfer to APA type
-		\OR \equal{\@journal}{publications}   % Transfer to APA type
-		\OR \equal{\@journal}{tourismhosp}   % Transfer to APA type
-		\OR \equal{\@journal}{youth}             % Transfer to APA type
-             \OR \equal{\@journal}{preprintsapa} %% Just use for preprints, not a real APA journal
-             \OR \equal{\@journal}{apajournal} %% Just use for APA submission, not a real APA journal
-		}
+\newcommand{\isAPAStyle}{%
+	\ifthenelse{\equal{\@journaltype}{APA}
+	}
 }
 
 %%%% Chicago style journals
-\newcommand{\isAPAandChicago}{
-	\ifthenelse{\equal{\@journal}{arts}
-		\OR \equal{\@journal}{genealogy}
-		\OR \equal{\@journal}{histories}
-		\OR \equal{\@journal}{humanities}
-		\OR \equal{\@journal}{jintelligence}
-		\OR \equal{\@journal}{laws}
-		\OR \equal{\@journal}{literature}
-		\OR \equal{\@journal}{religions}
-		\OR \equal{\@journal}{risks}
-		\OR \equal{\@journal}{socsci}
-             \OR \equal{\@journal}{preprintschicago} 
-	      \OR \equal{\@journal}{admsci}       
-		\OR \equal{\@journal}{aieduc}      
-		\OR \equal{\@journal}{behavsci}       
-		\OR \equal{\@journal}{businesses}   
-		\OR \equal{\@journal}{econometrics}
-		\OR \equal{\@journal}{economies}    
-		\OR \equal{\@journal}{education}     
-		\OR \equal{\@journal}{ejihpe}    
-		\OR \equal{\@journal}{famsci}       
-		\OR \equal{\@journal}{games}          
-		\OR \equal{\@journal}{humans}  
-		\OR \equal{\@journal}{ijcs}                      
-		\OR \equal{\@journal}{ijfs}              
-		\OR \equal{\@journal}{journalmedia}
-		\OR \equal{\@journal}{jrfm}             
-		\OR \equal{\@journal}{jsam}
-		\OR \equal{\@journal}{languages}
-		\OR \equal{\@journal}{peacestud}
-		\OR \equal{\@journal}{projmanag}
-		\OR \equal{\@journal}{psycholint}      
-		\OR \equal{\@journal}{publications}   
-		\OR \equal{\@journal}{tourismhosp}   
-		\OR \equal{\@journal}{youth}             
-             \OR \equal{\@journal}{preprintsapa} 
-             \OR \equal{\@journal}{chicagojournal} %% Just use for chicago submission, not a real Chicago journal
-             \OR \equal{\@journal}{apajournal} %% Just use for APA submission, not a real APA journal
-		}
+\newcommand{\isAPAandChicago}{%
+	\ifthenelse{\equal{\@journaltype}{APA} 
+		\OR \equal{\@journaltype}{Chicago}
+	}
 }
 
 %%%% References
@@ -416,11 +380,42 @@
 	\crefname{figure}{Figure}{Figures}
 	\crefname{table}{Table}{Tables}
 	\crefname{section}{Section}{Sections}
-	\crefname{appendix}{Appendix}{Appendices}
+	\crefname{appendix}{Appendix}{Appendixes}
 	\crefname{scheme}{Scheme}{Schemes}
 	\crefname{chart}{Chart}{Charts}
 	\crefname{paragraph}{Section}{Sections}
 	\crefname{graph}{Graph}{Graphs}
+	\crefname{theorem}{Theorem}{Theorems}
+	\crefname{lemma}{Lemma}{Lemmas}
+	\crefname{corollary}{Corollary}{Corollaries}
+	\crefname{proposition}{Proposition}{Propositions}
+	\crefname{characterization}{Characterization}{Characterizations}
+	\crefname{property}{Property}{Properties}
+	\crefname{problem}{Problem}{Problems}
+	\crefname{example}{Example}{Examples}
+	\crefname{remark}{Remark}{Remarks}
+	\crefname{definition}{Definition}{Definitions}
+	\crefname{hypothesis}{Hypothesis}{Hypotheses}
+	\crefname{notation}{Notation}{Notations}
+	\crefname{assumption}{Assumption}{Assumptions}
+	\crefname{algorithm}{Algorithm}{Algorithms}
+	% amsthm writes the environment name (Theorem, Lemma, ...) into @cref labels;
+	% alias Capitalized environments to the lowercase types defined above.
+	% Required for TeX Live 2023 and 2026 (cleveref + First Aid).
+	\crefalias{Theorem}{theorem}%
+	\crefalias{Lemma}{lemma}%
+	\crefalias{Corollary}{corollary}%
+	\crefalias{Proposition}{proposition}%
+	\crefalias{Characterization}{characterization}%
+	\crefalias{Property}{property}%
+	\crefalias{Problem}{problem}%
+	\crefalias{Example}{example}%
+	\crefalias{Remark}{remark}%
+	\crefalias{Definition}{definition}%
+	\crefalias{Hypothesis}{hypothesis}%
+	\crefalias{Notation}{notation}%
+	\crefalias{Assumption}{assumption}%
+	\crefalias{Algorithm}{algorithm}%
 }
 
 % After TeXLive 2021, \AddToHook{begindocument} is needed to make sure that hyperref is loaded last. \ifdef{\AddToHook{begindocument}}{ is needed for backwards-compatibility because \AddToHook{begindocument} did not yet exist in 2020.
@@ -834,7 +829,8 @@
 				\vspace{-2pt}%
 				\ifthenelse{\equal{\@status}{submit}}{%	
 				\vspace{5pt}%
-					\hfill \href{https://www.mdpi.com}{\textbf{MDPI}}%
+					\hfill \href{https://www.mdpi.com}{%
+					\includegraphics[height=1cm]{Definitions/logo-mdpi.eps}}%
 					}{
 					\href{https://www.mdpi.com/journal/\@journal}{
 					\includegraphics[height=1.2cm]{Definitions/\@journal-logo.eps}}%
@@ -993,6 +989,7 @@
 \isPreprints{}{%
 	\ifthenelse{\equal{\@CorrStatement}{yes}}{%
 		\leftcolFont%
+	        \raggedright
 		\textcorrstatement%
              \vspace{-2pt}
 		}{%
@@ -1315,22 +1312,22 @@
 \titlespacing {\paragraph} {0pt} {12pt} {3pt}
 
 %%%% Special section title style for back matter
-\newcommand{\supplementary}[1]{
+\newcommand{\supplementary}[1]{%
 \par\vspace{6pt}\noindent{\fontsize{9}{11.5}\selectfont\textbf{Supplementary Materials:} {#1}\par}}
 
 \newcommand{\authorcontributions}[1]{%
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{Author Contributions:} {#1}\par}}
 
-\newcommand{\funding}[1]{
+\newcommand{\funding}[1]{%
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{Funding:} {#1}\par}}
 
-\newcommand{\institutionalreview}[1]{
+\newcommand{\institutionalreview}[1]{%
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{Institutional Review Board Statement:} {#1}\par}}
 
-\newcommand{\informedconsent}[1]{
+\newcommand{\informedconsent}[1]{%
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{Informed Consent Statement:} {#1}\par}}
 
-\newcommand{\dataavailability}[1]{
+\newcommand{\dataavailability}[1]{%
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{Data Availability Statement:} {#1}\par}}
 
 \newcommand{\durcstatement}[1]{% For journal Drones
@@ -1342,7 +1339,7 @@
 \newcommand{\guidelinesstandards}[1]{% For journal Nursing Reports
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{Guidelines and Standards Statement:} {#1}\par}}
 
-\newcommand{\acknowledgments}[1]{
+\newcommand{\acknowledgments}[1]{%
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{Acknowledgments:} {#1}\par}}
 
 \newcommand{\conflictsofinterest}[1]{%
@@ -1368,8 +1365,12 @@
 \newcommand{\bio}[2]{%
 \noindent{#1}\hspace{1.1cm}\noindent {\fontsize{9}{11.2}\selectfont \pbox[b]{13.86cm}{#2}}\par\vspace{6pt}}
 
+% List of contribution
+\newcommand{\listofcontribution}[2]{\vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{#1}}{%
+\par\vspace{-12pt}\hspace{-0.85cm}{\fontsize{9}{11.2}\selectfont #2}\par}}
+
 % Use for special paragraph requirement in back matter
-\newcommand{\backnotes}[2]{
+\newcommand{\backnotes}[2]{%
 \vspace{6pt}\noindent{\fontsize{9}{11.2}\selectfont\textbf{#1:} {#2}\par}}
 
 %%%%% Defines the appendix
@@ -1399,14 +1400,17 @@
 \setcounter{characterization}{0} 
 \setcounter{property}{0} 
 \setcounter{problem}{0} 
-\setcounter{example}{0} 
-\setcounter{examplesanddefinitions}{0} 
+\setcounter{example}{0}
 \setcounter{remark}{0} 
 \setcounter{definition}{0} 
 \setcounter{hypothesis}{0}
 \setcounter{notation}{0}
 \setcounter{algorithm}{0}
 \setcounter{graph}{0}
+\crefname{appendix}{Appendix}{Appendixes}
+\crefalias{section}{appendix}%
+\crefalias{subsection}{appendix}%
+\crefalias{subsubsection}{appendix}%
 }
 
 \renewcommand{\appendix}{%
@@ -1458,7 +1462,6 @@
 \renewcommand{\theproperty}{A\arabic{property}}
 \renewcommand{\theproblem}{A\arabic{problem}}
 \renewcommand{\theexample}{A\arabic{example}}
-\renewcommand{\theexamplesanddefinitions}{A\arabic{examplesanddefinitions}}
 \renewcommand{\theremark}{A\arabic{remark}}
 \renewcommand{\thedefinition}{A\arabic{definition}}
 \renewcommand{\thehypothesis}{A\arabic{hypothesis}}
@@ -1594,6 +1597,11 @@
 
 \captionsetup[graph]{position=bottom, 	labelfont={bf, small, stretch=1.17}, labelsep=period, textfont={small, stretch=1.17}, aboveskip=6pt, belowskip=-6pt, singlelinecheck=off, justification=justified}
 }
+
+%% Non-floating figure block with long caption (\captionof{figure}{...}).
+%% TL2026 + \DocumentMetadata: use float tagging sockets (PDF/UA-2).
+%% TL2023 / no tagging: \UseTaggingSocket may be undefined -- skip safely.
+\newcommand{\mdpi@tagsocket}[1]{\ifdefined\UseTaggingSocket\UseTaggingSocket{#1}\fi}
 
 %% For table footnotes
 \newsavebox{\@justcentbox}
@@ -1860,5 +1868,12 @@
   \newlength{\cellWidthY}
   \newlength{\cellWidthZ}
  \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp} % For table column setting in XML2PDF
+
+\ifmdpiunicodemaps
+  \InputIfFileExists{Definitions/unicode.tex}{}{%
+    \PackageError{mdpi}{Missing Definitions/unicode.tex}{%
+      Install the MDPI Definitions bundle beside the main .tex file.}%
+  }%
+\fi
 
 \endinput
