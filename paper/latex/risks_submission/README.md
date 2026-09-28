@@ -21,7 +21,7 @@ The Risks option in the MDPI class uses the journal's Chicago-style author-date 
 
 ## Author metadata
 
-- Jonathan Nelson
+- Jonathan Anthonio Nii Pedro Nelson
 - Kwame Nkrumah University of Science and Technology (KNUST), Kumasi, Ghana
 - Corresponding email: jonathannelson707@gmail.com
 - ORCID: 0009-0006-9393-6237
