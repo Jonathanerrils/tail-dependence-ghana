@@ -12,7 +12,7 @@ Prepared from the frozen, audited manuscript.
 Commodity Tail Dependence and Exchange-Rate Risk in Ghana: Copula Adequacy, Stress Tests, and Calendar Robustness
 
 ## Author
-- Jonathan Nelson
+- Jonathan Anthonio Nii Pedro Nelson
 - Kwame Nkrumah University of Science and Technology (KNUST), Kumasi, Ghana
 - Corresponding author: Yes
 - Email: jonathannelson707@gmail.com
