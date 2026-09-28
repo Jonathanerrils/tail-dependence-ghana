@@ -14,7 +14,7 @@ Outputs:
         figure_S1_cedi_evt_threshold_sensitivity.{pdf,png}
         figure_S2_cedi_AG_sensitivity.{pdf,png}
         figure_S3_pit_clipping_diagnostic.{pdf,png}
-        graphical_abstract_cross_panel_evidence.{pdf,png}
+        graphical_abstract_verified_findings.{pdf,png}
         repository_study_design_workflow.{pdf,png}
         table_01_cross_panel_evidence.{csv,md}
         figure_manifest.csv
@@ -44,6 +44,8 @@ from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outputs" / "publication_figures"
 OUT.mkdir(parents=True, exist_ok=True)
+MANUSCRIPT_FIGURES = ROOT / "paper" / "latex" / "rebuild" / "figures"
+MANUSCRIPT_FIGURES.mkdir(parents=True, exist_ok=True)
 
 DPI = 300
 Q_LEVELS = [0.025, 0.05, 0.10]
@@ -159,8 +161,10 @@ def empirical_tail_table(pit: pd.DataFrame) -> pd.DataFrame:
 
 
 def save_figure(fig: plt.Figure, stem: str) -> None:
+    """Save archival outputs and refresh the PNG used by the LaTeX rebuild."""
     fig.savefig(OUT / f"{stem}.pdf", bbox_inches="tight", facecolor="white")
     fig.savefig(OUT / f"{stem}.png", dpi=DPI, bbox_inches="tight", facecolor="white")
+    fig.savefig(MANUSCRIPT_FIGURES / f"{stem}.png", dpi=DPI, bbox_inches="tight", facecolor="white")
     plt.close(fig)
 
 
@@ -552,7 +556,7 @@ def figure_06_cross_panel(gof_summary, stress):
         "The panels are alternative defensible representations of the observation process; neither is designated primary.",
         ha="center", fontsize=10, fontweight="bold"
     )
-    save_figure(fig, "internal_cross_panel_table_preview")
+    save_figure(fig, "cross_panel_evidence_summary")
 
 
 def figure_07_cedi_AG():
@@ -736,7 +740,7 @@ def figure_10_findings_summary(gof_summary, stress):
         ha="center", va="center", fontsize=9.2
     )
 
-    save_figure(fig, "graphical_abstract_cross_panel_evidence")
+    save_figure(fig, "graphical_abstract_verified_findings")
 
 
 def write_manifest_and_captions(stress_summary, gof_summary):
@@ -746,11 +750,11 @@ def write_manifest_and_captions(stress_summary, gof_summary):
         ["Figure 3", "figure_03_copula_gof_heatmap", "main candidate", "Panel A/B GOF outputs"],
         ["Figure 4", "figure_04_stress_summary", "main candidate", "Panel A/B B=15,000 stress outputs"],
         ["Figure S1", "figure_S1_cedi_evt_threshold_sensitivity", "supplement", "Panel B EVT threshold output"],
-        ["Table 1 preview", "internal_cross_panel_table_preview", "internal preview; use table_01_cross_panel_evidence.md in manuscript", "frozen cross-panel evidence"],
+        ["Table 1 preview", "cross_panel_evidence_summary", "internal preview; use table_01_cross_panel_evidence.md in manuscript", "frozen cross-panel evidence"],
         ["Figure S2", "figure_S2_cedi_AG_sensitivity", "supplement", "Panel A A-G diagnostic output"],
         ["Figure S3", "figure_S3_pit_clipping_diagnostic", "supplement", "Panel A clipping/tie audit"],
         ["Repository", "repository_study_design_workflow", "repository only; overlaps Figure 1", "frozen study design"],
-        ["Graphical abstract", "graphical_abstract_cross_panel_evidence", "graphical abstract", "frozen headline findings"],
+        ["Graphical abstract", "graphical_abstract_verified_findings", "graphical abstract", "frozen headline findings"],
     ], columns=["figure", "stem", "suggested_role", "source"])
     manifest.to_csv(OUT / "figure_manifest.csv", index=False)
 
@@ -826,7 +830,7 @@ def main():
 
     print(f"Created publication figure candidate suite in: {OUT}")
     print("Freeze checks passed.")
-    print("Generated main figures, supplementary figures, graphical abstract, repository workflow, and cross-panel manuscript table.")
+    print("Generated main figures, supplementary figures, graphical abstract, repository workflow, and cross-panel manuscript table.")\n    print(f"Refreshed LaTeX PNG assets in: {MANUSCRIPT_FIGURES}")
     print("No model fitting or bootstrap computation was performed.")
 
 
