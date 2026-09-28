@@ -830,7 +830,8 @@ def main():
 
     print(f"Created publication figure candidate suite in: {OUT}")
     print("Freeze checks passed.")
-    print("Generated main figures, supplementary figures, graphical abstract, repository workflow, and cross-panel manuscript table.")\n    print(f"Refreshed LaTeX PNG assets in: {MANUSCRIPT_FIGURES}")
+    print("Generated main figures, supplementary figures, graphical abstract, repository workflow, and cross-panel manuscript table.")
+    print(f"Refreshed LaTeX PNG assets in: {MANUSCRIPT_FIGURES}")
     print("No model fitting or bootstrap computation was performed.")
 
 
