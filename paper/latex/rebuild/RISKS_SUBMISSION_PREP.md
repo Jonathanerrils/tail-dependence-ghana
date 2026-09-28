@@ -57,7 +57,7 @@ The existing repository Data and Code Availability statement can be adapted into
 
 ## Template migration
 
-Use the current MDPI LaTeX template for *Risks*. The audited scientific content in `paper/latex/rebuild/sections/` should be migrated without changing numerical results or evidential classifications. References should be rendered in MDPI's numbered citation style through the journal template rather than the present author--year `plainnat` development style.
+Use the current MDPI LaTeX template for *Risks*. The audited scientific content in `paper/latex/rebuild/sections/` should be migrated without changing numerical results or evidential classifications. The current MDPI class identifies *Risks* as a Chicago-style journal, so the submission package uses the journal's author--date bibliography configuration rather than the development `plainnat` style.
 
 The final submission ZIP should contain the MDPI source, bibliography, all main figures, the graphical abstract where requested, and any supplementary files needed for recompilation.
 
