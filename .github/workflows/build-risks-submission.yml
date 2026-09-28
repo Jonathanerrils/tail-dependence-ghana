@@ -1,0 +1,38 @@
+name: Build Risks submission package
+
+on:
+  push:
+    branches:
+      - manuscript-publication-revision
+    paths:
+      - 'paper/latex/risks_submission/**'
+      - '.github/workflows/build-risks-submission.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile Risks manuscript
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: manuscript.tex
+          working_directory: paper/latex/risks_submission
+
+      - name: Compile supplementary material
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: supplementary.tex
+          working_directory: paper/latex/risks_submission
+
+      - name: Upload submission PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: risks-submission-pdfs
+          path: |
+            paper/latex/risks_submission/manuscript.pdf
+            paper/latex/risks_submission/supplementary.pdf
+          if-no-files-found: error
