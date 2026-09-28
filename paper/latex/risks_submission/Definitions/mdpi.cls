@@ -834,8 +834,7 @@
 				\vspace{-2pt}%
 				\ifthenelse{\equal{\@status}{submit}}{%	
 				\vspace{5pt}%
-					\hfill \href{https://www.mdpi.com}{%
-					\includegraphics[height=1cm]{Definitions/logo-mdpi.eps}}%
+					\hfill \href{https://www.mdpi.com}{\textbf{MDPI}}%
 					}{
 					\href{https://www.mdpi.com/journal/\@journal}{
 					\includegraphics[height=1.2cm]{Definitions/\@journal-logo.eps}}%
