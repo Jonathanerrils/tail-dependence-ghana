@@ -2,7 +2,7 @@
 
 **Copula adequacy, stress tests, calendar robustness, and reproducible reconstruction of cocoa, gold, Brent, WTI, and Ghana cedi dependence.**
 
-> **Current status:** The scientific reconstruction is substantially complete. The publication analysis now uses two co-equal calendar panels, the publication-resolution stress analysis has been completed for both panels, the major implementation audits are closed, and a reconstructed LaTeX manuscript is available on the `manuscript-rebuild-latex` branch. Historical scripts, outputs, and the older manuscript remain in the repository for provenance and must not be treated as current publication authority unless explicitly identified as verified.
+> **Current status:** The scientific reconstruction is substantially complete. The publication analysis now uses two co-equal calendar panels, the publication-resolution stress analysis has been completed for both panels, the major implementation audits are closed, and the audited reconstructed LaTeX manuscript is being finalized on the `manuscript-publication-revision` branch. Historical scripts, outputs, and the older manuscript remain in the repository for provenance and must not be treated as current publication authority unless explicitly identified as verified.
 
 Working manuscript title:
 
@@ -335,10 +335,10 @@ This places adverse commodity and Cedi movements in the same lower-tail orientat
 
 The historical manuscript in `paper/latex/paper.tex` is retained for provenance.
 
-The reconstructed scientific manuscript is being reviewed on the branch:
+The reconstructed scientific manuscript is being finalized on the branch:
 
 ```text
-manuscript-rebuild-latex
+manuscript-publication-revision
 ```
 
 and is assembled under:
@@ -363,7 +363,7 @@ Draft pull request:
 
 **PR #1: Rebuild manuscript in LaTeX from audited scientific sections**
 
-The reconstructed manuscript currently contains Sections 1 through 8 and is awaiting final cross-section consistency, bibliography, compilation, figure/table, and submission-format checks before merge.
+The reconstructed manuscript contains Sections 1 through 8 plus supplementary diagnostics. Cross-section consistency, bibliography-key, figure-structure and compiled-PDF checks have been completed; submission-format adaptation and final release checks remain.
 
 ---
 
@@ -486,12 +486,11 @@ Use the repository `.gitignore` and inspect `git status` before committing.
 2. reconcile any differences between local `src/` and stale GitHub source files;
 3. upload current scripts 23-36 and publication outputs that form the evidence record;
 4. rebuild the current verification ledger from the frozen evidence;
-5. run cross-section consistency and citation audits on the assembled manuscript;
-6. compile and inspect the LaTeX manuscript;
-7. refresh publication tables and figures from frozen outputs;
-8. normalize the bibliography;
-9. adapt the final paper to *Risks* submission format;
-10. create a clean release tag and one-command reproduction workflow.
+5. keep the verification ledger synchronized with the frozen evidence;
+6. perform the final journal-format compilation check;
+7. verify the graphical abstract and supplementary submission assets;
+8. adapt the final paper to *Risks* submission format;
+9. create a clean release tag and one-command reproduction workflow.
 
 ---
 
