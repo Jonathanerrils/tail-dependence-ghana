@@ -6,7 +6,14 @@ The empirical workflow is applied consistently across the two co-equal calendar 
 
 \subsection{Marginal filtering and the validity gate}
 
-Each return series is filtered before dependence estimation using a fixed four-model ladder: AR(1)-GJR-GARCH(1,1)-t, AR(2)-GJR-GARCH(1,1)-t, AR(1)-EGARCH(1,1)-t, and AR(1)-GJR-GARCH(1,1)-skew-t. For the GJR-GARCH candidates,
+Each return series is filtered before dependence estimation using a fixed four-model ladder:
+\begin{itemize}
+\item AR(1)-GJR-GARCH(1,1)-t;
+\item AR(2)-GJR-GARCH(1,1)-t;
+\item AR(1)-EGARCH(1,1)-t; and
+\item AR(1)-GJR-GARCH(1,1)-skew-t.
+\end{itemize}
+For the GJR-GARCH candidates,
 
 \[
 r_t=\mu+\sum_{j=1}^{p}\phi_j r_{t-j}+\varepsilon_t,\qquad
