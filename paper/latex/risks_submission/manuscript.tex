@@ -1,0 +1,75 @@
+\documentclass[risks,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{tabularx}
+\usepackage{array}
+
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{}
+\daterevised{}
+\dateaccepted{}
+\datepublished{}
+
+\Title{Commodity Tail Dependence and Exchange-Rate Risk in Ghana: Copula Adequacy, Stress Tests, and Calendar Robustness}
+
+\Author{Jonathan Nelson $^{1,*}$}
+\AuthorNames{Jonathan Nelson}
+
+\address{%
+$^{1}$ \quad Kwame Nkrumah University of Science and Technology (KNUST), Kumasi, Ghana; jonathannelson707@gmail.com}
+
+\corres{Correspondence: jonathannelson707@gmail.com}
+
+\firstnote{ORCID: 0009-0006-9393-6237}
+
+\abstract{This study examines commodity tail dependence and exchange-rate risk in Ghana using two co-equal calendar constructions for cocoa, gold, Brent crude oil, WTI crude oil and the Ghanaian cedi over 2015--2026. The analysis combines explicit marginal convergence and adequacy gates, eight static bivariate copula families evaluated with a Rosenblatt-transform Cramér--von Mises statistic and parametric bootstrap, finite-threshold lower- and upper-tail concentration at prespecified thresholds, and moving-block-bootstrap stress comparisons corrected for multiple testing. Across the combined COVID-19 plus 2024 stress definition, COVID-19 alone and 2024 alone, no stress-calm comparison survives either Bonferroni or Benjamini--Hochberg correction in either calendar panel. Copula adequacy is more heterogeneous. Gold--Brent, Gold--WTI and Brent--WTI reject all eight tested static families under both calendar constructions, while all four commodity--Cedi pairs reject none of the eight in either panel. Cocoa--Gold, Cocoa--Brent and Cocoa--WTI are calendar-sensitive, with complete rejection under business-day alignment but only partial rejection under common-observation alignment. The Cedi remains inadequately represented by the tested continuous marginal models under both panels, so Cedi-related copula and extreme-value estimates are interpreted as conditional diagnostics. The results show that calendar alignment, absolute model adequacy and multiplicity control materially affect which dependence conclusions are defensible.}
+
+\keyword{tail dependence; copulas; commodity risk; Ghana; exchange-rate risk; model adequacy; calendar alignment; stress testing}
+
+\begin{document}
+
+\input{sections/01_introduction}
+\input{sections/02_related_literature}
+\input{sections/03_data_calendar}
+\input{sections/04_methodology}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_robustness_limitations}
+\input{sections/08_conclusion}
+
+\vspace{6pt}
+
+\supplementary{The following supporting information accompanies this manuscript: Figure S1: Panel B Cedi EVT threshold sensitivity; Figure S2: Panel A Cedi A--G sensitivity diagnostics; Figure S3: Panel A Cedi PIT-clipping diagnostic.}
+
+\authorcontributions{Conceptualization, methodology, software, validation, formal analysis, investigation, data curation, writing---original draft preparation, writing---review and editing, visualization, and project administration, J.N. The author has read and agreed to the published version of the manuscript.}
+
+\funding{This research received no external funding.}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{The analysis code, audited processing scripts, publication-rebuild materials and reproducible outputs are maintained in the project GitHub repository: \url{https://github.com/Jonathanerrils/tail-dependence-ghana}. The manuscript is restricted to claims supported by the audited data, code and reproducible outputs documented in the project.}
+
+\acknowledgments{The author gratefully acknowledges his Lord and personal Saviour, Jesus Christ, for His grace and guidance throughout this work, as well as the colleagues and researchers whose discussions, comments and suggestions contributed to the development and refinement of this study.}
+
+\useofartificialintelligence{During the preparation of this manuscript, the author used OpenAI's ChatGPT to assist with code review, manuscript organization, language editing, consistency checking, and preparation of publication materials. All analyses, numerical results, interpretations, references, and final manuscript content were independently reviewed and verified by the author, who takes full responsibility for the content of the work.}
+
+\conflictsofinterest{The author declares no conflicts of interest.}
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\reftitle{References}
+\bibliography{references}
+\PublishersNote{}
+\end{adjustwidth}
+
+\end{document}
