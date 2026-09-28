@@ -32,15 +32,15 @@ Other submission assets:
 - The manuscript uses 8 keywords, within MDPI's recommended range.
 - The historical study-design workflow is not counted as a main manuscript figure.
 
-## Metadata still required from the author before the MDPI template can be finalized
+## Author metadata supplied
 
-Do not invent these fields:
-- Full institutional affiliation, including city and country
-- Corresponding-author email
-- ORCID, if available
-- Funding statement
-- Conflict-of-interest statement
-- Acknowledgments, if any
+- Author: Jonathan Nelson
+- Affiliation: Kwame Nkrumah University of Science and Technology (KNUST), Kumasi, Ghana
+- Corresponding-author email: jonathannelson707@gmail.com
+- ORCID: 0009-0006-9393-6237
+- Funding: no external funding
+- Conflicts of Interest: none declared
+- Acknowledgments: supplied and inserted into the development manuscript
 
 ## Back matter required for the final MDPI version
 
@@ -60,3 +60,8 @@ The existing repository Data and Code Availability statement can be adapted into
 Use the current MDPI LaTeX template for *Risks*. The audited scientific content in `paper/latex/rebuild/sections/` should be migrated without changing numerical results or evidential classifications. References should be rendered in MDPI's numbered citation style through the journal template rather than the present author--year `plainnat` development style.
 
 The final submission ZIP should contain the MDPI source, bibliography, all main figures, the graphical abstract where requested, and any supplementary files needed for recompilation.
+
+
+## Generative-AI disclosure check
+
+Current MDPI author guidance asks authors to disclose generative-AI use when such tools were used in manuscript preparation or related research tasks. Because ChatGPT has been used during the reconstruction and manuscript-preparation workflow, the final MDPI submission should include an appropriate disclosure. The exact wording should be confirmed by the author before the final submission package is frozen.
