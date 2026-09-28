@@ -34,7 +34,7 @@ Other submission assets:
 
 ## Author metadata supplied
 
-- Author: Jonathan Nelson
+- Author: Jonathan Anthonio Nii Pedro Nelson
 - Affiliation: Kwame Nkrumah University of Science and Technology (KNUST), Kumasi, Ghana
 - Corresponding-author email: jonathannelson707@gmail.com
 - ORCID: 0009-0006-9393-6237
