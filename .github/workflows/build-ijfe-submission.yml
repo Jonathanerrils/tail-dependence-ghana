@@ -1,0 +1,72 @@
+name: Build IJFE submission package
+
+on:
+  push:
+    branches:
+      - ijfe-submission
+    paths:
+      - 'paper/latex/ijfe_submission/**'
+      - '.github/workflows/build-ijfe-submission.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile IJFE manuscript
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: manuscript.tex
+          working_directory: paper/latex/ijfe_submission
+
+      - name: Compile supplementary material
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: supplementary.tex
+          working_directory: paper/latex/ijfe_submission
+
+      - name: Compile cover letter
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cover_letter.tex
+          working_directory: paper/latex/ijfe_submission
+
+      - name: Check manuscript word count
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          base = Path("paper/latex/ijfe_submission/sections")
+          total = 0
+          for p in sorted(base.glob("*.tex")):
+              s = p.read_text(encoding="utf-8")
+              s = re.sub(r"%.*$", " ", s, flags=re.M)
+              s = re.sub(r"\\(?:cite|citet|citep|ref|label|url|href|includegraphics|input)\*?\{[^}]*\}(?:\{[^}]*\})?", " ", s)
+              s = re.sub(r"\\[A-Za-z@]+\*?(?:\[[^\]]*\])?", " ", s)
+              s = re.sub(r"[{}$^_&~\\]", " ", s)
+              words = re.findall(r"\b[\w’'-]+\b", s)
+              print(f"{p.name}: {len(words)}")
+              total += len(words)
+          print(f"Estimated main-text word count: {total}")
+          if total > 7800:
+              raise SystemExit("Main text is too close to/exceeds the IJFE 8,000-word limit.")
+          PY
+
+      - name: Create IJFE source ZIP
+        run: |
+          cd paper/latex/ijfe_submission
+          zip -r ../../../ijfe-submission-source.zip .             -x "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "*.fls" "*.fdb_latexmk" "*.synctex.gz"                "manuscript.pdf" "supplementary.pdf" "cover_letter.pdf"
+
+      - name: Upload IJFE package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ijfe-submission-package
+          path: |
+            paper/latex/ijfe_submission/manuscript.pdf
+            paper/latex/ijfe_submission/supplementary.pdf
+            paper/latex/ijfe_submission/cover_letter.pdf
+            ijfe-submission-source.zip
+          if-no-files-found: error
