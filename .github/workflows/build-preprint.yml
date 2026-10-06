@@ -28,6 +28,10 @@ jobs:
           root_file: supplementary.tex
           working_directory: paper/latex/preprint
 
+      - name: Name preprint PDF for upload
+        run: |
+          cp paper/latex/preprint/manuscript.pdf Jonathan_Nelson_Tail_Dependence_Ghana_Preprint_v1.pdf
+
       - name: Create preprint source ZIP
         run: |
           cd paper/latex/preprint
@@ -40,6 +44,7 @@ jobs:
         with:
           name: preprint-package
           path: |
+            Jonathan_Nelson_Tail_Dependence_Ghana_Preprint_v1.pdf
             paper/latex/preprint/manuscript.pdf
             paper/latex/preprint/supplementary.pdf
             preprint-source.zip
