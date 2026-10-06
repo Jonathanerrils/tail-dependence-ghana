@@ -1,0 +1,46 @@
+name: Build preprint package
+
+on:
+  push:
+    branches:
+      - ijfe-submission
+    paths:
+      - 'paper/latex/preprint/**'
+      - '.github/workflows/build-preprint.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile preprint
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: manuscript.tex
+          working_directory: paper/latex/preprint
+
+      - name: Compile supplementary material
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: supplementary.tex
+          working_directory: paper/latex/preprint
+
+      - name: Create preprint source ZIP
+        run: |
+          cd paper/latex/preprint
+          zip -r ../../../preprint-source.zip . \
+            -x "*.aux" "*.log" "*.out" "*.bbl" "*.blg" "*.fls" "*.fdb_latexmk" "*.synctex.gz" \
+               "manuscript.pdf" "supplementary.pdf"
+
+      - name: Upload preprint package
+        uses: actions/upload-artifact@v4
+        with:
+          name: preprint-package
+          path: |
+            paper/latex/preprint/manuscript.pdf
+            paper/latex/preprint/supplementary.pdf
+            preprint-source.zip
+          if-no-files-found: error
