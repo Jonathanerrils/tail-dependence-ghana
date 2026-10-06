@@ -34,3 +34,8 @@ IJFE is free to submit. Open access is optional. The intended route for this man
 ## Scientific freeze
 
 Do not alter the frozen sample sizes, copula GOF classifications, stress-test counts, Cedi marginal status or multiplicity-controlled conclusions without returning to the audited source and outputs.
+
+
+## Data access and redistribution
+
+The submission Data Availability Statement points directly to the `ijfe-submission` branch rather than the repository default branch. Raw commodity-price files obtained through Yahoo Finance are not redistributed because of provider terms; the repository documents the tickers and processing workflow needed to reconstruct the analysis from the original provider, subject to those terms. Bank of Ghana exchange-rate data are attributed to the original public source.
