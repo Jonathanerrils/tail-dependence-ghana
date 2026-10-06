@@ -2,13 +2,13 @@
 
 **Copula adequacy, stress tests, calendar robustness, and reproducible reconstruction of cocoa, gold, Brent, WTI, and Ghana cedi dependence.**
 
-> **Current status:** The scientific reconstruction is substantially complete. The publication analysis now uses two co-equal calendar panels, the publication-resolution stress analysis has been completed for both panels, the major implementation audits are closed, and the audited reconstructed LaTeX manuscript is being finalized on the `manuscript-publication-revision` branch. Historical scripts, outputs, and the older manuscript remain in the repository for provenance and must not be treated as current publication authority unless explicitly identified as verified.
+> **Current status:** The audited two-panel scientific reconstruction is complete. This `ijfe-submission` branch contains the condensed manuscript package prepared for the *International Journal of Finance & Economics* (Wiley). The frozen analysis and reproducible outputs remain unchanged; journal-specific edits are limited to presentation, condensation, and submission metadata.
 
 Working manuscript title:
 
 **Commodity Tail Dependence and Exchange-Rate Risk in Ghana: Copula Adequacy, Stress Tests, and Calendar Robustness**
 
-Target journal: *Risks*.
+Target journal: *International Journal of Finance & Economics* (Wiley).
 
 ---
 
@@ -200,7 +200,7 @@ Inference uses:
 | Stress definition | Panel A nominal p<0.05 | Panel B nominal p<0.05 | Panel A corrected | Panel B corrected |
 |---|---:|---:|---:|---:|
 | Combined COVID + 2024 | 6/60 | 5/60 | 0/60 | 0/60 |
-| COVID-19 only | 11/60 | 11/60 | 0/60 | 0/60 |
+| COVID-19 only | 13/60 | 11/60 | 0/60 | 0/60 |
 | 2024 only | 6/60 | 7/60 | 0/60 | 0/60 |
 
 No cell survives either Bonferroni or Benjamini-Hochberg correction in any of the three families under either panel.
@@ -335,35 +335,25 @@ This places adverse commodity and Cedi movements in the same lower-tail orientat
 
 The historical manuscript in `paper/latex/paper.tex` is retained for provenance.
 
-The reconstructed scientific manuscript is being finalized on the branch:
-
-```text
-manuscript-publication-revision
-```
-
-and is assembled under:
+The audited scientific master is retained under:
 
 ```text
 paper/latex/rebuild/
-  manuscript.tex
-  references.bib
-  README.md
-  sections/
-    01_introduction.tex
-    02_related_literature.tex
-    03_data_calendar.tex
-    04_methodology.tex
-    05_results.tex
-    06_discussion.tex
-    07_robustness_limitations.tex
-    08_conclusion.tex
 ```
 
-Draft pull request:
+The current IJFE submission package is on this branch and is assembled under:
 
-**PR #1: Rebuild manuscript in LaTeX from audited scientific sections**
+```text
+paper/latex/ijfe_submission/
+  manuscript.tex
+  references.bib
+  supplementary.tex
+  cover_letter.tex
+  figures/
+  sections/
+```
 
-The reconstructed manuscript contains Sections 1 through 8 plus supplementary diagnostics. Cross-section consistency, bibliography-key, figure-structure and compiled-PDF checks have been completed; submission-format adaptation and final release checks remain.
+The IJFE manuscript is a condensed presentation of the same frozen two-panel evidence; it does not introduce a new analysis branch.
 
 ---
 
@@ -497,3 +487,10 @@ Use the repository `.gitignore` and inspect `git status` before committing.
 ## License
 
 MIT. See `LICENSE`.
+
+
+---
+
+## Data availability for the IJFE submission
+
+The manuscript points readers directly to this `ijfe-submission` branch. Reproducible scripts and derived publication outputs are included here. Raw Yahoo Finance commodity-price files are not redistributed because of provider terms; the repository records the commodity tickers and processing workflow needed to obtain and reconstruct those inputs from the original provider, subject to its terms. Bank of Ghana exchange-rate data are attributed to the original public source.
